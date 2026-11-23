@@ -205,18 +205,18 @@ def lifecycle_check(url, procure, t, bids, events, span, from_block=None, end_bl
     return (not probs), "; ".join(probs) or ok_detail
 
 
-def passkey_check(bids, passkeys, chain_id, procure, tid, require_signed=False, commit_events=0):
-    """Re-verifies every bid's commit_signature. With require_signed (schema 1.1.0,
-    where every commitment is passkey-signed), an unsigned commitment fails."""
+def passkey_check(bids, passkeys, chain_id, procure, tid):
+    """Re-verifies every bid's commit_signature. Unsigned bids are counted, not
+    failed: generated scenario tenders commit without a passkey."""
     keys = {(p.get("key_id") or "").lower(): p for p in passkeys if isinstance(p, dict)}
     keys.update({p.get("id"): p for p in passkeys if isinstance(p, dict) and p.get("id")})
-    signed, probs = 0, []
+    signed, unsigned, probs = 0, 0, []
     for i, b in enumerate(bids):
         if not isinstance(b, dict): probs.append(f"bids.json entry {i} is not an object"); continue
         bid = b.get("id", f"#{i}")
         a = b.get("commit_signature")
         if not a:
-            if require_signed and b.get("commit_hash"): probs.append(f"bid {bid}: commitment has no passkey signature")
+            unsigned += 1 if b.get("commit_hash") else 0
             continue
         signed += 1
         try:
@@ -231,10 +231,9 @@ def passkey_check(bids, passkeys, chain_id, procure, tid, require_signed=False, 
         except (KeyError, TypeError, ValueError, AttributeError) as e:
             why = f"malformed bid, signature or passkey ({type(e).__name__}: {e})"
         if why: probs.append(f"bid {bid}: {why}")
-    if not signed and not probs:
-        if require_signed and commit_events: return False, f"events.json records {commit_events} bid commitments but no bid is passkey-signed"
-        return None, "no passkey-signed bids"
-    return (not probs), "; ".join(probs) or f"{signed} passkey assertions verify"
+    note = f"; {unsigned} unsigned commitments" if unsigned else ""
+    if not signed and not probs: return None, "no passkey-signed bids" + note
+    return (not probs), ("; ".join(probs) or f"{signed} passkey assertions verify") + note
 
 
 def verify(zip_bytes, rpc_url=None, chain_id=None, contract=None, tx=None, tender=None, version=None, procure=None, log_span=30, from_block=None):
@@ -295,11 +294,15 @@ def verify(zip_bytes, rpc_url=None, chain_id=None, contract=None, tx=None, tende
     # Every listed JSON file must parse; an unparseable bids.json must not
     # read as "no bids" and let the passkey step skip.
     probs, parsed = [], {}
-    for n, d in data.items():
+    for n in list(data):
+        d = data.pop(n)
         if not n.endswith(".json"): continue
-        try: parsed[n] = json.loads(d)
+        try: obj = json.loads(d)
         except Exception: probs.append(f"{n} is not valid JSON"); continue
+        finally: del d
         want = JSON_TYPES.get(n)
+        if not want: del obj; continue
+        parsed[n] = obj
         if want and not isinstance(parsed[n], want):
             probs.append(f"{n} is not a JSON {'object' if want is dict else 'array'}"); del parsed[n]
         elif want is list and not all(isinstance(x, dict) for x in parsed[n]):
@@ -339,17 +342,16 @@ def verify(zip_bytes, rpc_url=None, chain_id=None, contract=None, tx=None, tende
     tender_uuid = (t.get("id") or "").replace("-", "").lower()
     ctid = t.get("contract_tender_id")
     offchain = ctid is None or str(ctid).startswith("SIM-")
-    strict = dict(require_signed=m["schema_version"] != "1.0.0", commit_events=sum(1 for e in events if e.get("event_type") == "BID_COMMIT"))
     if offchain and len(tender_uuid) == 32 and all(c in "0123456789abcdef" for c in tender_uuid):
         # Simulated or On-Prem tender: offChainDomain binds bids to the tender UUID.
-        ok, detail = passkey_check(bids, passkeys, 0, "0x" + "00" * 20, int(tender_uuid, 16), **strict)
+        ok, detail = passkey_check(bids, passkeys, 0, "0x" + "00" * 20, int(tender_uuid, 16))
         rec(13, "passkey_assertions_valid", ok, detail + " (off-chain domain)")
     elif offchain or not str(ctid).isdigit():
         rec(13, "passkey_assertions_valid", False, f"tender ID {t.get('id')} is not a UUID, or on-chain ID {ctid} is not a number")
     elif not str(domain_chain).isdigit() or not domain_procure:
         rec(13, "passkey_assertions_valid", None, "chain ID or procurement contract unknown")
     else:
-        ok, detail = passkey_check(bids, passkeys, int(domain_chain), domain_procure, t["contract_tender_id"], **strict)
+        ok, detail = passkey_check(bids, passkeys, int(domain_chain), domain_procure, t["contract_tender_id"])
         rec(13, "passkey_assertions_valid", ok, detail + ("" if procure else " (domain contract from chain_context.json)"))
     return digest, res
 

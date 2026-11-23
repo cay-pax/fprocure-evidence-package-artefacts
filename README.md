@@ -45,7 +45,7 @@ The scripts in `round*/scripts/` are kept exactly as run, including the absolute
 
 `run_scenarios.ts` (Deno) drives the platform's backend functions for each scenario and exports each package. `tamper_matrix.py` builds the negative cases and runs the standalone verifier. `app_side.py` exercises the platform's built-in verifier. The test wallets are derived from Anvil's public development mnemonic, and the passwords are local-only test values.
 
-`verifier/` holds the hardened verifier (F-Procure commit `576bc99`). It adds archive size limits (256 MiB in total, 64 MiB per entry, checked before reading), stricter step-12 identity checks, and failure reports in place of crashes for unreadable entries, incomplete manifests, missing passkey fields and unparseable JSON. For schema 1.1.0 it also rejects bids that carry a commitment but no passkey assertion. On the 14 round-2 packages it gives the same results as the evaluated verifier: 13 of 14 unmodified packages pass, and all 210 negative cases are rejected.
+`verifier/` holds the hardened verifier (F-Procure commit `fd9ac99`). It adds archive size limits (256 MiB in total, 64 MiB per entry, checked before reading) and stricter step-12 identity checks. Unreadable entries, incomplete manifests, missing passkey fields and unparseable JSON now fail a step instead of crashing the verifier or, for unparseable bid records, skipping step 13. On the 14 round-2 packages it gives the same results as the evaluated verifier: 13 of 14 unmodified packages pass, and all 210 negative cases are rejected.
 
 ## What verification proves
 

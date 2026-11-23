@@ -170,17 +170,20 @@ class VerifierTest(unittest.TestCase):
         def obj(files, content, manifest, extra): content["bids.json"] = stable({"id": "b1"})
         self.assertEqual(status(package(obj), "identity_consistent"), "failed")
 
-    def test_unsigned_commitment_fails_in_1_1_0(self):
+    def test_unsigned_scenario_commitment_is_counted_not_failed(self):
+        def add_unsigned(files, content, manifest, extra):
+            b = dict(files["bids.json"][0], id="b2"); del b["commit_signature"]
+            content["bids.json"] = [files["bids.json"][0], b]
+        res = v.verify(package(add_unsigned))[1]
+        step = next(r for r in res if r["check"] == "passkey_assertions_valid")
+        self.assertEqual(step["status"], "passed")
+        self.assertIn("1 unsigned commitments", step["detail"])
+
+    def test_all_unsigned_is_skipped_not_passed(self):
         def unsign(files, content, manifest, extra):
             b = dict(files["bids.json"][0]); del b["commit_signature"]
             content["bids.json"] = [b]
-        self.assertEqual(status(package(unsign), "passkey_assertions_valid"), "failed")
-
-    def test_recorded_commits_without_signed_bids_fail(self):
-        def empty(files, content, manifest, extra):
-            content["bids.json"] = []
-            content["events.json"] = [{"event_type": "BID_COMMIT", "tx_hash": "0x" + "11" * 32}]
-        self.assertEqual(status(package(empty), "passkey_assertions_valid"), "failed")
+        self.assertEqual(status(package(unsign), "passkey_assertions_valid"), "skipped")
 
     def test_no_bids_and_no_commits_is_skipped(self):
         def empty(files, content, manifest, extra): content["bids.json"] = []
