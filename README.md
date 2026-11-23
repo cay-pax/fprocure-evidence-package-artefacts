@@ -9,7 +9,7 @@ All tenders, vendors and amounts are synthetic. Packages were anchored on a **lo
 | Path | What it is |
 |---|---|
 | [SPECIFICATION.md](SPECIFICATION.md) | Tender Evidence Package specification (schema 1.1.0, with the 1.0.0 differences) and the contract interfaces the verifier reads |
-| [verifier/](verifier/) | Standalone 13-step verifier, hardened release (v1.1), with 28 offline unit tests |
+| [verifier/](verifier/) | Standalone 13-step verifier, hardened release (v1.1), with 32 offline unit tests |
 | [round2/](round2/) | Schema 1.1.0: 12 scenarios, 14 packages and anchor records, the verifier exactly as evaluated, scripts, results (210 negative cases) |
 | [round1/](round1/) | Schema 1.0.0: 10 scenarios, 11 anchored packages plus 2 boundary-test packages, the ten-step verifier, scripts, results (88 negative cases) |
 | [coston2/REFERENCES.md](coston2/REFERENCES.md) | Coston2 contract and transaction references |
@@ -19,7 +19,7 @@ All tenders, vendors and amounts are synthetic. Packages were anchored on a **lo
 ```bash
 cd verifier
 pip install -r requirements.txt
-python -m unittest test_verify_tep          # 28 offline tests
+python -m unittest test_verify_tep          # 32 offline tests
 python verify_tep.py ../round2/packages/S03.zip
 ```
 
@@ -45,7 +45,7 @@ The scripts in `round*/scripts/` are kept exactly as run, including the absolute
 
 `run_scenarios.ts` (Deno) drives the platform's backend functions for each scenario and exports each package. `tamper_matrix.py` builds the negative cases and runs the standalone verifier. `app_side.py` exercises the platform's built-in verifier. The test wallets are derived from Anvil's public development mnemonic, and the passwords are local-only test values.
 
-`verifier/` holds the hardened verifier (F-Procure commit `661ab5b`). It adds archive size limits (256 MiB in total, 64 MiB per entry, checked before reading) and stricter step-12 identity checks. Unreadable entries, incomplete manifests, missing passkey fields and unparseable JSON now fail a step instead of crashing the verifier or, for unparseable bid records, skipping step 13. On the 14 round-2 packages it gives the same results as the evaluated verifier: 13 of 14 unmodified packages pass, and all 210 negative cases are rejected.
+`verifier/` holds the hardened verifier (F-Procure commit `661ab5b`). It accepts only stored or DEFLATE entries, adds archive size limits (256 MiB in total, 64 MiB per entry, checked before reading) and has stricter step-12 identity checks. Unreadable entries, incomplete manifests, missing passkey fields, unparseable JSON and a non-numeric chain ID now fail a step instead of crashing the verifier or, for unparseable bid records, skipping step 13. On the 14 round-2 packages it gives the same results as the evaluated verifier: 13 of 14 unmodified packages pass, and all 210 negative cases are rejected.
 
 ## What verification proves
 
