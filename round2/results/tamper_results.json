@@ -1,0 +1,2449 @@
+[
+  {
+    "package": "S01",
+    "case": "T0 unmodified",
+    "result": "passed",
+    "failed_steps": [],
+    "skipped": []
+  },
+  {
+    "package": "S01",
+    "case": "T1 one file altered (bids.json, 1 byte)",
+    "result": "failed",
+    "failed_steps": [
+      "6:file_hashes_match",
+      "10:anchor_event_matches",
+      "11:anchor_state_current"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S01",
+    "case": "T2 listed file removed (events.json)",
+    "result": "failed",
+    "failed_steps": [
+      "5:listed_files_present",
+      "10:anchor_event_matches",
+      "11:anchor_state_current",
+      "12:onchain_lifecycle_matches"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S01",
+    "case": "T3 unlisted file added",
+    "result": "failed",
+    "failed_steps": [
+      "7:no_unlisted_files",
+      "10:anchor_event_matches",
+      "11:anchor_state_current"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S01",
+    "case": "T4 file altered and manifest rewritten to match",
+    "result": "failed",
+    "failed_steps": [
+      "10:anchor_event_matches",
+      "11:anchor_state_current"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S01",
+    "case": "T5 anchor tx of another package",
+    "result": "failed",
+    "failed_steps": [
+      "10:anchor_event_matches"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S01",
+    "case": "T6 wrong anchor contract",
+    "result": "failed",
+    "failed_steps": [
+      "9:anchor_tx_valid",
+      "10:anchor_event_matches"
+    ],
+    "skipped": [
+      "11"
+    ]
+  },
+  {
+    "package": "S01",
+    "case": "T7 wrong chain expected (Coston2, 114)",
+    "result": "failed",
+    "failed_steps": [
+      "8:identity_consistent",
+      "9:anchor_tx_valid",
+      "10:anchor_event_matches",
+      "13:passkey_assertions_valid"
+    ],
+    "skipped": [
+      "11"
+    ]
+  },
+  {
+    "package": "S01",
+    "case": "T8 non-existent anchor tx",
+    "result": "failed",
+    "failed_steps": [
+      "9:anchor_tx_valid",
+      "10:anchor_event_matches"
+    ],
+    "skipped": [
+      "11"
+    ]
+  },
+  {
+    "package": "S01",
+    "case": "T9 required file removed from archive and manifest",
+    "result": "failed",
+    "failed_steps": [
+      "4:required_files_listed",
+      "10:anchor_event_matches",
+      "11:anchor_state_current"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S01",
+    "case": "T10 unknown schema version in manifest",
+    "result": "failed",
+    "failed_steps": [
+      "3:manifest_valid"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S01",
+    "case": "T11 bid commitment altered, manifest rewritten",
+    "result": "failed",
+    "failed_steps": [
+      "10:anchor_event_matches",
+      "11:anchor_state_current",
+      "12:onchain_lifecycle_matches",
+      "13:passkey_assertions_valid"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S01",
+    "case": "T12 revealed amount altered, manifest rewritten",
+    "result": "failed",
+    "failed_steps": [
+      "10:anchor_event_matches",
+      "11:anchor_state_current",
+      "12:onchain_lifecycle_matches"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S01",
+    "case": "T13 passkey signature forged, manifest rewritten",
+    "result": "failed",
+    "failed_steps": [
+      "10:anchor_event_matches",
+      "11:anchor_state_current",
+      "13:passkey_assertions_valid"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S01",
+    "case": "T14 reveal removed from bids.json, manifest rewritten",
+    "result": "failed",
+    "failed_steps": [
+      "10:anchor_event_matches",
+      "11:anchor_state_current",
+      "12:onchain_lifecycle_matches"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S01",
+    "case": "T15 tender creation tx removed, manifest rewritten",
+    "result": "failed",
+    "failed_steps": [
+      "10:anchor_event_matches",
+      "11:anchor_state_current",
+      "12:onchain_lifecycle_matches"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S02",
+    "case": "T0 unmodified",
+    "result": "passed",
+    "failed_steps": [],
+    "skipped": []
+  },
+  {
+    "package": "S02",
+    "case": "T1 one file altered (bids.json, 1 byte)",
+    "result": "failed",
+    "failed_steps": [
+      "6:file_hashes_match",
+      "10:anchor_event_matches",
+      "11:anchor_state_current"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S02",
+    "case": "T2 listed file removed (events.json)",
+    "result": "failed",
+    "failed_steps": [
+      "5:listed_files_present",
+      "10:anchor_event_matches",
+      "11:anchor_state_current",
+      "12:onchain_lifecycle_matches"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S02",
+    "case": "T3 unlisted file added",
+    "result": "failed",
+    "failed_steps": [
+      "7:no_unlisted_files",
+      "10:anchor_event_matches",
+      "11:anchor_state_current"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S02",
+    "case": "T4 file altered and manifest rewritten to match",
+    "result": "failed",
+    "failed_steps": [
+      "10:anchor_event_matches",
+      "11:anchor_state_current"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S02",
+    "case": "T5 anchor tx of another package",
+    "result": "failed",
+    "failed_steps": [
+      "10:anchor_event_matches"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S02",
+    "case": "T6 wrong anchor contract",
+    "result": "failed",
+    "failed_steps": [
+      "9:anchor_tx_valid",
+      "10:anchor_event_matches"
+    ],
+    "skipped": [
+      "11"
+    ]
+  },
+  {
+    "package": "S02",
+    "case": "T7 wrong chain expected (Coston2, 114)",
+    "result": "failed",
+    "failed_steps": [
+      "8:identity_consistent",
+      "9:anchor_tx_valid",
+      "10:anchor_event_matches",
+      "13:passkey_assertions_valid"
+    ],
+    "skipped": [
+      "11"
+    ]
+  },
+  {
+    "package": "S02",
+    "case": "T8 non-existent anchor tx",
+    "result": "failed",
+    "failed_steps": [
+      "9:anchor_tx_valid",
+      "10:anchor_event_matches"
+    ],
+    "skipped": [
+      "11"
+    ]
+  },
+  {
+    "package": "S02",
+    "case": "T9 required file removed from archive and manifest",
+    "result": "failed",
+    "failed_steps": [
+      "4:required_files_listed",
+      "10:anchor_event_matches",
+      "11:anchor_state_current"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S02",
+    "case": "T10 unknown schema version in manifest",
+    "result": "failed",
+    "failed_steps": [
+      "3:manifest_valid"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S02",
+    "case": "T11 bid commitment altered, manifest rewritten",
+    "result": "failed",
+    "failed_steps": [
+      "10:anchor_event_matches",
+      "11:anchor_state_current",
+      "12:onchain_lifecycle_matches",
+      "13:passkey_assertions_valid"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S02",
+    "case": "T12 revealed amount altered, manifest rewritten",
+    "result": "failed",
+    "failed_steps": [
+      "10:anchor_event_matches",
+      "11:anchor_state_current",
+      "12:onchain_lifecycle_matches"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S02",
+    "case": "T13 passkey signature forged, manifest rewritten",
+    "result": "failed",
+    "failed_steps": [
+      "10:anchor_event_matches",
+      "11:anchor_state_current",
+      "13:passkey_assertions_valid"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S02",
+    "case": "T14 reveal removed from bids.json, manifest rewritten",
+    "result": "failed",
+    "failed_steps": [
+      "10:anchor_event_matches",
+      "11:anchor_state_current",
+      "12:onchain_lifecycle_matches"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S02",
+    "case": "T15 tender creation tx removed, manifest rewritten",
+    "result": "failed",
+    "failed_steps": [
+      "10:anchor_event_matches",
+      "11:anchor_state_current",
+      "12:onchain_lifecycle_matches"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S02_v2_changed",
+    "case": "T0 unmodified",
+    "result": "passed",
+    "failed_steps": [],
+    "skipped": []
+  },
+  {
+    "package": "S02_v2_changed",
+    "case": "T1 one file altered (bids.json, 1 byte)",
+    "result": "failed",
+    "failed_steps": [
+      "6:file_hashes_match",
+      "10:anchor_event_matches",
+      "11:anchor_state_current"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S02_v2_changed",
+    "case": "T2 listed file removed (events.json)",
+    "result": "failed",
+    "failed_steps": [
+      "5:listed_files_present",
+      "10:anchor_event_matches",
+      "11:anchor_state_current",
+      "12:onchain_lifecycle_matches"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S02_v2_changed",
+    "case": "T3 unlisted file added",
+    "result": "failed",
+    "failed_steps": [
+      "7:no_unlisted_files",
+      "10:anchor_event_matches",
+      "11:anchor_state_current"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S02_v2_changed",
+    "case": "T4 file altered and manifest rewritten to match",
+    "result": "failed",
+    "failed_steps": [
+      "10:anchor_event_matches",
+      "11:anchor_state_current"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S02_v2_changed",
+    "case": "T5 anchor tx of another package",
+    "result": "failed",
+    "failed_steps": [
+      "10:anchor_event_matches"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S02_v2_changed",
+    "case": "T6 wrong anchor contract",
+    "result": "failed",
+    "failed_steps": [
+      "9:anchor_tx_valid",
+      "10:anchor_event_matches"
+    ],
+    "skipped": [
+      "11"
+    ]
+  },
+  {
+    "package": "S02_v2_changed",
+    "case": "T7 wrong chain expected (Coston2, 114)",
+    "result": "failed",
+    "failed_steps": [
+      "8:identity_consistent",
+      "9:anchor_tx_valid",
+      "10:anchor_event_matches",
+      "13:passkey_assertions_valid"
+    ],
+    "skipped": [
+      "11"
+    ]
+  },
+  {
+    "package": "S02_v2_changed",
+    "case": "T8 non-existent anchor tx",
+    "result": "failed",
+    "failed_steps": [
+      "9:anchor_tx_valid",
+      "10:anchor_event_matches"
+    ],
+    "skipped": [
+      "11"
+    ]
+  },
+  {
+    "package": "S02_v2_changed",
+    "case": "T9 required file removed from archive and manifest",
+    "result": "failed",
+    "failed_steps": [
+      "4:required_files_listed",
+      "10:anchor_event_matches",
+      "11:anchor_state_current"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S02_v2_changed",
+    "case": "T10 unknown schema version in manifest",
+    "result": "failed",
+    "failed_steps": [
+      "3:manifest_valid"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S02_v2_changed",
+    "case": "T11 bid commitment altered, manifest rewritten",
+    "result": "failed",
+    "failed_steps": [
+      "10:anchor_event_matches",
+      "11:anchor_state_current",
+      "12:onchain_lifecycle_matches",
+      "13:passkey_assertions_valid"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S02_v2_changed",
+    "case": "T12 revealed amount altered, manifest rewritten",
+    "result": "failed",
+    "failed_steps": [
+      "10:anchor_event_matches",
+      "11:anchor_state_current",
+      "12:onchain_lifecycle_matches"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S02_v2_changed",
+    "case": "T13 passkey signature forged, manifest rewritten",
+    "result": "failed",
+    "failed_steps": [
+      "10:anchor_event_matches",
+      "11:anchor_state_current",
+      "13:passkey_assertions_valid"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S02_v2_changed",
+    "case": "T14 reveal removed from bids.json, manifest rewritten",
+    "result": "failed",
+    "failed_steps": [
+      "10:anchor_event_matches",
+      "11:anchor_state_current",
+      "12:onchain_lifecycle_matches"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S02_v2_changed",
+    "case": "T15 tender creation tx removed, manifest rewritten",
+    "result": "failed",
+    "failed_steps": [
+      "10:anchor_event_matches",
+      "11:anchor_state_current",
+      "12:onchain_lifecycle_matches"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S03",
+    "case": "T0 unmodified",
+    "result": "passed",
+    "failed_steps": [],
+    "skipped": []
+  },
+  {
+    "package": "S03",
+    "case": "T1 one file altered (bids.json, 1 byte)",
+    "result": "failed",
+    "failed_steps": [
+      "6:file_hashes_match",
+      "10:anchor_event_matches",
+      "11:anchor_state_current"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S03",
+    "case": "T2 listed file removed (events.json)",
+    "result": "failed",
+    "failed_steps": [
+      "5:listed_files_present",
+      "10:anchor_event_matches",
+      "11:anchor_state_current",
+      "12:onchain_lifecycle_matches"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S03",
+    "case": "T3 unlisted file added",
+    "result": "failed",
+    "failed_steps": [
+      "7:no_unlisted_files",
+      "10:anchor_event_matches",
+      "11:anchor_state_current"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S03",
+    "case": "T4 file altered and manifest rewritten to match",
+    "result": "failed",
+    "failed_steps": [
+      "10:anchor_event_matches",
+      "11:anchor_state_current"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S03",
+    "case": "T5 anchor tx of another package",
+    "result": "failed",
+    "failed_steps": [
+      "10:anchor_event_matches"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S03",
+    "case": "T6 wrong anchor contract",
+    "result": "failed",
+    "failed_steps": [
+      "9:anchor_tx_valid",
+      "10:anchor_event_matches"
+    ],
+    "skipped": [
+      "11"
+    ]
+  },
+  {
+    "package": "S03",
+    "case": "T7 wrong chain expected (Coston2, 114)",
+    "result": "failed",
+    "failed_steps": [
+      "8:identity_consistent",
+      "9:anchor_tx_valid",
+      "10:anchor_event_matches",
+      "13:passkey_assertions_valid"
+    ],
+    "skipped": [
+      "11"
+    ]
+  },
+  {
+    "package": "S03",
+    "case": "T8 non-existent anchor tx",
+    "result": "failed",
+    "failed_steps": [
+      "9:anchor_tx_valid",
+      "10:anchor_event_matches"
+    ],
+    "skipped": [
+      "11"
+    ]
+  },
+  {
+    "package": "S03",
+    "case": "T9 required file removed from archive and manifest",
+    "result": "failed",
+    "failed_steps": [
+      "4:required_files_listed",
+      "10:anchor_event_matches",
+      "11:anchor_state_current"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S03",
+    "case": "T10 unknown schema version in manifest",
+    "result": "failed",
+    "failed_steps": [
+      "3:manifest_valid"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S03",
+    "case": "T11 bid commitment altered, manifest rewritten",
+    "result": "failed",
+    "failed_steps": [
+      "10:anchor_event_matches",
+      "11:anchor_state_current",
+      "12:onchain_lifecycle_matches",
+      "13:passkey_assertions_valid"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S03",
+    "case": "T12 revealed amount altered, manifest rewritten",
+    "result": "failed",
+    "failed_steps": [
+      "10:anchor_event_matches",
+      "11:anchor_state_current",
+      "12:onchain_lifecycle_matches"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S03",
+    "case": "T13 passkey signature forged, manifest rewritten",
+    "result": "failed",
+    "failed_steps": [
+      "10:anchor_event_matches",
+      "11:anchor_state_current",
+      "13:passkey_assertions_valid"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S03",
+    "case": "T14 reveal removed from bids.json, manifest rewritten",
+    "result": "failed",
+    "failed_steps": [
+      "10:anchor_event_matches",
+      "11:anchor_state_current",
+      "12:onchain_lifecycle_matches"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S03",
+    "case": "T15 tender creation tx removed, manifest rewritten",
+    "result": "failed",
+    "failed_steps": [
+      "10:anchor_event_matches",
+      "11:anchor_state_current",
+      "12:onchain_lifecycle_matches"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S04",
+    "case": "T0 unmodified",
+    "result": "passed",
+    "failed_steps": [],
+    "skipped": []
+  },
+  {
+    "package": "S04",
+    "case": "T1 one file altered (bids.json, 1 byte)",
+    "result": "failed",
+    "failed_steps": [
+      "6:file_hashes_match",
+      "10:anchor_event_matches",
+      "11:anchor_state_current"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S04",
+    "case": "T2 listed file removed (events.json)",
+    "result": "failed",
+    "failed_steps": [
+      "5:listed_files_present",
+      "10:anchor_event_matches",
+      "11:anchor_state_current",
+      "12:onchain_lifecycle_matches"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S04",
+    "case": "T3 unlisted file added",
+    "result": "failed",
+    "failed_steps": [
+      "7:no_unlisted_files",
+      "10:anchor_event_matches",
+      "11:anchor_state_current"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S04",
+    "case": "T4 file altered and manifest rewritten to match",
+    "result": "failed",
+    "failed_steps": [
+      "10:anchor_event_matches",
+      "11:anchor_state_current"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S04",
+    "case": "T5 anchor tx of another package",
+    "result": "failed",
+    "failed_steps": [
+      "10:anchor_event_matches"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S04",
+    "case": "T6 wrong anchor contract",
+    "result": "failed",
+    "failed_steps": [
+      "9:anchor_tx_valid",
+      "10:anchor_event_matches"
+    ],
+    "skipped": [
+      "11"
+    ]
+  },
+  {
+    "package": "S04",
+    "case": "T7 wrong chain expected (Coston2, 114)",
+    "result": "failed",
+    "failed_steps": [
+      "8:identity_consistent",
+      "9:anchor_tx_valid",
+      "10:anchor_event_matches",
+      "13:passkey_assertions_valid"
+    ],
+    "skipped": [
+      "11"
+    ]
+  },
+  {
+    "package": "S04",
+    "case": "T8 non-existent anchor tx",
+    "result": "failed",
+    "failed_steps": [
+      "9:anchor_tx_valid",
+      "10:anchor_event_matches"
+    ],
+    "skipped": [
+      "11"
+    ]
+  },
+  {
+    "package": "S04",
+    "case": "T9 required file removed from archive and manifest",
+    "result": "failed",
+    "failed_steps": [
+      "4:required_files_listed",
+      "10:anchor_event_matches",
+      "11:anchor_state_current"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S04",
+    "case": "T10 unknown schema version in manifest",
+    "result": "failed",
+    "failed_steps": [
+      "3:manifest_valid"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S04",
+    "case": "T11 bid commitment altered, manifest rewritten",
+    "result": "failed",
+    "failed_steps": [
+      "10:anchor_event_matches",
+      "11:anchor_state_current",
+      "12:onchain_lifecycle_matches",
+      "13:passkey_assertions_valid"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S04",
+    "case": "T12 revealed amount altered, manifest rewritten",
+    "result": "failed",
+    "failed_steps": [
+      "10:anchor_event_matches",
+      "11:anchor_state_current",
+      "12:onchain_lifecycle_matches"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S04",
+    "case": "T13 passkey signature forged, manifest rewritten",
+    "result": "failed",
+    "failed_steps": [
+      "10:anchor_event_matches",
+      "11:anchor_state_current",
+      "13:passkey_assertions_valid"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S04",
+    "case": "T14 reveal removed from bids.json, manifest rewritten",
+    "result": "failed",
+    "failed_steps": [
+      "10:anchor_event_matches",
+      "11:anchor_state_current",
+      "12:onchain_lifecycle_matches"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S04",
+    "case": "T15 tender creation tx removed, manifest rewritten",
+    "result": "failed",
+    "failed_steps": [
+      "10:anchor_event_matches",
+      "11:anchor_state_current",
+      "12:onchain_lifecycle_matches"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S05",
+    "case": "T0 unmodified",
+    "result": "passed",
+    "failed_steps": [],
+    "skipped": []
+  },
+  {
+    "package": "S05",
+    "case": "T1 one file altered (bids.json, 1 byte)",
+    "result": "failed",
+    "failed_steps": [
+      "6:file_hashes_match",
+      "10:anchor_event_matches",
+      "11:anchor_state_current"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S05",
+    "case": "T2 listed file removed (events.json)",
+    "result": "failed",
+    "failed_steps": [
+      "5:listed_files_present",
+      "10:anchor_event_matches",
+      "11:anchor_state_current",
+      "12:onchain_lifecycle_matches"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S05",
+    "case": "T3 unlisted file added",
+    "result": "failed",
+    "failed_steps": [
+      "7:no_unlisted_files",
+      "10:anchor_event_matches",
+      "11:anchor_state_current"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S05",
+    "case": "T4 file altered and manifest rewritten to match",
+    "result": "failed",
+    "failed_steps": [
+      "10:anchor_event_matches",
+      "11:anchor_state_current"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S05",
+    "case": "T5 anchor tx of another package",
+    "result": "failed",
+    "failed_steps": [
+      "10:anchor_event_matches"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S05",
+    "case": "T6 wrong anchor contract",
+    "result": "failed",
+    "failed_steps": [
+      "9:anchor_tx_valid",
+      "10:anchor_event_matches"
+    ],
+    "skipped": [
+      "11"
+    ]
+  },
+  {
+    "package": "S05",
+    "case": "T7 wrong chain expected (Coston2, 114)",
+    "result": "failed",
+    "failed_steps": [
+      "8:identity_consistent",
+      "9:anchor_tx_valid",
+      "10:anchor_event_matches",
+      "13:passkey_assertions_valid"
+    ],
+    "skipped": [
+      "11"
+    ]
+  },
+  {
+    "package": "S05",
+    "case": "T8 non-existent anchor tx",
+    "result": "failed",
+    "failed_steps": [
+      "9:anchor_tx_valid",
+      "10:anchor_event_matches"
+    ],
+    "skipped": [
+      "11"
+    ]
+  },
+  {
+    "package": "S05",
+    "case": "T9 required file removed from archive and manifest",
+    "result": "failed",
+    "failed_steps": [
+      "4:required_files_listed",
+      "10:anchor_event_matches",
+      "11:anchor_state_current"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S05",
+    "case": "T10 unknown schema version in manifest",
+    "result": "failed",
+    "failed_steps": [
+      "3:manifest_valid"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S05",
+    "case": "T11 bid commitment altered, manifest rewritten",
+    "result": "failed",
+    "failed_steps": [
+      "10:anchor_event_matches",
+      "11:anchor_state_current",
+      "12:onchain_lifecycle_matches",
+      "13:passkey_assertions_valid"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S05",
+    "case": "T12 revealed amount altered, manifest rewritten",
+    "result": "failed",
+    "failed_steps": [
+      "10:anchor_event_matches",
+      "11:anchor_state_current",
+      "12:onchain_lifecycle_matches"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S05",
+    "case": "T13 passkey signature forged, manifest rewritten",
+    "result": "failed",
+    "failed_steps": [
+      "10:anchor_event_matches",
+      "11:anchor_state_current",
+      "13:passkey_assertions_valid"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S05",
+    "case": "T14 reveal removed from bids.json, manifest rewritten",
+    "result": "failed",
+    "failed_steps": [
+      "10:anchor_event_matches",
+      "11:anchor_state_current",
+      "12:onchain_lifecycle_matches"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S05",
+    "case": "T15 tender creation tx removed, manifest rewritten",
+    "result": "failed",
+    "failed_steps": [
+      "10:anchor_event_matches",
+      "11:anchor_state_current",
+      "12:onchain_lifecycle_matches"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S06",
+    "case": "T0 unmodified",
+    "result": "passed",
+    "failed_steps": [],
+    "skipped": []
+  },
+  {
+    "package": "S06",
+    "case": "T1 one file altered (bids.json, 1 byte)",
+    "result": "failed",
+    "failed_steps": [
+      "6:file_hashes_match",
+      "10:anchor_event_matches",
+      "11:anchor_state_current"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S06",
+    "case": "T2 listed file removed (events.json)",
+    "result": "failed",
+    "failed_steps": [
+      "5:listed_files_present",
+      "10:anchor_event_matches",
+      "11:anchor_state_current",
+      "12:onchain_lifecycle_matches"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S06",
+    "case": "T3 unlisted file added",
+    "result": "failed",
+    "failed_steps": [
+      "7:no_unlisted_files",
+      "10:anchor_event_matches",
+      "11:anchor_state_current"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S06",
+    "case": "T4 file altered and manifest rewritten to match",
+    "result": "failed",
+    "failed_steps": [
+      "10:anchor_event_matches",
+      "11:anchor_state_current"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S06",
+    "case": "T5 anchor tx of another package",
+    "result": "failed",
+    "failed_steps": [
+      "10:anchor_event_matches"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S06",
+    "case": "T6 wrong anchor contract",
+    "result": "failed",
+    "failed_steps": [
+      "9:anchor_tx_valid",
+      "10:anchor_event_matches"
+    ],
+    "skipped": [
+      "11"
+    ]
+  },
+  {
+    "package": "S06",
+    "case": "T7 wrong chain expected (Coston2, 114)",
+    "result": "failed",
+    "failed_steps": [
+      "8:identity_consistent",
+      "9:anchor_tx_valid",
+      "10:anchor_event_matches",
+      "13:passkey_assertions_valid"
+    ],
+    "skipped": [
+      "11"
+    ]
+  },
+  {
+    "package": "S06",
+    "case": "T8 non-existent anchor tx",
+    "result": "failed",
+    "failed_steps": [
+      "9:anchor_tx_valid",
+      "10:anchor_event_matches"
+    ],
+    "skipped": [
+      "11"
+    ]
+  },
+  {
+    "package": "S06",
+    "case": "T9 required file removed from archive and manifest",
+    "result": "failed",
+    "failed_steps": [
+      "4:required_files_listed",
+      "10:anchor_event_matches",
+      "11:anchor_state_current"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S06",
+    "case": "T10 unknown schema version in manifest",
+    "result": "failed",
+    "failed_steps": [
+      "3:manifest_valid"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S06",
+    "case": "T11 bid commitment altered, manifest rewritten",
+    "result": "failed",
+    "failed_steps": [
+      "10:anchor_event_matches",
+      "11:anchor_state_current",
+      "12:onchain_lifecycle_matches",
+      "13:passkey_assertions_valid"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S06",
+    "case": "T12 revealed amount altered, manifest rewritten",
+    "result": "failed",
+    "failed_steps": [
+      "10:anchor_event_matches",
+      "11:anchor_state_current",
+      "12:onchain_lifecycle_matches"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S06",
+    "case": "T13 passkey signature forged, manifest rewritten",
+    "result": "failed",
+    "failed_steps": [
+      "10:anchor_event_matches",
+      "11:anchor_state_current",
+      "13:passkey_assertions_valid"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S06",
+    "case": "T14 reveal removed from bids.json, manifest rewritten",
+    "result": "failed",
+    "failed_steps": [
+      "10:anchor_event_matches",
+      "11:anchor_state_current",
+      "12:onchain_lifecycle_matches"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S06",
+    "case": "T15 tender creation tx removed, manifest rewritten",
+    "result": "failed",
+    "failed_steps": [
+      "10:anchor_event_matches",
+      "11:anchor_state_current",
+      "12:onchain_lifecycle_matches"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S07",
+    "case": "T0 unmodified",
+    "result": "passed",
+    "failed_steps": [],
+    "skipped": []
+  },
+  {
+    "package": "S07",
+    "case": "T1 one file altered (bids.json, 1 byte)",
+    "result": "failed",
+    "failed_steps": [
+      "6:file_hashes_match",
+      "10:anchor_event_matches",
+      "11:anchor_state_current"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S07",
+    "case": "T2 listed file removed (events.json)",
+    "result": "failed",
+    "failed_steps": [
+      "5:listed_files_present",
+      "10:anchor_event_matches",
+      "11:anchor_state_current",
+      "12:onchain_lifecycle_matches"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S07",
+    "case": "T3 unlisted file added",
+    "result": "failed",
+    "failed_steps": [
+      "7:no_unlisted_files",
+      "10:anchor_event_matches",
+      "11:anchor_state_current"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S07",
+    "case": "T4 file altered and manifest rewritten to match",
+    "result": "failed",
+    "failed_steps": [
+      "10:anchor_event_matches",
+      "11:anchor_state_current"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S07",
+    "case": "T5 anchor tx of another package",
+    "result": "failed",
+    "failed_steps": [
+      "10:anchor_event_matches"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S07",
+    "case": "T6 wrong anchor contract",
+    "result": "failed",
+    "failed_steps": [
+      "9:anchor_tx_valid",
+      "10:anchor_event_matches"
+    ],
+    "skipped": [
+      "11"
+    ]
+  },
+  {
+    "package": "S07",
+    "case": "T7 wrong chain expected (Coston2, 114)",
+    "result": "failed",
+    "failed_steps": [
+      "8:identity_consistent",
+      "9:anchor_tx_valid",
+      "10:anchor_event_matches",
+      "13:passkey_assertions_valid"
+    ],
+    "skipped": [
+      "11"
+    ]
+  },
+  {
+    "package": "S07",
+    "case": "T8 non-existent anchor tx",
+    "result": "failed",
+    "failed_steps": [
+      "9:anchor_tx_valid",
+      "10:anchor_event_matches"
+    ],
+    "skipped": [
+      "11"
+    ]
+  },
+  {
+    "package": "S07",
+    "case": "T9 required file removed from archive and manifest",
+    "result": "failed",
+    "failed_steps": [
+      "4:required_files_listed",
+      "10:anchor_event_matches",
+      "11:anchor_state_current"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S07",
+    "case": "T10 unknown schema version in manifest",
+    "result": "failed",
+    "failed_steps": [
+      "3:manifest_valid"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S07",
+    "case": "T11 bid commitment altered, manifest rewritten",
+    "result": "failed",
+    "failed_steps": [
+      "10:anchor_event_matches",
+      "11:anchor_state_current",
+      "12:onchain_lifecycle_matches",
+      "13:passkey_assertions_valid"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S07",
+    "case": "T12 revealed amount altered, manifest rewritten",
+    "result": "failed",
+    "failed_steps": [
+      "10:anchor_event_matches",
+      "11:anchor_state_current",
+      "12:onchain_lifecycle_matches"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S07",
+    "case": "T13 passkey signature forged, manifest rewritten",
+    "result": "failed",
+    "failed_steps": [
+      "10:anchor_event_matches",
+      "11:anchor_state_current",
+      "13:passkey_assertions_valid"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S07",
+    "case": "T14 reveal removed from bids.json, manifest rewritten",
+    "result": "failed",
+    "failed_steps": [
+      "10:anchor_event_matches",
+      "11:anchor_state_current",
+      "12:onchain_lifecycle_matches"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S07",
+    "case": "T15 tender creation tx removed, manifest rewritten",
+    "result": "failed",
+    "failed_steps": [
+      "10:anchor_event_matches",
+      "11:anchor_state_current",
+      "12:onchain_lifecycle_matches"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S08",
+    "case": "T0 unmodified",
+    "result": "passed",
+    "failed_steps": [],
+    "skipped": []
+  },
+  {
+    "package": "S08",
+    "case": "T1 one file altered (bids.json, 1 byte)",
+    "result": "failed",
+    "failed_steps": [
+      "6:file_hashes_match",
+      "10:anchor_event_matches",
+      "11:anchor_state_current"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S08",
+    "case": "T2 listed file removed (events.json)",
+    "result": "failed",
+    "failed_steps": [
+      "5:listed_files_present",
+      "10:anchor_event_matches",
+      "11:anchor_state_current",
+      "12:onchain_lifecycle_matches"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S08",
+    "case": "T3 unlisted file added",
+    "result": "failed",
+    "failed_steps": [
+      "7:no_unlisted_files",
+      "10:anchor_event_matches",
+      "11:anchor_state_current"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S08",
+    "case": "T4 file altered and manifest rewritten to match",
+    "result": "failed",
+    "failed_steps": [
+      "10:anchor_event_matches",
+      "11:anchor_state_current"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S08",
+    "case": "T5 anchor tx of another package",
+    "result": "failed",
+    "failed_steps": [
+      "10:anchor_event_matches"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S08",
+    "case": "T6 wrong anchor contract",
+    "result": "failed",
+    "failed_steps": [
+      "9:anchor_tx_valid",
+      "10:anchor_event_matches"
+    ],
+    "skipped": [
+      "11"
+    ]
+  },
+  {
+    "package": "S08",
+    "case": "T7 wrong chain expected (Coston2, 114)",
+    "result": "failed",
+    "failed_steps": [
+      "8:identity_consistent",
+      "9:anchor_tx_valid",
+      "10:anchor_event_matches",
+      "13:passkey_assertions_valid"
+    ],
+    "skipped": [
+      "11"
+    ]
+  },
+  {
+    "package": "S08",
+    "case": "T8 non-existent anchor tx",
+    "result": "failed",
+    "failed_steps": [
+      "9:anchor_tx_valid",
+      "10:anchor_event_matches"
+    ],
+    "skipped": [
+      "11"
+    ]
+  },
+  {
+    "package": "S08",
+    "case": "T9 required file removed from archive and manifest",
+    "result": "failed",
+    "failed_steps": [
+      "4:required_files_listed",
+      "10:anchor_event_matches",
+      "11:anchor_state_current"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S08",
+    "case": "T10 unknown schema version in manifest",
+    "result": "failed",
+    "failed_steps": [
+      "3:manifest_valid"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S08",
+    "case": "T11 bid commitment altered, manifest rewritten",
+    "result": "failed",
+    "failed_steps": [
+      "10:anchor_event_matches",
+      "11:anchor_state_current",
+      "12:onchain_lifecycle_matches",
+      "13:passkey_assertions_valid"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S08",
+    "case": "T12 revealed amount altered, manifest rewritten",
+    "result": "failed",
+    "failed_steps": [
+      "10:anchor_event_matches",
+      "11:anchor_state_current",
+      "12:onchain_lifecycle_matches"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S08",
+    "case": "T13 passkey signature forged, manifest rewritten",
+    "result": "failed",
+    "failed_steps": [
+      "10:anchor_event_matches",
+      "11:anchor_state_current",
+      "13:passkey_assertions_valid"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S08",
+    "case": "T14 reveal removed from bids.json, manifest rewritten",
+    "result": "failed",
+    "failed_steps": [
+      "10:anchor_event_matches",
+      "11:anchor_state_current",
+      "12:onchain_lifecycle_matches"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S08",
+    "case": "T15 tender creation tx removed, manifest rewritten",
+    "result": "failed",
+    "failed_steps": [
+      "10:anchor_event_matches",
+      "11:anchor_state_current",
+      "12:onchain_lifecycle_matches"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S09",
+    "case": "T0 unmodified",
+    "result": "passed",
+    "failed_steps": [],
+    "skipped": []
+  },
+  {
+    "package": "S09",
+    "case": "T1 one file altered (bids.json, 1 byte)",
+    "result": "failed",
+    "failed_steps": [
+      "6:file_hashes_match",
+      "10:anchor_event_matches",
+      "11:anchor_state_current"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S09",
+    "case": "T2 listed file removed (events.json)",
+    "result": "failed",
+    "failed_steps": [
+      "5:listed_files_present",
+      "10:anchor_event_matches",
+      "11:anchor_state_current",
+      "12:onchain_lifecycle_matches"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S09",
+    "case": "T3 unlisted file added",
+    "result": "failed",
+    "failed_steps": [
+      "7:no_unlisted_files",
+      "10:anchor_event_matches",
+      "11:anchor_state_current"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S09",
+    "case": "T4 file altered and manifest rewritten to match",
+    "result": "failed",
+    "failed_steps": [
+      "10:anchor_event_matches",
+      "11:anchor_state_current"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S09",
+    "case": "T5 anchor tx of another package",
+    "result": "failed",
+    "failed_steps": [
+      "10:anchor_event_matches"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S09",
+    "case": "T6 wrong anchor contract",
+    "result": "failed",
+    "failed_steps": [
+      "9:anchor_tx_valid",
+      "10:anchor_event_matches"
+    ],
+    "skipped": [
+      "11"
+    ]
+  },
+  {
+    "package": "S09",
+    "case": "T7 wrong chain expected (Coston2, 114)",
+    "result": "failed",
+    "failed_steps": [
+      "8:identity_consistent",
+      "9:anchor_tx_valid",
+      "10:anchor_event_matches",
+      "13:passkey_assertions_valid"
+    ],
+    "skipped": [
+      "11"
+    ]
+  },
+  {
+    "package": "S09",
+    "case": "T8 non-existent anchor tx",
+    "result": "failed",
+    "failed_steps": [
+      "9:anchor_tx_valid",
+      "10:anchor_event_matches"
+    ],
+    "skipped": [
+      "11"
+    ]
+  },
+  {
+    "package": "S09",
+    "case": "T9 required file removed from archive and manifest",
+    "result": "failed",
+    "failed_steps": [
+      "4:required_files_listed",
+      "10:anchor_event_matches",
+      "11:anchor_state_current"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S09",
+    "case": "T10 unknown schema version in manifest",
+    "result": "failed",
+    "failed_steps": [
+      "3:manifest_valid"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S09",
+    "case": "T11 bid commitment altered, manifest rewritten",
+    "result": "failed",
+    "failed_steps": [
+      "10:anchor_event_matches",
+      "11:anchor_state_current",
+      "12:onchain_lifecycle_matches",
+      "13:passkey_assertions_valid"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S09",
+    "case": "T12 revealed amount altered, manifest rewritten",
+    "result": "failed",
+    "failed_steps": [
+      "10:anchor_event_matches",
+      "11:anchor_state_current",
+      "12:onchain_lifecycle_matches"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S09",
+    "case": "T13 passkey signature forged, manifest rewritten",
+    "result": "failed",
+    "failed_steps": [
+      "10:anchor_event_matches",
+      "11:anchor_state_current",
+      "13:passkey_assertions_valid"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S09",
+    "case": "T14 reveal removed from bids.json, manifest rewritten",
+    "result": "failed",
+    "failed_steps": [
+      "10:anchor_event_matches",
+      "11:anchor_state_current",
+      "12:onchain_lifecycle_matches"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S09",
+    "case": "T15 tender creation tx removed, manifest rewritten",
+    "result": "failed",
+    "failed_steps": [
+      "10:anchor_event_matches",
+      "11:anchor_state_current",
+      "12:onchain_lifecycle_matches"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S10_v1",
+    "case": "T0 unmodified",
+    "result": "passed",
+    "failed_steps": [],
+    "skipped": []
+  },
+  {
+    "package": "S10_v1",
+    "case": "T1 one file altered (bids.json, 1 byte)",
+    "result": "failed",
+    "failed_steps": [
+      "6:file_hashes_match",
+      "10:anchor_event_matches",
+      "11:anchor_state_current"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S10_v1",
+    "case": "T2 listed file removed (events.json)",
+    "result": "failed",
+    "failed_steps": [
+      "5:listed_files_present",
+      "10:anchor_event_matches",
+      "11:anchor_state_current",
+      "12:onchain_lifecycle_matches"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S10_v1",
+    "case": "T3 unlisted file added",
+    "result": "failed",
+    "failed_steps": [
+      "7:no_unlisted_files",
+      "10:anchor_event_matches",
+      "11:anchor_state_current"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S10_v1",
+    "case": "T4 file altered and manifest rewritten to match",
+    "result": "failed",
+    "failed_steps": [
+      "10:anchor_event_matches",
+      "11:anchor_state_current"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S10_v1",
+    "case": "T5 anchor tx of another package",
+    "result": "failed",
+    "failed_steps": [
+      "10:anchor_event_matches"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S10_v1",
+    "case": "T6 wrong anchor contract",
+    "result": "failed",
+    "failed_steps": [
+      "9:anchor_tx_valid",
+      "10:anchor_event_matches"
+    ],
+    "skipped": [
+      "11"
+    ]
+  },
+  {
+    "package": "S10_v1",
+    "case": "T7 wrong chain expected (Coston2, 114)",
+    "result": "failed",
+    "failed_steps": [
+      "8:identity_consistent",
+      "9:anchor_tx_valid",
+      "10:anchor_event_matches",
+      "13:passkey_assertions_valid"
+    ],
+    "skipped": [
+      "11"
+    ]
+  },
+  {
+    "package": "S10_v1",
+    "case": "T8 non-existent anchor tx",
+    "result": "failed",
+    "failed_steps": [
+      "9:anchor_tx_valid",
+      "10:anchor_event_matches"
+    ],
+    "skipped": [
+      "11"
+    ]
+  },
+  {
+    "package": "S10_v1",
+    "case": "T9 required file removed from archive and manifest",
+    "result": "failed",
+    "failed_steps": [
+      "4:required_files_listed",
+      "10:anchor_event_matches",
+      "11:anchor_state_current"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S10_v1",
+    "case": "T10 unknown schema version in manifest",
+    "result": "failed",
+    "failed_steps": [
+      "3:manifest_valid"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S10_v1",
+    "case": "T11 bid commitment altered, manifest rewritten",
+    "result": "failed",
+    "failed_steps": [
+      "10:anchor_event_matches",
+      "11:anchor_state_current",
+      "12:onchain_lifecycle_matches",
+      "13:passkey_assertions_valid"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S10_v1",
+    "case": "T12 revealed amount altered, manifest rewritten",
+    "result": "failed",
+    "failed_steps": [
+      "10:anchor_event_matches",
+      "11:anchor_state_current",
+      "12:onchain_lifecycle_matches"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S10_v1",
+    "case": "T13 passkey signature forged, manifest rewritten",
+    "result": "failed",
+    "failed_steps": [
+      "10:anchor_event_matches",
+      "11:anchor_state_current",
+      "13:passkey_assertions_valid"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S10_v1",
+    "case": "T14 reveal removed from bids.json, manifest rewritten",
+    "result": "failed",
+    "failed_steps": [
+      "10:anchor_event_matches",
+      "11:anchor_state_current",
+      "12:onchain_lifecycle_matches"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S10_v1",
+    "case": "T15 tender creation tx removed, manifest rewritten",
+    "result": "failed",
+    "failed_steps": [
+      "10:anchor_event_matches",
+      "11:anchor_state_current",
+      "12:onchain_lifecycle_matches"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S10_v2",
+    "case": "T0 unmodified",
+    "result": "passed",
+    "failed_steps": [],
+    "skipped": []
+  },
+  {
+    "package": "S10_v2",
+    "case": "T1 one file altered (bids.json, 1 byte)",
+    "result": "failed",
+    "failed_steps": [
+      "6:file_hashes_match",
+      "10:anchor_event_matches",
+      "11:anchor_state_current"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S10_v2",
+    "case": "T2 listed file removed (events.json)",
+    "result": "failed",
+    "failed_steps": [
+      "5:listed_files_present",
+      "10:anchor_event_matches",
+      "11:anchor_state_current",
+      "12:onchain_lifecycle_matches"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S10_v2",
+    "case": "T3 unlisted file added",
+    "result": "failed",
+    "failed_steps": [
+      "7:no_unlisted_files",
+      "10:anchor_event_matches",
+      "11:anchor_state_current"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S10_v2",
+    "case": "T4 file altered and manifest rewritten to match",
+    "result": "failed",
+    "failed_steps": [
+      "10:anchor_event_matches",
+      "11:anchor_state_current"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S10_v2",
+    "case": "T5 anchor tx of another package",
+    "result": "failed",
+    "failed_steps": [
+      "10:anchor_event_matches"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S10_v2",
+    "case": "T6 wrong anchor contract",
+    "result": "failed",
+    "failed_steps": [
+      "9:anchor_tx_valid",
+      "10:anchor_event_matches"
+    ],
+    "skipped": [
+      "11"
+    ]
+  },
+  {
+    "package": "S10_v2",
+    "case": "T7 wrong chain expected (Coston2, 114)",
+    "result": "failed",
+    "failed_steps": [
+      "8:identity_consistent",
+      "9:anchor_tx_valid",
+      "10:anchor_event_matches",
+      "13:passkey_assertions_valid"
+    ],
+    "skipped": [
+      "11"
+    ]
+  },
+  {
+    "package": "S10_v2",
+    "case": "T8 non-existent anchor tx",
+    "result": "failed",
+    "failed_steps": [
+      "9:anchor_tx_valid",
+      "10:anchor_event_matches"
+    ],
+    "skipped": [
+      "11"
+    ]
+  },
+  {
+    "package": "S10_v2",
+    "case": "T9 required file removed from archive and manifest",
+    "result": "failed",
+    "failed_steps": [
+      "4:required_files_listed",
+      "10:anchor_event_matches",
+      "11:anchor_state_current"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S10_v2",
+    "case": "T10 unknown schema version in manifest",
+    "result": "failed",
+    "failed_steps": [
+      "3:manifest_valid"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S10_v2",
+    "case": "T11 bid commitment altered, manifest rewritten",
+    "result": "failed",
+    "failed_steps": [
+      "10:anchor_event_matches",
+      "11:anchor_state_current",
+      "12:onchain_lifecycle_matches",
+      "13:passkey_assertions_valid"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S10_v2",
+    "case": "T12 revealed amount altered, manifest rewritten",
+    "result": "failed",
+    "failed_steps": [
+      "10:anchor_event_matches",
+      "11:anchor_state_current",
+      "12:onchain_lifecycle_matches"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S10_v2",
+    "case": "T13 passkey signature forged, manifest rewritten",
+    "result": "failed",
+    "failed_steps": [
+      "10:anchor_event_matches",
+      "11:anchor_state_current",
+      "13:passkey_assertions_valid"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S10_v2",
+    "case": "T14 reveal removed from bids.json, manifest rewritten",
+    "result": "failed",
+    "failed_steps": [
+      "10:anchor_event_matches",
+      "11:anchor_state_current",
+      "12:onchain_lifecycle_matches"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S10_v2",
+    "case": "T15 tender creation tx removed, manifest rewritten",
+    "result": "failed",
+    "failed_steps": [
+      "10:anchor_event_matches",
+      "11:anchor_state_current",
+      "12:onchain_lifecycle_matches"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S11",
+    "case": "T0 unmodified",
+    "result": "failed",
+    "failed_steps": [
+      "12:onchain_lifecycle_matches"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S11",
+    "case": "T1 one file altered (bids.json, 1 byte)",
+    "result": "failed",
+    "failed_steps": [
+      "6:file_hashes_match",
+      "10:anchor_event_matches",
+      "11:anchor_state_current",
+      "12:onchain_lifecycle_matches"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S11",
+    "case": "T2 listed file removed (events.json)",
+    "result": "failed",
+    "failed_steps": [
+      "5:listed_files_present",
+      "10:anchor_event_matches",
+      "11:anchor_state_current",
+      "12:onchain_lifecycle_matches"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S11",
+    "case": "T3 unlisted file added",
+    "result": "failed",
+    "failed_steps": [
+      "7:no_unlisted_files",
+      "10:anchor_event_matches",
+      "11:anchor_state_current",
+      "12:onchain_lifecycle_matches"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S11",
+    "case": "T4 file altered and manifest rewritten to match",
+    "result": "failed",
+    "failed_steps": [
+      "10:anchor_event_matches",
+      "11:anchor_state_current",
+      "12:onchain_lifecycle_matches"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S11",
+    "case": "T5 anchor tx of another package",
+    "result": "failed",
+    "failed_steps": [
+      "10:anchor_event_matches",
+      "12:onchain_lifecycle_matches"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S11",
+    "case": "T6 wrong anchor contract",
+    "result": "failed",
+    "failed_steps": [
+      "9:anchor_tx_valid",
+      "10:anchor_event_matches",
+      "12:onchain_lifecycle_matches"
+    ],
+    "skipped": [
+      "11"
+    ]
+  },
+  {
+    "package": "S11",
+    "case": "T7 wrong chain expected (Coston2, 114)",
+    "result": "failed",
+    "failed_steps": [
+      "8:identity_consistent",
+      "9:anchor_tx_valid",
+      "10:anchor_event_matches",
+      "12:onchain_lifecycle_matches",
+      "13:passkey_assertions_valid"
+    ],
+    "skipped": [
+      "11"
+    ]
+  },
+  {
+    "package": "S11",
+    "case": "T8 non-existent anchor tx",
+    "result": "failed",
+    "failed_steps": [
+      "9:anchor_tx_valid",
+      "10:anchor_event_matches",
+      "12:onchain_lifecycle_matches"
+    ],
+    "skipped": [
+      "11"
+    ]
+  },
+  {
+    "package": "S11",
+    "case": "T9 required file removed from archive and manifest",
+    "result": "failed",
+    "failed_steps": [
+      "4:required_files_listed",
+      "10:anchor_event_matches",
+      "11:anchor_state_current",
+      "12:onchain_lifecycle_matches"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S11",
+    "case": "T10 unknown schema version in manifest",
+    "result": "failed",
+    "failed_steps": [
+      "3:manifest_valid"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S11",
+    "case": "T11 bid commitment altered, manifest rewritten",
+    "result": "failed",
+    "failed_steps": [
+      "10:anchor_event_matches",
+      "11:anchor_state_current",
+      "12:onchain_lifecycle_matches",
+      "13:passkey_assertions_valid"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S11",
+    "case": "T12 revealed amount altered, manifest rewritten",
+    "result": "failed",
+    "failed_steps": [
+      "10:anchor_event_matches",
+      "11:anchor_state_current",
+      "12:onchain_lifecycle_matches"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S11",
+    "case": "T13 passkey signature forged, manifest rewritten",
+    "result": "failed",
+    "failed_steps": [
+      "10:anchor_event_matches",
+      "11:anchor_state_current",
+      "12:onchain_lifecycle_matches",
+      "13:passkey_assertions_valid"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S11",
+    "case": "T14 reveal removed from bids.json, manifest rewritten",
+    "result": "failed",
+    "failed_steps": [
+      "10:anchor_event_matches",
+      "11:anchor_state_current",
+      "12:onchain_lifecycle_matches"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S11",
+    "case": "T15 tender creation tx removed, manifest rewritten",
+    "result": "failed",
+    "failed_steps": [
+      "10:anchor_event_matches",
+      "11:anchor_state_current",
+      "12:onchain_lifecycle_matches"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S12",
+    "case": "T0 unmodified",
+    "result": "passed",
+    "failed_steps": [],
+    "skipped": []
+  },
+  {
+    "package": "S12",
+    "case": "T1 one file altered (bids.json, 1 byte)",
+    "result": "failed",
+    "failed_steps": [
+      "6:file_hashes_match",
+      "10:anchor_event_matches",
+      "11:anchor_state_current"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S12",
+    "case": "T2 listed file removed (events.json)",
+    "result": "failed",
+    "failed_steps": [
+      "5:listed_files_present",
+      "10:anchor_event_matches",
+      "11:anchor_state_current",
+      "12:onchain_lifecycle_matches"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S12",
+    "case": "T3 unlisted file added",
+    "result": "failed",
+    "failed_steps": [
+      "7:no_unlisted_files",
+      "10:anchor_event_matches",
+      "11:anchor_state_current"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S12",
+    "case": "T4 file altered and manifest rewritten to match",
+    "result": "failed",
+    "failed_steps": [
+      "10:anchor_event_matches",
+      "11:anchor_state_current"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S12",
+    "case": "T5 anchor tx of another package",
+    "result": "failed",
+    "failed_steps": [
+      "10:anchor_event_matches"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S12",
+    "case": "T6 wrong anchor contract",
+    "result": "failed",
+    "failed_steps": [
+      "9:anchor_tx_valid",
+      "10:anchor_event_matches"
+    ],
+    "skipped": [
+      "11"
+    ]
+  },
+  {
+    "package": "S12",
+    "case": "T7 wrong chain expected (Coston2, 114)",
+    "result": "failed",
+    "failed_steps": [
+      "8:identity_consistent",
+      "9:anchor_tx_valid",
+      "10:anchor_event_matches",
+      "13:passkey_assertions_valid"
+    ],
+    "skipped": [
+      "11"
+    ]
+  },
+  {
+    "package": "S12",
+    "case": "T8 non-existent anchor tx",
+    "result": "failed",
+    "failed_steps": [
+      "9:anchor_tx_valid",
+      "10:anchor_event_matches"
+    ],
+    "skipped": [
+      "11"
+    ]
+  },
+  {
+    "package": "S12",
+    "case": "T9 required file removed from archive and manifest",
+    "result": "failed",
+    "failed_steps": [
+      "4:required_files_listed",
+      "10:anchor_event_matches",
+      "11:anchor_state_current"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S12",
+    "case": "T10 unknown schema version in manifest",
+    "result": "failed",
+    "failed_steps": [
+      "3:manifest_valid"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S12",
+    "case": "T11 bid commitment altered, manifest rewritten",
+    "result": "failed",
+    "failed_steps": [
+      "10:anchor_event_matches",
+      "11:anchor_state_current",
+      "12:onchain_lifecycle_matches",
+      "13:passkey_assertions_valid"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S12",
+    "case": "T12 revealed amount altered, manifest rewritten",
+    "result": "failed",
+    "failed_steps": [
+      "10:anchor_event_matches",
+      "11:anchor_state_current",
+      "12:onchain_lifecycle_matches"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S12",
+    "case": "T13 passkey signature forged, manifest rewritten",
+    "result": "failed",
+    "failed_steps": [
+      "10:anchor_event_matches",
+      "11:anchor_state_current",
+      "13:passkey_assertions_valid"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S12",
+    "case": "T14 reveal removed from bids.json, manifest rewritten",
+    "result": "failed",
+    "failed_steps": [
+      "10:anchor_event_matches",
+      "11:anchor_state_current",
+      "12:onchain_lifecycle_matches"
+    ],
+    "skipped": []
+  },
+  {
+    "package": "S12",
+    "case": "T15 tender creation tx removed, manifest rewritten",
+    "result": "failed",
+    "failed_steps": [
+      "10:anchor_event_matches",
+      "11:anchor_state_current",
+      "12:onchain_lifecycle_matches"
+    ],
+    "skipped": []
+  }
+]

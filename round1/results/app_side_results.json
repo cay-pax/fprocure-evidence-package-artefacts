@@ -1,0 +1,64 @@
+{
+  "app_verifier_on_tampered_S03": {
+    "T1 one file altered": [
+      "zip_hash_matches",
+      "file_hashes_valid"
+    ],
+    "T2 listed file removed": [
+      "zip_hash_matches",
+      "file_hashes_valid"
+    ],
+    "T3 unlisted file added": [
+      "zip_hash_matches"
+    ],
+    "T4 altered + manifest rewritten": [
+      "zip_hash_matches",
+      "manifest_hash_matches"
+    ],
+    "T0 restored original": [
+      "(none failed)"
+    ]
+  },
+  "determinism_S03": {
+    "v1_package_hash": "0x51e3892d8c9ade695222e962c3b3817cdaa74b56de0e666f144792011623563c",
+    "v2_package_hash": "0x74dde369b8615b1efff06bd48fa396b9b43dd7c01bcf36b924696f472df8289e",
+    "files_changed": [
+      "audit_export.json",
+      "manifest.json"
+    ],
+    "files_unchanged": [
+      "anomalies.json",
+      "bids.json",
+      "erp_sync.json",
+      "escrow.json",
+      "events.json",
+      "governance_notes.json",
+      "onchain_references.json",
+      "passkeys.json",
+      "tender.json",
+      "verifier_instructions.json"
+    ]
+  },
+  "omission_S05": {
+    "events_in_db_before": 11,
+    "deleted_event_type": "BID_REVEAL",
+    "v2_standalone": [
+      "1:passed",
+      "2:passed",
+      "3:passed",
+      "4:passed",
+      "5:passed",
+      "6:passed",
+      "7:passed",
+      "8:passed",
+      "9:passed",
+      "10:passed"
+    ],
+    "v2_app_failed": [
+      "(none failed)"
+    ],
+    "v1_step10_now": "contract maps v1 to this digest; latest version v2 (superseded)",
+    "events_json_count_v1": 11,
+    "events_json_count_v2": 10
+  }
+}

@@ -1,0 +1,653 @@
+[
+  {
+    "scenario": "S01",
+    "title": "Single bidder, recorded escrow released",
+    "currency": "USD",
+    "settlement": "recorded",
+    "bidders": 1,
+    "tender_uuid": "501b4dfd-d7df-4c80-9b5f-524bee13de38",
+    "tender_ref": "EVAL-S01-e981f9",
+    "contract_tender_id": "1",
+    "reveals": [
+      "ALDER: ok -> HTTP 200"
+    ],
+    "award": {
+      "db_status": "Awarded",
+      "db_winner": "ALDER",
+      "db_winning_bid_minor": 4850000,
+      "chain_status": 5,
+      "chain_winner_matches_db": true,
+      "chain_winning_bid": "4850000",
+      "expected_winner": "ALDER",
+      "expected_bid": "4850000",
+      "matches_expected": true
+    },
+    "escrow_status": "released",
+    "evidence": {
+      "scenario": "S01",
+      "tender_uuid": "501b4dfd-d7df-4c80-9b5f-524bee13de38",
+      "package_id": "7ec7dc7b-22af-42b2-96bd-362361804d94",
+      "package_version": 1,
+      "package_hash": "0x1766c38b4d34e95c8351806835a032a8ec978aa7fb91f682832c3698fc72d3aa",
+      "manifest_hash": "0x8d3d537a45ac1e1e2797b788321526d8b3e02169bb68bcef2ad1c59f6c5cec49",
+      "anchor_tx_hash": "0xe41ef9a1b8a3f237f25fc87fdab3957235ac1144740eb34aea57cd8837fef13b",
+      "anchor_block_number": 21,
+      "anchor_contract_address": "0x2279B7A0a67DB372996a5FaB50D91eAA73d2eBe6",
+      "chain_id": 31337,
+      "rpc_url": "http://127.0.0.1:8545",
+      "app_verification_status": "passed",
+      "app_checks": [
+        "package_hash_recorded:passed",
+        "zip_downloadable:passed",
+        "zip_hash_matches:passed",
+        "manifest_present:passed",
+        "manifest_hash_matches:passed",
+        "file_hashes_valid:passed",
+        "tender_id_matches:passed",
+        "no_secrets_in_package:passed",
+        "anchor_chain_matches:passed",
+        "anchor_contract_matches:passed",
+        "anchor_tx_confirmed:passed",
+        "anchor_event_hash_matches:passed"
+      ],
+      "timings_ms": {
+        "generate": 538,
+        "anchor": 273,
+        "app_verify": 351
+      },
+      "anchor_response": "anchored"
+    },
+    "result": "completed"
+  },
+  {
+    "scenario": "S02",
+    "title": "Two bidders, recorded escrow released",
+    "currency": "EUR",
+    "settlement": "recorded",
+    "bidders": 2,
+    "tender_uuid": "46702199-faad-42f6-977e-64faf4e12e27",
+    "tender_ref": "EVAL-S02-e981f9",
+    "contract_tender_id": "2",
+    "reveals": [
+      "ALDER: ok -> HTTP 200",
+      "BIRCH: ok -> HTTP 200"
+    ],
+    "award": {
+      "db_status": "Awarded",
+      "db_winner": "ALDER",
+      "db_winning_bid_minor": 165000000,
+      "chain_status": 5,
+      "chain_winner_matches_db": true,
+      "chain_winning_bid": "165000000",
+      "expected_winner": "ALDER",
+      "expected_bid": "165000000",
+      "matches_expected": true
+    },
+    "escrow_status": "released",
+    "evidence": {
+      "scenario": "S02",
+      "tender_uuid": "46702199-faad-42f6-977e-64faf4e12e27",
+      "package_id": "b55cacff-2247-4f1f-b76d-8de0b5a282bf",
+      "package_version": 1,
+      "package_hash": "0x74326f16b139c026bd7e458a77e2549cb49875067d42229b37448a13a4bd45d9",
+      "manifest_hash": "0x4154d484040019411b3cb680e9233e4572fc1c0481c8af7a09b21416214eada8",
+      "anchor_tx_hash": "0x5e3b2da3972eebb286e1db67515109da7668e8facb01df011cdc80c2f99b7444",
+      "anchor_block_number": 35,
+      "anchor_contract_address": "0x2279B7A0a67DB372996a5FaB50D91eAA73d2eBe6",
+      "chain_id": 31337,
+      "rpc_url": "http://127.0.0.1:8545",
+      "app_verification_status": "passed",
+      "app_checks": [
+        "package_hash_recorded:passed",
+        "zip_downloadable:passed",
+        "zip_hash_matches:passed",
+        "manifest_present:passed",
+        "manifest_hash_matches:passed",
+        "file_hashes_valid:passed",
+        "tender_id_matches:passed",
+        "no_secrets_in_package:passed",
+        "anchor_chain_matches:passed",
+        "anchor_contract_matches:passed",
+        "anchor_tx_confirmed:passed",
+        "anchor_event_hash_matches:passed"
+      ],
+      "timings_ms": {
+        "generate": 81,
+        "anchor": 131,
+        "app_verify": 163
+      },
+      "anchor_response": "anchored"
+    },
+    "result": "completed"
+  },
+  {
+    "scenario": "S03",
+    "title": "Three bidders, no escrow step",
+    "currency": "GBP",
+    "settlement": "recorded",
+    "bidders": 3,
+    "tender_uuid": "9f58489f-65b7-4ec4-9a3a-da789141dc8f",
+    "tender_ref": "EVAL-S03-e981f9",
+    "contract_tender_id": "3",
+    "reveals": [
+      "ALDER: ok -> HTTP 200",
+      "BIRCH: ok -> HTTP 200",
+      "CEDAR: ok -> HTTP 200"
+    ],
+    "award": {
+      "db_status": "Awarded",
+      "db_winner": "BIRCH",
+      "db_winning_bid_minor": 9800000,
+      "chain_status": 5,
+      "chain_winner_matches_db": true,
+      "chain_winning_bid": "9800000",
+      "expected_winner": "BIRCH",
+      "expected_bid": "9800000",
+      "matches_expected": true
+    },
+    "evidence": {
+      "scenario": "S03",
+      "tender_uuid": "9f58489f-65b7-4ec4-9a3a-da789141dc8f",
+      "package_id": "9d056854-1833-48be-8c2c-4dba74096e31",
+      "package_version": 1,
+      "package_hash": "0x51e3892d8c9ade695222e962c3b3817cdaa74b56de0e666f144792011623563c",
+      "manifest_hash": "0x5c546550327d0828b70b746a3dcf60c9b2910ecb571bb13a84c0e1055005538c",
+      "anchor_tx_hash": "0x129e1a2f15bb0f751d2abc0df9042a2b147f3d06ee107de882d8b7c1c157564b",
+      "anchor_block_number": 49,
+      "anchor_contract_address": "0x2279B7A0a67DB372996a5FaB50D91eAA73d2eBe6",
+      "chain_id": 31337,
+      "rpc_url": "http://127.0.0.1:8545",
+      "app_verification_status": "passed",
+      "app_checks": [
+        "package_hash_recorded:passed",
+        "zip_downloadable:passed",
+        "zip_hash_matches:passed",
+        "manifest_present:passed",
+        "manifest_hash_matches:passed",
+        "file_hashes_valid:passed",
+        "tender_id_matches:passed",
+        "no_secrets_in_package:passed",
+        "anchor_chain_matches:passed",
+        "anchor_contract_matches:passed",
+        "anchor_tx_confirmed:passed",
+        "anchor_event_hash_matches:passed"
+      ],
+      "timings_ms": {
+        "generate": 70,
+        "anchor": 125,
+        "app_verify": 161
+      },
+      "anchor_response": "anchored"
+    },
+    "result": "completed"
+  },
+  {
+    "scenario": "S04",
+    "title": "Five bidders, recorded escrow released",
+    "currency": "KYD",
+    "settlement": "recorded",
+    "bidders": 5,
+    "tender_uuid": "7959541c-b385-48cf-ae22-7733f7a760cf",
+    "tender_ref": "EVAL-S04-e981f9",
+    "contract_tender_id": "4",
+    "reveals": [
+      "ALDER: ok -> HTTP 200",
+      "BIRCH: ok -> HTTP 200",
+      "CEDAR: ok -> HTTP 200",
+      "DOGWOOD: ok -> HTTP 200",
+      "ELM: ok -> HTTP 200"
+    ],
+    "award": {
+      "db_status": "Awarded",
+      "db_winner": "DOGWOOD",
+      "db_winning_bid_minor": 28790000,
+      "chain_status": 5,
+      "chain_winner_matches_db": true,
+      "chain_winning_bid": "28790000",
+      "expected_winner": "DOGWOOD",
+      "expected_bid": "28790000",
+      "matches_expected": true
+    },
+    "escrow_status": "released",
+    "evidence": {
+      "scenario": "S04",
+      "tender_uuid": "7959541c-b385-48cf-ae22-7733f7a760cf",
+      "package_id": "353be0ca-7c58-443a-93f7-1405f9377f2f",
+      "package_version": 1,
+      "package_hash": "0xfabd9baac1b3ccfde611d7246a21b3523dfef15296a6c03ff0a6fa3aa80ff4aa",
+      "manifest_hash": "0xf9d87a653a76a3697a41db628e2db93cbc91d8a50d23d6fe32b6745f5e7e2d3f",
+      "anchor_tx_hash": "0xdac3efdf4d70b693a5a16333c672456c3c14587386b807f3265a944df5bdcd21",
+      "anchor_block_number": 69,
+      "anchor_contract_address": "0x2279B7A0a67DB372996a5FaB50D91eAA73d2eBe6",
+      "chain_id": 31337,
+      "rpc_url": "http://127.0.0.1:8545",
+      "app_verification_status": "passed",
+      "app_checks": [
+        "package_hash_recorded:passed",
+        "zip_downloadable:passed",
+        "zip_hash_matches:passed",
+        "manifest_present:passed",
+        "manifest_hash_matches:passed",
+        "file_hashes_valid:passed",
+        "tender_id_matches:passed",
+        "no_secrets_in_package:passed",
+        "anchor_chain_matches:passed",
+        "anchor_contract_matches:passed",
+        "anchor_tx_confirmed:passed",
+        "anchor_event_hash_matches:passed"
+      ],
+      "timings_ms": {
+        "generate": 71,
+        "anchor": 130,
+        "app_verify": 153
+      },
+      "anchor_response": "anchored"
+    },
+    "result": "completed"
+  },
+  {
+    "scenario": "S05",
+    "title": "Tie on lowest bid (lower vendor ID wins)",
+    "currency": "USD",
+    "settlement": "recorded",
+    "bidders": 3,
+    "tender_uuid": "0e08a052-1b7d-4d6b-99a9-0b6a078e8788",
+    "tender_ref": "EVAL-S05-e981f9",
+    "contract_tender_id": "5",
+    "reveals": [
+      "ALDER: ok -> HTTP 200",
+      "BIRCH: ok -> HTTP 200",
+      "CEDAR: ok -> HTTP 200"
+    ],
+    "award": {
+      "db_status": "Awarded",
+      "db_winner": "BIRCH",
+      "db_winning_bid_minor": 7500000,
+      "chain_status": 5,
+      "chain_winner_matches_db": true,
+      "chain_winning_bid": "7500000",
+      "expected_winner": "BIRCH",
+      "expected_bid": "7500000",
+      "matches_expected": true
+    },
+    "evidence": {
+      "scenario": "S05",
+      "tender_uuid": "0e08a052-1b7d-4d6b-99a9-0b6a078e8788",
+      "package_id": "a7fdf186-cbb4-4f85-97f9-36104ce29c34",
+      "package_version": 1,
+      "package_hash": "0x3a9ed10b8a057587f136639a6db82ea679ea938292e643c00d5095566354c7e2",
+      "manifest_hash": "0x998e2fc1b836cb0b407e57b8318325f4c757d707b0229a1733486319af659cd9",
+      "anchor_tx_hash": "0x89ec8dd9fe044a89b687d06f588ac71c277ec7584e2e8c08567f875192b1f253",
+      "anchor_block_number": 83,
+      "anchor_contract_address": "0x2279B7A0a67DB372996a5FaB50D91eAA73d2eBe6",
+      "chain_id": 31337,
+      "rpc_url": "http://127.0.0.1:8545",
+      "app_verification_status": "passed",
+      "app_checks": [
+        "package_hash_recorded:passed",
+        "zip_downloadable:passed",
+        "zip_hash_matches:passed",
+        "manifest_present:passed",
+        "manifest_hash_matches:passed",
+        "file_hashes_valid:passed",
+        "tender_id_matches:passed",
+        "no_secrets_in_package:passed",
+        "anchor_chain_matches:passed",
+        "anchor_contract_matches:passed",
+        "anchor_tx_confirmed:passed",
+        "anchor_event_hash_matches:passed"
+      ],
+      "timings_ms": {
+        "generate": 80,
+        "anchor": 134,
+        "app_verify": 158
+      },
+      "anchor_response": "anchored"
+    },
+    "result": "completed"
+  },
+  {
+    "scenario": "S06",
+    "title": "Lowest bidder never reveals (excluded)",
+    "currency": "USD",
+    "settlement": "recorded",
+    "bidders": 3,
+    "tender_uuid": "a98adbf0-6541-49ba-956b-f8d40ce0a6da",
+    "tender_ref": "EVAL-S06-e981f9",
+    "contract_tender_id": "6",
+    "reveals": [
+      "ALDER: not revealed",
+      "BIRCH: ok -> HTTP 200",
+      "CEDAR: ok -> HTTP 200"
+    ],
+    "award": {
+      "db_status": "Awarded",
+      "db_winner": "BIRCH",
+      "db_winning_bid_minor": 6100000,
+      "chain_status": 5,
+      "chain_winner_matches_db": true,
+      "chain_winning_bid": "6100000",
+      "expected_winner": "BIRCH",
+      "expected_bid": "6100000",
+      "matches_expected": true
+    },
+    "evidence": {
+      "scenario": "S06",
+      "tender_uuid": "a98adbf0-6541-49ba-956b-f8d40ce0a6da",
+      "package_id": "31c84f79-3500-4cce-b76a-7b3b15a6e9b9",
+      "package_version": 1,
+      "package_hash": "0x542b7abc3891520f68da27f0c9c49cd3d05efc9516c6c3b28c4500c8e71f2a4c",
+      "manifest_hash": "0x636b61981ad5b1f18fa8d3c7f8e6d1f32cd6cb4d016b17ead72e0c7ba6ec4010",
+      "anchor_tx_hash": "0x70dca5938eacfdaf16819ccb10e70bfa43fa05b71ecda4fe101c9bc22a61783c",
+      "anchor_block_number": 96,
+      "anchor_contract_address": "0x2279B7A0a67DB372996a5FaB50D91eAA73d2eBe6",
+      "chain_id": 31337,
+      "rpc_url": "http://127.0.0.1:8545",
+      "app_verification_status": "passed",
+      "app_checks": [
+        "package_hash_recorded:passed",
+        "zip_downloadable:passed",
+        "zip_hash_matches:passed",
+        "manifest_present:passed",
+        "manifest_hash_matches:passed",
+        "file_hashes_valid:passed",
+        "tender_id_matches:passed",
+        "no_secrets_in_package:passed",
+        "anchor_chain_matches:passed",
+        "anchor_contract_matches:passed",
+        "anchor_tx_confirmed:passed",
+        "anchor_event_hash_matches:passed"
+      ],
+      "timings_ms": {
+        "generate": 77,
+        "anchor": 134,
+        "app_verify": 169
+      },
+      "anchor_response": "anchored"
+    },
+    "result": "completed"
+  },
+  {
+    "scenario": "S07",
+    "title": "Reveal with wrong amount rejected",
+    "currency": "EUR",
+    "settlement": "recorded",
+    "bidders": 2,
+    "tender_uuid": "914c76f7-326c-421e-bb8f-be2c67e89e94",
+    "tender_ref": "EVAL-S07-e981f9",
+    "contract_tender_id": "7",
+    "reveals": [
+      "ALDER: wrong -> HTTP 502 Blockchain transaction failed",
+      "BIRCH: ok -> HTTP 200"
+    ],
+    "award": {
+      "db_status": "Awarded",
+      "db_winner": "BIRCH",
+      "db_winning_bid_minor": 4200000,
+      "chain_status": 5,
+      "chain_winner_matches_db": true,
+      "chain_winning_bid": "4200000",
+      "expected_winner": "BIRCH",
+      "expected_bid": "4200000",
+      "matches_expected": true
+    },
+    "evidence": {
+      "scenario": "S07",
+      "tender_uuid": "914c76f7-326c-421e-bb8f-be2c67e89e94",
+      "package_id": "63d1590f-db29-40c4-a54c-f0a5fb927164",
+      "package_version": 1,
+      "package_hash": "0xd12efc98d9a6f03ebdda00339d3be9dd2a1c010a2faaa4dc5c8b86fe8180c21f",
+      "manifest_hash": "0xb8c00b8d9c2281b9345d8d62e0ab354298a666207d7ef5ee81603f7734d28e3c",
+      "anchor_tx_hash": "0x39b1e8ae6cef1c33e149571c82e63ff74c96ae9618a86b5115f2ab51f94b5b49",
+      "anchor_block_number": 107,
+      "anchor_contract_address": "0x2279B7A0a67DB372996a5FaB50D91eAA73d2eBe6",
+      "chain_id": 31337,
+      "rpc_url": "http://127.0.0.1:8545",
+      "app_verification_status": "passed",
+      "app_checks": [
+        "package_hash_recorded:passed",
+        "zip_downloadable:passed",
+        "zip_hash_matches:passed",
+        "manifest_present:passed",
+        "manifest_hash_matches:passed",
+        "file_hashes_valid:passed",
+        "tender_id_matches:passed",
+        "no_secrets_in_package:passed",
+        "anchor_chain_matches:passed",
+        "anchor_contract_matches:passed",
+        "anchor_tx_confirmed:passed",
+        "anchor_event_hash_matches:passed"
+      ],
+      "timings_ms": {
+        "generate": 71,
+        "anchor": 126,
+        "app_verify": 160
+      },
+      "anchor_response": "anchored"
+    },
+    "result": "completed"
+  },
+  {
+    "scenario": "S08",
+    "title": "FLR escrow funded by buyer and released",
+    "currency": "USD",
+    "settlement": "flr",
+    "bidders": 2,
+    "tender_uuid": "52b2b90d-3594-42bf-aa1c-2c02c12bd500",
+    "tender_ref": "EVAL-S08-e981f9",
+    "contract_tender_id": "8",
+    "reveals": [
+      "ALDER: ok -> HTTP 200",
+      "BIRCH: ok -> HTTP 200"
+    ],
+    "award": {
+      "db_status": "Awarded",
+      "db_winner": "ALDER",
+      "db_winning_bid_minor": 125000,
+      "chain_status": 5,
+      "chain_winner_matches_db": true,
+      "chain_winning_bid": "125000",
+      "expected_winner": "ALDER",
+      "expected_bid": "125000",
+      "matches_expected": true
+    },
+    "flr_amount_wei": "62500000000000000000000",
+    "escrow_status": "released",
+    "evidence": {
+      "scenario": "S08",
+      "tender_uuid": "52b2b90d-3594-42bf-aa1c-2c02c12bd500",
+      "package_id": "71bfb75b-e931-45e3-8ddd-9a1abae8d66e",
+      "package_version": 1,
+      "package_hash": "0x00c1f6e2bc184305c8ac144cddec95f8fd57f7a54cf4a1abcf7dabc3fefedc50",
+      "manifest_hash": "0x12fe9940e2635a702371a030bb7d12c197179653ee621b1e21698d888e5b5f6f",
+      "anchor_tx_hash": "0xbfad7d615a3ea2e8b4555b62425668558697c70dff2355af77e6f3584f2d9501",
+      "anchor_block_number": 121,
+      "anchor_contract_address": "0x2279B7A0a67DB372996a5FaB50D91eAA73d2eBe6",
+      "chain_id": 31337,
+      "rpc_url": "http://127.0.0.1:8545",
+      "app_verification_status": "passed",
+      "app_checks": [
+        "package_hash_recorded:passed",
+        "zip_downloadable:passed",
+        "zip_hash_matches:passed",
+        "manifest_present:passed",
+        "manifest_hash_matches:passed",
+        "file_hashes_valid:passed",
+        "tender_id_matches:passed",
+        "no_secrets_in_package:passed",
+        "anchor_chain_matches:passed",
+        "anchor_contract_matches:passed",
+        "anchor_tx_confirmed:passed",
+        "anchor_event_hash_matches:passed"
+      ],
+      "timings_ms": {
+        "generate": 82,
+        "anchor": 125,
+        "app_verify": 158
+      },
+      "anchor_response": "anchored"
+    },
+    "result": "completed"
+  },
+  {
+    "scenario": "S09",
+    "title": "Recorded escrow refunded with winner's passkey approval",
+    "currency": "USD",
+    "settlement": "recorded",
+    "bidders": 2,
+    "tender_uuid": "166c407d-709b-40b1-97e7-9435982223c7",
+    "tender_ref": "EVAL-S09-e981f9",
+    "contract_tender_id": "9",
+    "reveals": [
+      "ALDER: ok -> HTTP 200",
+      "BIRCH: ok -> HTTP 200"
+    ],
+    "award": {
+      "db_status": "Awarded",
+      "db_winner": "BIRCH",
+      "db_winning_bid_minor": 1975000,
+      "chain_status": 5,
+      "chain_winner_matches_db": true,
+      "chain_winning_bid": "1975000",
+      "expected_winner": "BIRCH",
+      "expected_bid": "1975000",
+      "matches_expected": true
+    },
+    "escrow_status": "refunded",
+    "evidence": {
+      "scenario": "S09",
+      "tender_uuid": "166c407d-709b-40b1-97e7-9435982223c7",
+      "package_id": "5cb41a84-b043-404d-8ef3-cc3355f8989b",
+      "package_version": 1,
+      "package_hash": "0x6af9e9a3a1760375892ea616f80c84518874bd507832f67a88d16dba50ae4c8f",
+      "manifest_hash": "0x66d8bb2719bf52212f4411c73ab33a564ffc512ef589fe8cccd185674fc7fcea",
+      "anchor_tx_hash": "0x93f2a3837a94c0950a656a0103df6666ec82694739a357eda1da38135f4760b0",
+      "anchor_block_number": 135,
+      "anchor_contract_address": "0x2279B7A0a67DB372996a5FaB50D91eAA73d2eBe6",
+      "chain_id": 31337,
+      "rpc_url": "http://127.0.0.1:8545",
+      "app_verification_status": "passed",
+      "app_checks": [
+        "package_hash_recorded:passed",
+        "zip_downloadable:passed",
+        "zip_hash_matches:passed",
+        "manifest_present:passed",
+        "manifest_hash_matches:passed",
+        "file_hashes_valid:passed",
+        "tender_id_matches:passed",
+        "no_secrets_in_package:passed",
+        "anchor_chain_matches:passed",
+        "anchor_contract_matches:passed",
+        "anchor_tx_confirmed:passed",
+        "anchor_event_hash_matches:passed"
+      ],
+      "timings_ms": {
+        "generate": 72,
+        "anchor": 127,
+        "app_verify": 161
+      },
+      "anchor_response": "anchored"
+    },
+    "result": "completed"
+  },
+  {
+    "scenario": "S10",
+    "title": "Evidence regenerated after escrow (v1 then v2 anchored)",
+    "currency": "GBP",
+    "settlement": "recorded",
+    "bidders": 2,
+    "tender_uuid": "71913ca6-917e-4648-a3f5-e12164adbe42",
+    "tender_ref": "EVAL-S10-e981f9",
+    "contract_tender_id": "10",
+    "reveals": [
+      "CEDAR: ok -> HTTP 200",
+      "DOGWOOD: ok -> HTTP 200"
+    ],
+    "award": {
+      "db_status": "Awarded",
+      "db_winner": "DOGWOOD",
+      "db_winning_bid_minor": 945000,
+      "chain_status": 5,
+      "chain_winner_matches_db": true,
+      "chain_winning_bid": "945000",
+      "expected_winner": "DOGWOOD",
+      "expected_bid": "945000",
+      "matches_expected": true
+    },
+    "evidence_v1": {
+      "scenario": "S10",
+      "tender_uuid": "71913ca6-917e-4648-a3f5-e12164adbe42",
+      "package_id": "31115a0e-45e2-45be-952e-89308b8f91a2",
+      "package_version": 1,
+      "package_hash": "0x8eaadd678eb4f705e96b055c81c21327fc6277507540447f9b775c77d5e89a3e",
+      "manifest_hash": "0xda43cc7072f50bcb785d7b602c57afca8ddf6bf15290b0e2130ac52f68529ee2",
+      "anchor_tx_hash": "0xf84f4e046a674ebcff43c1b04d5e607f6f6f622f9f81cb788a867a5b58eee5ab",
+      "anchor_block_number": 147,
+      "anchor_contract_address": "0x2279B7A0a67DB372996a5FaB50D91eAA73d2eBe6",
+      "chain_id": 31337,
+      "rpc_url": "http://127.0.0.1:8545",
+      "app_verification_status": "passed",
+      "app_checks": [
+        "package_hash_recorded:passed",
+        "zip_downloadable:passed",
+        "zip_hash_matches:passed",
+        "manifest_present:passed",
+        "manifest_hash_matches:passed",
+        "file_hashes_valid:passed",
+        "tender_id_matches:passed",
+        "no_secrets_in_package:passed",
+        "anchor_chain_matches:passed",
+        "anchor_contract_matches:passed",
+        "anchor_tx_confirmed:passed",
+        "anchor_event_hash_matches:passed"
+      ],
+      "timings_ms": {
+        "generate": 102,
+        "anchor": 129,
+        "app_verify": 168
+      },
+      "anchor_response": "anchored"
+    },
+    "escrow_status": "released",
+    "evidence_v2": {
+      "scenario": "S10",
+      "tender_uuid": "71913ca6-917e-4648-a3f5-e12164adbe42",
+      "package_id": "8e8f660a-458c-4be1-87f5-0dc4c5f8d68c",
+      "package_version": 2,
+      "package_hash": "0x6f98f40918b73ef9827c834c767dbc2e4049e46cb54b284346c265d16a6502f6",
+      "manifest_hash": "0xe9470a98caa005365cd1dd20f298aa4899cd7b099ce75b9873faae352909d206",
+      "anchor_tx_hash": "0xe5be7d0786da813293f0fb23ff7872735294781d65288af447f15bef3875d338",
+      "anchor_block_number": 150,
+      "anchor_contract_address": "0x2279B7A0a67DB372996a5FaB50D91eAA73d2eBe6",
+      "chain_id": 31337,
+      "rpc_url": "http://127.0.0.1:8545",
+      "app_verification_status": "passed",
+      "app_checks": [
+        "package_hash_recorded:passed",
+        "zip_downloadable:passed",
+        "zip_hash_matches:passed",
+        "manifest_present:passed",
+        "manifest_hash_matches:passed",
+        "file_hashes_valid:passed",
+        "tender_id_matches:passed",
+        "no_secrets_in_package:passed",
+        "anchor_chain_matches:passed",
+        "anchor_contract_matches:passed",
+        "anchor_tx_confirmed:passed",
+        "anchor_event_hash_matches:passed"
+      ],
+      "timings_ms": {
+        "generate": 67,
+        "anchor": 123,
+        "app_verify": 161
+      },
+      "anchor_response": "anchored"
+    },
+    "anchor_rule_checks": {
+      "re-anchor v1 hash as v3": "reverted: execution reverted: \"EvidenceAnchor: hash already anchored\" (action=\"call\", data=\"0x08c379",
+      "anchor new hash as v1 (older)": "reverted: execution reverted: \"EvidenceAnchor: bad version\" (action=\"call\", data=\"0x08c379a000000000",
+      "anchor v2 hash again as v2": "reverted: execution reverted: \"EvidenceAnchor: bad version\" (action=\"call\", data=\"0x08c379a000000000"
+    },
+    "result": "completed"
+  }
+]

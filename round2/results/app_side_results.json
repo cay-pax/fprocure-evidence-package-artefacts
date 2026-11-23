@@ -1,0 +1,47 @@
+{
+  "run": "c6febf",
+  "app_verifier_on_tampered_S03": {
+    "T1 one file altered": [
+      "zip_hash_matches",
+      "file_hashes_valid"
+    ],
+    "T2 listed file removed": [
+      "zip_hash_matches",
+      "file_hashes_valid"
+    ],
+    "T3 unlisted file added": [
+      "zip_hash_matches",
+      "no_unlisted_files"
+    ],
+    "T4 altered + manifest rewritten": [
+      "zip_hash_matches",
+      "manifest_hash_matches"
+    ],
+    "T9 required file removed from archive and manifest": [
+      "zip_hash_matches",
+      "manifest_hash_matches",
+      "required_files_listed"
+    ],
+    "T0 restored original": [
+      "(none failed)"
+    ]
+  },
+  "regeneration_S02": {
+    "unchanged": {
+      "same_package": true,
+      "same_digest": true,
+      "unchanged_flag": true
+    },
+    "after_governance_note": {
+      "v1": "0x2ddc1959971ed5d0af1ccd25cf99ceb82ae2b6bf809a5fecc9faad4be7c961c9",
+      "v2": "0x0a20d8f93244a6999a5c1da83c038aff1539abfc45f8ec0d459db694aade97db",
+      "v2_version": 2,
+      "files_changed": [
+        "audit_export.json",
+        "governance_notes.json",
+        "manifest.json"
+      ],
+      "v2_standalone": "passed"
+    }
+  }
+}
