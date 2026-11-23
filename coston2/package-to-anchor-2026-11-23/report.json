@@ -1,0 +1,28 @@
+{
+  "status": "PASSED_C2",
+  "network": "Coston2",
+  "chain_id": 114,
+  "burner_address": "0xaE229CE18e0fa28a5378675fE216F4Df7b4cfB69",
+  "tender_uuid": "3dd43fb6-6f2f-4077-96a5-77e7152c7c26",
+  "tender_reference": "0xf02f872f14bb22ac3d172857e89e05eea63e8958f287d7b2c9419be1bc8cf441",
+  "source": "uploaded F-Procure Debug archive, EvidenceAnchor.sol v2",
+  "scope": "real public-testnet anchoring with synthetic schema 1.1.0 package; no F-Procure app or Supabase",
+  "package_sha256": "0x6dc5bacdaae60f57b593e9671925bc366894be19ac83b184ebe542efc89d0cbb",
+  "altered_package_sha256": "0x7eceaf451842c1c653eee50d12a0e0daf947869d6e4679a4b75f04fea60d70e6",
+  "source_sha256": "0xfe4c0d9c29d0acde07454f55d1f1c55604e72c64cf9209e16833454014f22470",
+  "compiler": "0.8.39+commit.ce47f2c8.Emscripten.clang",
+  "faucet_http_status": 200,
+  "balance_c2flr": "100.0",
+  "contract_deployment_tx": "0xb7cad7d8e22cd94d1b126aa1034e8e2be6823b0f24b686367ea9a2d89b111524",
+  "contract_address": "0x19E5612b9588CE884893373398a4b2C5Aa05a5f1",
+  "anchor_tx_hash": "0x1e87973c134c00d4e6aa48fea5ce7d10f5f0d0bd1879caa15e8e50cf5d0fe132",
+  "anchor_block": 38199816,
+  "verified_digest": "0x6dc5bacdaae60f57b593e9671925bc366894be19ac83b184ebe542efc89d0cbb",
+  "tests": {
+    "public_testnet_deployment": true,
+    "successful_anchor_transaction": true,
+    "stored_digest_matches_package": true,
+    "event_matches_package": true,
+    "rewritten_package_detected_against_anchor": true
+  }
+}

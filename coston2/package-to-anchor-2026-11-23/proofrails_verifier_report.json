@@ -1,0 +1,42 @@
+{
+  "status": "PASSED",
+  "scope": "Independent external read-only verifier (separate Render service) for a synthetic TEP and public Flare Coston2 RPC",
+  "contract": "0x19E5612b9588CE884893373398a4b2C5Aa05a5f1",
+  "anchor_transaction": "0x1e87973c134c00d4e6aa48fea5ce7d10f5f0d0bd1879caa15e8e50cf5d0fe132",
+  "chain_id": 114,
+  "package_source": "https://proofrails-coston2-live-evidence.onrender.com/tep.zip",
+  "limitations": [
+    "Synthetic evidence; no original F-Procure application export",
+    "Read-only standalone JS verifier, not original F-Procure Python verifier",
+    "FProcure.sol lifecycle checks not run"
+  ],
+  "verified_at": "2026-11-23T13:10:28.875Z",
+  "original_package_sha256": "0x6dc5bacdaae60f57b593e9671925bc366894be19ac83b184ebe542efc89d0cbb",
+  "rewritten_package_sha256": "0x7eceaf451842c1c653eee50d12a0e0daf947869d6e4679a4b75f04fea60d70e6",
+  "onchain_stored_sha256": "0x6dc5bacdaae60f57b593e9671925bc366894be19ac83b184ebe542efc89d0cbb",
+  "transaction_block": 38199816,
+  "tender_reference": "0xf02f872f14bb22ac3d172857e89e05eea63e8958f287d7b2c9419be1bc8cf441",
+  "checks": {
+    "independent_package_download": true,
+    "manifest_schema_and_file_integrity": true,
+    "tender_chain_identity": true,
+    "independent_public_rpc": true,
+    "contract_deployed": true,
+    "anchor_transaction_success": true,
+    "anchor_event_matches": true,
+    "contract_state_matches": true,
+    "coherent_rewrite_rejected": true
+  },
+  "original_package": {
+    "digest": "0x6dc5bacdaae60f57b593e9671925bc366894be19ac83b184ebe542efc89d0cbb",
+    "entry_count": 13,
+    "files_verified": 12,
+    "internal_integrity": "passed"
+  },
+  "rewritten_package": {
+    "digest": "0x7eceaf451842c1c653eee50d12a0e0daf947869d6e4679a4b75f04fea60d70e6",
+    "entry_count": 13,
+    "files_verified": 12,
+    "internal_integrity": "passed"
+  }
+}

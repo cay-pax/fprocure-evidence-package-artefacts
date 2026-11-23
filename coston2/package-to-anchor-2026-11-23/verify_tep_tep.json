@@ -1,0 +1,84 @@
+{
+  "package_digest": "0x6dc5bacdaae60f57b593e9671925bc366894be19ac83b184ebe542efc89d0cbb",
+  "result": "passed",
+  "steps": [
+    {
+      "step": 1,
+      "check": "package_digest",
+      "status": "passed",
+      "detail": "0x6dc5bacdaae60f57b593e9671925bc366894be19ac83b184ebe542efc89d0cbb"
+    },
+    {
+      "step": 2,
+      "check": "archive_readable",
+      "status": "passed",
+      "detail": "13 entries, 2033 bytes uncompressed"
+    },
+    {
+      "step": 3,
+      "check": "manifest_valid",
+      "status": "passed",
+      "detail": "schema 1.1.0, 12 files listed"
+    },
+    {
+      "step": 4,
+      "check": "required_files_listed",
+      "status": "passed",
+      "detail": "all 12 required files listed"
+    },
+    {
+      "step": 5,
+      "check": "listed_files_present",
+      "status": "passed",
+      "detail": "all 12 present"
+    },
+    {
+      "step": 6,
+      "check": "file_hashes_match",
+      "status": "passed",
+      "detail": "all match"
+    },
+    {
+      "step": 7,
+      "check": "no_unlisted_files",
+      "status": "passed",
+      "detail": "none"
+    },
+    {
+      "step": 8,
+      "check": "identity_consistent",
+      "status": "passed",
+      "detail": "tender 3dd43fb6-6f2f-4077-96a5-77e7152c7c26 v1 on Coston2 (114)"
+    },
+    {
+      "step": 9,
+      "check": "anchor_tx_valid",
+      "status": "passed",
+      "detail": "chain 114, block 38199816, status 1"
+    },
+    {
+      "step": 10,
+      "check": "anchor_event_matches",
+      "status": "passed",
+      "detail": "v2 event binds this digest, tender and version"
+    },
+    {
+      "step": 11,
+      "check": "anchor_state_current",
+      "status": "passed",
+      "detail": "contract maps v1 to this digest; latest version v1"
+    },
+    {
+      "step": 12,
+      "check": "onchain_lifecycle_matches",
+      "status": "skipped",
+      "detail": "procure contract not supplied; pass --procure-contract"
+    },
+    {
+      "step": 13,
+      "check": "passkey_assertions_valid",
+      "status": "skipped",
+      "detail": "no passkey-signed bids (off-chain domain)"
+    }
+  ]
+}

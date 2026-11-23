@@ -32,3 +32,25 @@ Every transaction was re-checked read-only on 22 November 2026 (status 1). The e
 | Evidence anchor (tender-bound) | 0x06f11C9aE17f9891C771DEEEb795D897D8329a45 |
 | Owner (dedicated test account) | 0x33d87b3ac5460bd9dad7ef888da21e01d0315c4e |
 | Deployment blocks | 38,181,401–38,181,407 |
+
+## Package-to-anchor experiment, tender-bound anchor (ProofRails, 23 November 2026)
+
+| Item | Reference |
+|---|---|
+| Evidence anchor (tender-bound, flattened copy) | 0x19E5612b9588CE884893373398a4b2C5Aa05a5f1 |
+| Deployment transaction | 0xb7cad7d8e22cd94d1b126aa1034e8e2be6823b0f24b686367ea9a2d89b111524 |
+| Anchor transaction (block 38,199,816) | 0x1e87973c134c00d4e6aa48fea5ce7d10f5f0d0bd1879caa15e8e50cf5d0fe132 |
+| Tender reference | 0xf02f872f14bb22ac3d172857e89e05eea63e8958f287d7b2c9419be1bc8cf441 |
+| Package version | 1 |
+| Anchored package digest (`tep.zip`) | 0x6dc5bacdaae60f57b593e9671925bc366894be19ac83b184ebe542efc89d0cbb |
+| Rewritten copy digest (`altered.zip`, not anchored) | 0x7eceaf451842c1c653eee50d12a0e0daf947869d6e4679a4b75f04fea60d70e6 |
+| Submitting and owner account (single-use test account) | 0xaE229CE18e0fa28a5378675fE216F4Df7b4cfB69 |
+
+The files are in [package-to-anchor-2026-11-23/](package-to-anchor-2026-11-23/). The package is minimal and synthetic: it was assembled for the experiment, not exported by F-Procure, and has no bids or lifecycle events. `report.json` and `proofrails_verifier_report.json` are ProofRails' deployment report and its JavaScript verifier's output. `verify_tep_*.json` are the outputs of `verifier/verify_tep.py`. The package passes steps 1–11, and the rewritten copy fails steps 10 and 11. Steps 12 and 13 are skipped. To re-run:
+
+```
+python3 verifier/verify_tep.py coston2/package-to-anchor-2026-11-23/tep.zip \
+  --rpc https://coston2-api.flare.network/ext/C/rpc --chain-id 114 \
+  --contract 0x19E5612b9588CE884893373398a4b2C5Aa05a5f1 \
+  --tx 0x1e87973c134c00d4e6aa48fea5ce7d10f5f0d0bd1879caa15e8e50cf5d0fe132
+```
