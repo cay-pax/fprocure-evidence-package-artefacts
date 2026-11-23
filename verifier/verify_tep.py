@@ -248,13 +248,16 @@ def verify(zip_bytes, rpc_url=None, chain_id=None, contract=None, tx=None, tende
         names = [i.filename for i in z.infolist()]
         size = sum(i.file_size for i in z.infolist())
         big = [i.filename for i in z.infolist() if i.file_size > MAX_ENTRY]
-        # zipfile stops reading an entry at its declared size, so checking the
-        # declared sizes before any read bounds what a zip bomb can inflate to.
-        oversized = size > MAX_UNCOMPRESSED or big
+        # zipfile bounds DEFLATE output by the declared size, but not BZIP2 or
+        # LZMA, which inflate each chunk in full. F-Procure writes DEFLATE, so
+        # other methods are refused and the declared sizes then bound memory.
+        odd = [i.filename for i in z.infolist() if i.compress_type not in (zipfile.ZIP_STORED, zipfile.ZIP_DEFLATED)]
+        oversized = size > MAX_UNCOMPRESSED or big or odd
         ok = len(names) == len(set(names)) and all("/" not in n and "\\" not in n for n in names) and not oversized
         rec(2, "archive_readable", ok, f"{len(names)} entries, {size} bytes uncompressed"
             + (f" (limit {MAX_UNCOMPRESSED})" if size > MAX_UNCOMPRESSED else "")
-            + (f"; over the {MAX_ENTRY}-byte entry limit: " + ", ".join(big) if big else ""))
+            + (f"; over the {MAX_ENTRY}-byte entry limit: " + ", ".join(big) if big else "")
+            + ("; compression other than stored or deflate: " + ", ".join(odd) if odd else ""))
         if oversized: return digest, res
     except Exception as e:
         rec(2, "archive_readable", False, str(e)); return digest, res
@@ -348,7 +351,9 @@ def verify(zip_bytes, rpc_url=None, chain_id=None, contract=None, tx=None, tende
         rec(13, "passkey_assertions_valid", ok, detail + " (off-chain domain)")
     elif offchain or not str(ctid).isdigit():
         rec(13, "passkey_assertions_valid", False, f"tender ID {t.get('id')} is not a UUID, or on-chain ID {ctid} is not a number")
-    elif not str(domain_chain).isdigit() or not domain_procure:
+    elif domain_chain is not None and not str(domain_chain).isdigit():
+        rec(13, "passkey_assertions_valid", False, f"chain ID {domain_chain!r} is not a number")
+    elif domain_chain is None or not domain_procure:
         rec(13, "passkey_assertions_valid", None, "chain ID or procurement contract unknown")
     else:
         ok, detail = passkey_check(bids, passkeys, int(domain_chain), domain_procure, t["contract_tender_id"])

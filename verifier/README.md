@@ -19,7 +19,7 @@ Public Flare RPCs cap `eth_getLogs` ranges; `--log-span` (default 30 blocks) spl
 - Step 12 checks that every commit, reveal and award the procurement contract emitted for the tender is in the package.
 - Step 13 re-verifies each bid's passkey assertion against the public key in `passkeys.json`.
 
-Malformed input fails a step and never stops the report: oversized archives (256 MiB total, 64 MiB per entry, checked before reading) fail step 2, unreadable entries step 6, manifest entries without a name and hash step 3, and unparseable or wrongly typed JSON step 8. Unsigned commitments (generated scenario tenders) are counted in step 13, not failed; the anchor and step 12 protect them.
+Malformed input fails a step and never stops the report: oversized archives (256 MiB total, 64 MiB per entry, checked before reading) and entries not stored or DEFLATE-compressed fail step 2, unreadable entries step 6, manifest entries without a name and hash step 3, and unparseable or wrongly typed JSON step 8. Unsigned commitments (generated scenario tenders) are counted in step 13, not failed; the anchor and step 12 protect them.
 - It cannot detect an off-chain record (for example a governance note) removed before the package was generated, and it does not prove records are accurate, authorised or compliant.
 
 `python -m unittest test_verify_tep` runs the offline tests.

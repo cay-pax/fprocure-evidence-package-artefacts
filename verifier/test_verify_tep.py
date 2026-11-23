@@ -136,6 +136,35 @@ class VerifierTest(unittest.TestCase):
         self.assertEqual([r["check"] for r in res], ["package_digest", "archive_readable"])
         self.assertEqual(res[-1]["status"], "failed")
 
+    def test_bzip2_and_lzma_entries_are_refused_before_reading(self):
+        for method in (zipfile.ZIP_BZIP2, zipfile.ZIP_LZMA):
+            src = zipfile.ZipFile(io.BytesIO(package()))
+            buf = io.BytesIO()
+            with zipfile.ZipFile(buf, "w") as z:
+                for i in src.infolist():
+                    z.writestr(i.filename, src.read(i), compress_type=method if i.filename == "bids.json" else zipfile.ZIP_DEFLATED)
+            res = v.verify(buf.getvalue())[1]
+            self.assertEqual([r["check"] for r in res], ["package_digest", "archive_readable"], method)
+            self.assertEqual(res[-1]["status"], "failed")
+            self.assertIn("bids.json", res[-1]["detail"])
+
+    def test_deflate_package_is_accepted(self):
+        src = zipfile.ZipFile(io.BytesIO(package()))
+        buf = io.BytesIO()
+        with zipfile.ZipFile(buf, "w", zipfile.ZIP_DEFLATED) as z:
+            for i in src.infolist(): z.writestr(i.filename, src.read(i))
+        self.assertEqual(status(buf.getvalue(), "archive_readable"), "passed")
+
+    def test_non_numeric_chain_id_fails_passkey_step(self):
+        def bad_chain(files, content, manifest, extra):
+            content["chain_context.json"] = dict(files["chain_context.json"], chain_id="anvil")
+        self.assertEqual(status(package(bad_chain), "passkey_assertions_valid"), "failed")
+
+    def test_absent_chain_id_skips_passkey_step(self):
+        def no_chain(files, content, manifest, extra):
+            content["chain_context.json"] = dict(files["chain_context.json"], chain_id=None)
+        self.assertEqual(status(package(no_chain), "passkey_assertions_valid"), "skipped")
+
     def test_bad_crc_fails_hash_step_not_raises(self):
         zb = package()
         self.assertEqual(zb.count(b'"b1"'), 1)
