@@ -48,6 +48,10 @@ FILES_V1 = sorted([
     "verifier_instructions.json",
 ])
 # Early 1.0.0 packages predate passkeys.json.
+# Real packages are a few hundred KB; this bounds what a hostile archive can inflate to.
+MAX_UNCOMPRESSED = 256 * 1024 * 1024
+MAX_ENTRY = 64 * 1024 * 1024
+JSON_TYPES = {"tender.json": dict, "chain_context.json": dict, "bids.json": list, "events.json": list, "passkeys.json": list}
 REQUIRED_FILES = {"1.0.0": [n for n in FILES_V1 if n != "passkeys.json"], "1.1.0": sorted(FILES_V1 + ["chain_context.json"])}
 
 TOPIC_V2 = k256(b"EvidenceAnchored(bytes32,uint32,bytes32,address,uint256)")
@@ -91,6 +95,13 @@ def b64url(b: bytes) -> str:
 
 def verify_assertion(challenge: bytes, a: dict, qx: str, qy: str) -> str:
     """Mirrors OpenZeppelin WebAuthn.verify(requireUV = true). Returns '' or the failure."""
+    try:
+        return _verify_assertion(challenge, a, qx, qy)
+    except (KeyError, TypeError, ValueError, IndexError, AttributeError) as e:
+        return f"malformed assertion or passkey ({type(e).__name__}: {e})"
+
+
+def _verify_assertion(challenge: bytes, a: dict, qx: str, qy: str) -> str:
     cd = a["clientDataJSON"]
     auth = bytes.fromhex(a["authenticatorData"][2:])
     if len(auth) <= 36: return "authenticatorData too short"
@@ -123,7 +134,9 @@ def get_logs(url, contract, topics, start, end, span):
 def lifecycle_check(url, procure, t, bids, events, span, from_block=None, end_block=None):
     """Compares the tender's on-chain commit/reveal/award events with the package."""
     tid = t.get("contract_tender_id")
-    if tid is None: return None, "tender.json has no contract_tender_id"
+    # The verifier asked for an on-chain check, so a package that claims no
+    # on-chain tender (null or SIM-) fails rather than skipping it.
+    if tid is None or not str(tid).isdigit(): return False, f"tender has no on-chain ID ({tid}) on the supplied procurement contract"
     tid_topic = "0x" + word(int(tid)).hex()
     # Search from the earliest block of any transaction the package records
     # (or from_block) to the anchor block (or the chain tip). The range must hold
@@ -140,6 +153,7 @@ def lifecycle_check(url, procure, t, bids, events, span, from_block=None, end_bl
     logs = get_logs(url, procure, [[T_CREATED, T_COMMITTED, T_REVEALED, T_AWARDED], tid_topic], start, end, span)
     if not any(lg["topics"][0].lower() == T_CREATED for lg in logs):
         return False, f"TenderCreated for on-chain tender {tid} not in blocks {start}-{end}: the package omits its earliest transactions, or pass --from-block"
+    created = next(lg for lg in logs if lg["topics"][0].lower() == T_CREATED)
     logs = [lg for lg in logs if lg["topics"][0].lower() != T_CREATED]
     by_vendor = {}
     for b in bids:
@@ -147,7 +161,12 @@ def lifecycle_check(url, procure, t, bids, events, span, from_block=None, end_bl
     pkg_txs = {(e.get("tx_hash") or "").lower() for e in events}
     pkg_txs |= {(b.get("commit_tx_hash") or "").lower() for b in bids}
     pkg_txs |= {(t.get(k) or "").lower() for k in ("create_tx_hash", "award_tx_hash")}
-    probs, last_commit = [], {}
+    probs, last_commit, last_commit_tx = [], {}, {}
+    # create-tender-onchain registers keccak256(tender UUID) as the externalId.
+    if created["topics"][2].lower() != k256(str(t.get("id") or "").encode()).lower():
+        probs.append(f"on-chain tender {tid} was created for another tender (externalId is not keccak256 of tender.json id)")
+    if t.get("create_tx_hash") and t["create_tx_hash"].lower() != created["transactionHash"].lower():
+        probs.append("tender.json create_tx_hash is not the TenderCreated transaction")
     for lg in logs:
         topic, vid = lg["topics"][0].lower(), lg["topics"][2].lower()
         tx = lg["transactionHash"].lower()
@@ -156,6 +175,7 @@ def lifecycle_check(url, procure, t, bids, events, span, from_block=None, end_bl
         vb = by_vendor.get(vid, [])
         if topic == T_COMMITTED:
             last_commit[vid] = "0x" + data[:64]
+            last_commit_tx[vid] = tx
         elif topic == T_REVEALED:
             amt = int(data[:64], 16)
             if not any(b.get("revealed_bid_minor") is not None and int(b["revealed_bid_minor"]) == amt for b in vb):
@@ -165,38 +185,55 @@ def lifecycle_check(url, procure, t, bids, events, span, from_block=None, end_bl
             win = [b for b in bids if b.get("is_winner")]
             if not win or vendor_id(win[0]["vendor_id"]) != vid or int(win[0].get("revealed_bid_minor") or -1) != amt:
                 probs.append(f"on-chain award ({vid[-32:]}, {amt}) differs from bids.json winner")
+            if t.get("award_tx_hash") and t["award_tx_hash"].lower() != tx:
+                probs.append("tender.json award_tx_hash is not the TenderAwarded transaction")
             if t.get("winning_vendor_id") and vendor_id(t["winning_vendor_id"]) != vid:
                 probs.append("on-chain award differs from tender.json winning_vendor_id")
     for vid, ch in last_commit.items():
         if not any((b.get("commit_hash") or "").lower() == ch.lower() for b in by_vendor.get(vid, [])):
             probs.append(f"on-chain commitment {ch[:12]}… by vendor {vid[-32:]} missing from bids.json")
+    for b in bids:
+        vid = vendor_id(b["vendor_id"]) if b.get("vendor_id") else None
+        if b.get("commit_tx_hash") and vid in last_commit_tx and (b.get("commit_hash") or "").lower() == last_commit[vid].lower() and b["commit_tx_hash"].lower() != last_commit_tx[vid]:
+            probs.append(f"commit_tx_hash of vendor {vid[-32:]}'s bid is not its on-chain commit transaction")
     onchain_vendors = set(last_commit)
     for b in bids:
         if b.get("commit_tx_hash") and b.get("vendor_id") and vendor_id(b["vendor_id"]) not in onchain_vendors:
-            probs.append(f"bid {b['id']} claims an on-chain commit with no BidCommitted event")
+            probs.append(f"bid {b.get('id')} claims an on-chain commit with no BidCommitted event")
     n = {k: sum(1 for l in logs if l["topics"][0].lower() == k) for k in (T_COMMITTED, T_REVEALED, T_AWARDED)}
     ok_detail = f"tender {tid}: {n[T_COMMITTED]} commits, {n[T_REVEALED]} reveals, {n[T_AWARDED]} award, blocks {start}-{end}"
     return (not probs), "; ".join(probs) or ok_detail
 
 
-def passkey_check(bids, passkeys, chain_id, procure, tid):
-    keys = {(p.get("key_id") or "").lower(): p for p in passkeys}
-    keys.update({p.get("id"): p for p in passkeys if p.get("id")})
+def passkey_check(bids, passkeys, chain_id, procure, tid, require_signed=False, commit_events=0):
+    """Re-verifies every bid's commit_signature. With require_signed (schema 1.1.0,
+    where every commitment is passkey-signed), an unsigned commitment fails."""
+    keys = {(p.get("key_id") or "").lower(): p for p in passkeys if isinstance(p, dict)}
+    keys.update({p.get("id"): p for p in passkeys if isinstance(p, dict) and p.get("id")})
     signed, probs = 0, []
-    for b in bids:
+    for i, b in enumerate(bids):
+        if not isinstance(b, dict): probs.append(f"bids.json entry {i} is not an object"); continue
+        bid = b.get("id", f"#{i}")
         a = b.get("commit_signature")
-        if not a: continue
+        if not a:
+            if require_signed and b.get("commit_hash"): probs.append(f"bid {bid}: commitment has no passkey signature")
+            continue
         signed += 1
-        p = keys.get((a.get("key_id") or "").lower()) or keys.get(b.get("passkey_id"))
-        if not p: probs.append(f"bid {b['id']}: passkey not in passkeys.json"); continue
-        if p.get("vendor_id") and p["vendor_id"] != b.get("vendor_id"): probs.append(f"bid {b['id']}: passkey belongs to another vendor"); continue
-        qx, qy = p["public_key_x"], p["public_key_y"]
-        if p.get("key_id") and k256(word(qx) + word(qy)).lower() != p["key_id"].lower(): probs.append(f"bid {b['id']}: key_id is not keccak256(qx, qy)"); continue
-        if p.get("active_at") and b.get("created_at") and b["created_at"] < p["active_at"]: probs.append(f"bid {b['id']}: signed before the passkey was active")
-        if p.get("revoked_at") and b.get("created_at") and b["created_at"] >= p["revoked_at"]: probs.append(f"bid {b['id']}: signed after the passkey was revoked")
-        why = verify_assertion(commit_digest(chain_id, procure, int(tid), vendor_id(b["vendor_id"]), b["commit_hash"]), a, qx, qy)
-        if why: probs.append(f"bid {b['id']}: {why}")
-    if not signed: return None, "no passkey-signed bids"
+        try:
+            p = keys.get((a.get("key_id") or "").lower()) or keys.get(b.get("passkey_id"))
+            if not p: probs.append(f"bid {bid}: passkey not in passkeys.json"); continue
+            if p.get("vendor_id") and p["vendor_id"] != b.get("vendor_id"): probs.append(f"bid {bid}: passkey belongs to another vendor"); continue
+            qx, qy = p["public_key_x"], p["public_key_y"]
+            if p.get("key_id") and k256(word(qx) + word(qy)).lower() != p["key_id"].lower(): probs.append(f"bid {bid}: key_id is not keccak256(qx, qy)"); continue
+            if p.get("active_at") and b.get("created_at") and b["created_at"] < p["active_at"]: probs.append(f"bid {bid}: signed before the passkey was active")
+            if p.get("revoked_at") and b.get("created_at") and b["created_at"] >= p["revoked_at"]: probs.append(f"bid {bid}: signed after the passkey was revoked")
+            why = verify_assertion(commit_digest(chain_id, procure, int(tid), vendor_id(b["vendor_id"]), b["commit_hash"]), a, qx, qy)
+        except (KeyError, TypeError, ValueError, AttributeError) as e:
+            why = f"malformed bid, signature or passkey ({type(e).__name__}: {e})"
+        if why: probs.append(f"bid {bid}: {why}")
+    if not signed and not probs:
+        if require_signed and commit_events: return False, f"events.json records {commit_events} bid commitments but no bid is passkey-signed"
+        return None, "no passkey-signed bids"
     return (not probs), "; ".join(probs) or f"{signed} passkey assertions verify"
 
 
@@ -210,16 +247,31 @@ def verify(zip_bytes, rpc_url=None, chain_id=None, contract=None, tx=None, tende
     try:
         z = zipfile.ZipFile(io.BytesIO(zip_bytes))
         names = [i.filename for i in z.infolist()]
-        ok = len(names) == len(set(names)) and all("/" not in n and "\\" not in n for n in names)
-        rec(2, "archive_readable", ok, f"{len(names)} entries")
+        size = sum(i.file_size for i in z.infolist())
+        big = [i.filename for i in z.infolist() if i.file_size > MAX_ENTRY]
+        # zipfile stops reading an entry at its declared size, so checking the
+        # declared sizes before any read bounds what a zip bomb can inflate to.
+        oversized = size > MAX_UNCOMPRESSED or big
+        ok = len(names) == len(set(names)) and all("/" not in n and "\\" not in n for n in names) and not oversized
+        rec(2, "archive_readable", ok, f"{len(names)} entries, {size} bytes uncompressed"
+            + (f" (limit {MAX_UNCOMPRESSED})" if size > MAX_UNCOMPRESSED else "")
+            + (f"; over the {MAX_ENTRY}-byte entry limit: " + ", ".join(big) if big else ""))
+        if oversized: return digest, res
     except Exception as e:
         rec(2, "archive_readable", False, str(e)); return digest, res
     if "manifest.json" not in names:
         rec(3, "manifest_valid", False, "manifest.json missing"); return digest, res
     try:
         m = json.loads(z.read("manifest.json"))
-        ok = m.get("package_type") == "tender_evidence_package" and m.get("schema_version") in REQUIRED_FILES and isinstance(m.get("files"), list)
-        rec(3, "manifest_valid", ok, f"schema {m.get('schema_version')}, {len(m.get('files', []))} files listed")
+        files = m.get("files") if isinstance(m, dict) else None
+        ok = isinstance(m, dict) and m.get("package_type") == "tender_evidence_package" and m.get("schema_version") in REQUIRED_FILES and isinstance(files, list)
+        bad_entries = [i for i, f in enumerate(files or []) if not (isinstance(f, dict) and isinstance(f.get("name"), str) and isinstance(f.get("sha256"), str))]
+        dup = len({f["name"] for f in files or [] if isinstance(f, dict) and isinstance(f.get("name"), str)}) != len(files or [])
+        detail = f"schema {m.get('schema_version') if isinstance(m, dict) else None}, {len(files or [])} files listed"
+        if bad_entries: detail += f"; entries without a name and sha256: {bad_entries}"
+        elif dup: detail += "; a file is listed twice"
+        ok = ok and not bad_entries and not dup
+        rec(3, "manifest_valid", ok, detail)
         if not ok: return digest, res
     except Exception as e:
         rec(3, "manifest_valid", False, str(e)); return digest, res
@@ -229,17 +281,32 @@ def verify(zip_bytes, rpc_url=None, chain_id=None, contract=None, tx=None, tende
     missing = [n for n in listed if n not in names]
     rec(5, "listed_files_present", not missing, "missing: " + ", ".join(missing) if missing else f"all {len(listed)} present")
     norm = lambda h: (h or "").lower().removeprefix("0x")
-    bad = [n for n in listed if n in names and hashlib.sha256(z.read(n)).hexdigest() != norm(listed[n])]
-    rec(6, "file_hashes_match", not bad, "mismatch: " + ", ".join(bad) if bad else "all match")
+    data, unreadable = {}, []
+    for n in listed:
+        if n not in names: continue
+        try: data[n] = z.read(n)
+        except Exception as e: unreadable.append(f"{n} ({e})")
+    bad = [n for n, d in data.items() if hashlib.sha256(d).hexdigest() != norm(listed[n])]
+    probs6 = (["mismatch: " + ", ".join(bad)] if bad else []) + (["unreadable: " + ", ".join(unreadable)] if unreadable else [])
+    rec(6, "file_hashes_match", not probs6, "; ".join(probs6) or "all match")
     extra = [n for n in names if n != "manifest.json" and n not in listed]
     rec(7, "no_unlisted_files", not extra, "unlisted: " + ", ".join(extra) if extra else "none")
 
-    def load(n, default):
-        try: return json.loads(z.read(n)) if n in names else default
-        except Exception: return default
+    # Every listed JSON file must parse; an unparseable bids.json must not
+    # read as "no bids" and let the passkey step skip.
+    probs, parsed = [], {}
+    for n, d in data.items():
+        if not n.endswith(".json"): continue
+        try: parsed[n] = json.loads(d)
+        except Exception: probs.append(f"{n} is not valid JSON"); continue
+        want = JSON_TYPES.get(n)
+        if want and not isinstance(parsed[n], want):
+            probs.append(f"{n} is not a JSON {'object' if want is dict else 'array'}"); del parsed[n]
+        elif want is list and not all(isinstance(x, dict) for x in parsed[n]):
+            probs.append(f"{n} has entries that are not objects"); parsed[n] = [x for x in parsed[n] if isinstance(x, dict)]
+    load = lambda n, default: parsed.get(n, default)
     t, cc = load("tender.json", {}), load("chain_context.json", {})
     bids, events, passkeys = load("bids.json", []), load("events.json", []), load("passkeys.json", [])
-    probs = []
     if t.get("id") != m.get("tender_id"): probs.append("tender.json id differs from manifest")
     if tender and m.get("tender_id") != tender: probs.append("manifest tender_id differs from claimed tender")
     if version is not None and m.get("package_version") != version: probs.append("manifest version differs from claim")
@@ -263,23 +330,26 @@ def verify(zip_bytes, rpc_url=None, chain_id=None, contract=None, tx=None, tende
         try:
             ok, detail = lifecycle_check(rpc_url, procure.lower(), t, bids, events, log_span, from_block, anchor_block)
         except Exception as e:
-            ok, detail = False, f"RPC error: {e}"
+            ok, detail = False, f"error: {e}"
         rec(12, "onchain_lifecycle_matches", ok, detail)
     else:
         rec(12, "onchain_lifecycle_matches", None, unpinned("--procure-contract", "procure") if rpc_url else "no RPC supplied")
 
     domain_procure = procure or cc.get("procure_contract")
     tender_uuid = (t.get("id") or "").replace("-", "").lower()
-    if t.get("contract_tender_id") is None and len(tender_uuid) == 32 and all(c in "0123456789abcdef" for c in tender_uuid):
+    ctid = t.get("contract_tender_id")
+    offchain = ctid is None or str(ctid).startswith("SIM-")
+    strict = dict(require_signed=m["schema_version"] != "1.0.0", commit_events=sum(1 for e in events if e.get("event_type") == "BID_COMMIT"))
+    if offchain and len(tender_uuid) == 32 and all(c in "0123456789abcdef" for c in tender_uuid):
         # Simulated or On-Prem tender: offChainDomain binds bids to the tender UUID.
-        ok, detail = passkey_check(bids, passkeys, 0, "0x" + "00" * 20, int(tender_uuid, 16))
+        ok, detail = passkey_check(bids, passkeys, 0, "0x" + "00" * 20, int(tender_uuid, 16), **strict)
         rec(13, "passkey_assertions_valid", ok, detail + " (off-chain domain)")
-    elif t.get("contract_tender_id") is None:
-        rec(13, "passkey_assertions_valid", False, "tender has no on-chain ID and its ID is not a UUID")
-    elif domain_chain is None or not domain_procure:
+    elif offchain or not str(ctid).isdigit():
+        rec(13, "passkey_assertions_valid", False, f"tender ID {t.get('id')} is not a UUID, or on-chain ID {ctid} is not a number")
+    elif not str(domain_chain).isdigit() or not domain_procure:
         rec(13, "passkey_assertions_valid", None, "chain ID or procurement contract unknown")
     else:
-        ok, detail = passkey_check(bids, passkeys, int(domain_chain), domain_procure, t["contract_tender_id"])
+        ok, detail = passkey_check(bids, passkeys, int(domain_chain), domain_procure, t["contract_tender_id"], **strict)
         rec(13, "passkey_assertions_valid", ok, detail + ("" if procure else " (domain contract from chain_context.json)"))
     return digest, res
 

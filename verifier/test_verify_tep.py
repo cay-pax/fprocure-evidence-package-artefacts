@@ -87,6 +87,11 @@ class VerifierTest(unittest.TestCase):
             content["tender.json"] = stable({"id": "z" * 32, "contract_tender_id": None})
         self.assertNotEqual(status(package(bad_id, offchain=True), "passkey_assertions_valid"), "passed")
 
+    def test_sim_tender_uses_offchain_domain(self):
+        def sim_id(files, content, manifest, extra):
+            content["tender.json"] = stable({"id": TENDER, "contract_tender_id": "SIM-" + TENDER})
+        self.assertEqual(status(package(sim_id, offchain=True), "passkey_assertions_valid"), "passed")
+
     def test_unknown_schema_fails(self):
         def bump(files, content, manifest, extra): manifest["schema_version"] = "9.9.9"
         self.assertEqual(status(package(bump), "manifest_valid"), "failed")
@@ -111,6 +116,100 @@ class VerifierTest(unittest.TestCase):
         _, res = v.verify(package(), chain_id=114)
         self.assertEqual(next(r["status"] for r in res if r["check"] == "identity_consistent"), "failed")
 
+
+    # Malformed and hostile archives fail a step; verify() never raises.
+
+    def test_oversized_entry_is_refused_before_reading(self):
+        orig = v.MAX_ENTRY
+        v.MAX_ENTRY = 100
+        try: res = v.verify(package())[1]
+        finally: v.MAX_ENTRY = orig
+        self.assertEqual(res[-1]["check"], "archive_readable")
+        self.assertEqual(res[-1]["status"], "failed")
+        self.assertIn("entry limit", res[-1]["detail"])
+
+    def test_oversized_archive_is_refused_before_reading(self):
+        orig = v.MAX_UNCOMPRESSED
+        v.MAX_UNCOMPRESSED = 1000
+        try: res = v.verify(package())[1]
+        finally: v.MAX_UNCOMPRESSED = orig
+        self.assertEqual([r["check"] for r in res], ["package_digest", "archive_readable"])
+        self.assertEqual(res[-1]["status"], "failed")
+
+    def test_bad_crc_fails_hash_step_not_raises(self):
+        zb = package()
+        self.assertEqual(zb.count(b'"b1"'), 1)
+        res = v.verify(zb.replace(b'"b1"', b'"b2"'))[1]
+        step = next(r for r in res if r["check"] == "file_hashes_match")
+        self.assertEqual(step["status"], "failed")
+        self.assertIn("unreadable: bids.json", step["detail"])
+
+    def test_manifest_entry_without_sha256_fails_manifest_step(self):
+        def no_hash(files, content, manifest, extra): manifest["files"] = [{"name": n} for n in sorted(content)]
+        self.assertEqual(status(package(no_hash), "manifest_valid"), "failed")
+
+    def test_manifest_entry_without_name_fails_manifest_step(self):
+        def no_name(files, content, manifest, extra): manifest["files"] = [{"sha256": "0x00"}]
+        self.assertEqual(status(package(no_name), "manifest_valid"), "failed")
+
+    def test_manifest_listing_a_file_twice_fails(self):
+        def twice(files, content, manifest, extra):
+            c = content["bids.json"] if isinstance(content["bids.json"], str) else stable(content["bids.json"])
+            h = "0x" + hashlib.sha256(c.encode()).hexdigest()
+            manifest["files"] = [{"name": n, "sha256": "0x" + hashlib.sha256((x if isinstance(x, str) else stable(x)).encode()).hexdigest()} for n, x in sorted(content.items())] + [{"name": "bids.json", "sha256": h}]
+        self.assertEqual(status(package(twice), "manifest_valid"), "failed")
+
+    def test_invalid_json_bids_with_matching_hash_does_not_pass(self):
+        def garble(files, content, manifest, extra): content["bids.json"] = "[{not json"
+        zb = package(garble)
+        self.assertEqual(status(zb, "file_hashes_match"), "passed")
+        self.assertEqual(status(zb, "identity_consistent"), "failed")
+        self.assertTrue(any(r["status"] == "failed" for r in v.verify(zb)[1]))
+
+    def test_wrong_json_type_fails(self):
+        def obj(files, content, manifest, extra): content["bids.json"] = stable({"id": "b1"})
+        self.assertEqual(status(package(obj), "identity_consistent"), "failed")
+
+    def test_unsigned_commitment_fails_in_1_1_0(self):
+        def unsign(files, content, manifest, extra):
+            b = dict(files["bids.json"][0]); del b["commit_signature"]
+            content["bids.json"] = [b]
+        self.assertEqual(status(package(unsign), "passkey_assertions_valid"), "failed")
+
+    def test_recorded_commits_without_signed_bids_fail(self):
+        def empty(files, content, manifest, extra):
+            content["bids.json"] = []
+            content["events.json"] = [{"event_type": "BID_COMMIT", "tx_hash": "0x" + "11" * 32}]
+        self.assertEqual(status(package(empty), "passkey_assertions_valid"), "failed")
+
+    def test_no_bids_and_no_commits_is_skipped(self):
+        def empty(files, content, manifest, extra): content["bids.json"] = []
+        self.assertEqual(status(package(empty), "passkey_assertions_valid"), "skipped")
+
+    def test_assertion_missing_fields_fails_not_raises(self):
+        for field in ("r", "s", "typeIndex", "challengeIndex", "clientDataJSON", "authenticatorData"):
+            def strip(files, content, manifest, extra, field=field):
+                b = files["bids.json"][0]; sig = dict(b["commit_signature"]); del sig[field]
+                content["bids.json"] = [dict(b, commit_signature=sig)]
+            self.assertEqual(status(package(strip), "passkey_assertions_valid"), "failed", field)
+
+    def test_passkey_missing_public_key_fails_not_raises(self):
+        def strip(files, content, manifest, extra):
+            p = dict(files["passkeys.json"][0]); del p["public_key_x"]
+            content["passkeys.json"] = [p]
+        self.assertEqual(status(package(strip), "passkey_assertions_valid"), "failed")
+
+    def test_bid_missing_vendor_or_commit_fails_not_raises(self):
+        for field in ("vendor_id", "commit_hash"):
+            def strip(files, content, manifest, extra, field=field):
+                b = dict(files["bids.json"][0]); del b[field]
+                content["bids.json"] = [b]
+            self.assertEqual(status(package(strip), "passkey_assertions_valid"), "failed", field)
+
+    def test_non_object_bid_entry_fails(self):
+        def junk(files, content, manifest, extra): content["bids.json"] = [files["bids.json"][0], "x"]
+        zb = package(junk)
+        self.assertEqual(status(zb, "identity_consistent"), "failed")
 
 if __name__ == "__main__":
     unittest.main()

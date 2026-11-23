@@ -9,8 +9,8 @@ All tenders, vendors and amounts are synthetic. Packages were anchored on a **lo
 | Path | What it is |
 |---|---|
 | [SPECIFICATION.md](SPECIFICATION.md) | Tender Evidence Package specification (schema 1.1.0, with the 1.0.0 differences) and the contract interfaces the verifier reads |
-| [verifier/](verifier/) | Standalone 13-step verifier exactly as used for round 2, with offline unit tests |
-| [round2/](round2/) | Schema 1.1.0: 12 scenarios, 14 packages and anchor records, scripts, results (210 negative cases) |
+| [verifier/](verifier/) | Standalone 13-step verifier, hardened release (v1.1), with 28 offline unit tests |
+| [round2/](round2/) | Schema 1.1.0: 12 scenarios, 14 packages and anchor records, the verifier exactly as evaluated, scripts, results (210 negative cases) |
 | [round1/](round1/) | Schema 1.0.0: 10 scenarios, 11 anchored packages plus 2 boundary-test packages, the ten-step verifier, scripts, results (88 negative cases) |
 | [coston2/REFERENCES.md](coston2/REFERENCES.md) | Coston2 contract and transaction references |
 
@@ -19,11 +19,11 @@ All tenders, vendors and amounts are synthetic. Packages were anchored on a **lo
 ```bash
 cd verifier
 pip install -r requirements.txt
-python -m unittest test_verify_tep          # 11 offline tests
+python -m unittest test_verify_tep          # 28 offline tests
 python verify_tep.py ../round2/packages/S03.zip
 ```
 
-Without `--rpc`, steps 1–8 and 13 run from the archive alone and steps 9–12 are reported as skipped. Skipped steps do not fail the overall result, so a full verification must confirm that steps 9–12 ran. Each package's SHA-256 should equal `package_hash` in its `.anchor.json`.
+Without `--rpc`, steps 1–8 and 13 run from the archive alone and steps 9–12 are reported as skipped. Skipped steps do not fail the overall result, so treat a skipped step as not verified: a full verification must confirm that steps 9–13 ran. Each package's SHA-256 should equal `package_hash` in its `.anchor.json`.
 
 ## Full verification (on-chain steps)
 
@@ -41,11 +41,11 @@ The scripts in `round*/scripts/` are kept exactly as run, including the absolute
 | Round | F-Procure commit | Verifier |
 |---|---|---|
 | 1 | `7b87438` | `round1/verifier/verify_tep.py` (ten steps) |
-| 2 | `60ca660` | `verifier/verify_tep.py` (13 steps) |
+| 2 | `60ca660` | `round2/verifier/verify_tep.py` (13 steps; F-Procure commit `5160598`) |
 
 `run_scenarios.ts` (Deno) drives the platform's backend functions for each scenario and exports each package. `tamper_matrix.py` builds the negative cases and runs the standalone verifier. `app_side.py` exercises the platform's built-in verifier. The test wallets are derived from Anvil's public development mnemonic, and the passwords are local-only test values.
 
-The verifier in the F-Procure repository has since added stricter step-12 identity checks and an archive size limit. Run offline on the 14 round-2 packages, it gives the same results for steps 1–8 and 13.
+`verifier/` holds the hardened verifier (F-Procure commit `576bc99`). It adds archive size limits (256 MiB in total, 64 MiB per entry, checked before reading), stricter step-12 identity checks, and failure reports in place of crashes for unreadable entries, incomplete manifests, missing passkey fields and unparseable JSON. For schema 1.1.0 it also rejects bids that carry a commitment but no passkey assertion. On the 14 round-2 packages it gives the same results as the evaluated verifier: 13 of 14 unmodified packages pass, and all 210 negative cases are rejected.
 
 ## What verification proves
 
