@@ -1,0 +1,14 @@
+{
+  "scenario": "S05",
+  "tender_uuid": "b1174231-7a0f-4055-8680-f80eee4e6fa1",
+  "package_id": "66286f89-986e-4ecf-8d05-342c791cbcb5",
+  "package_version": 1,
+  "package_hash": "0xc8c0aee0cfa26b8df7c3e5438bb67e5d187751a17772d8f56a23b915a1fd887b",
+  "manifest_hash": "0xef6a5429a8641e87a212d9eee42f4c3141567e91eed818026f313fba7dbe1dea",
+  "anchor_tx_hash": "0xf1bf2da270bfe5ee24f7779123d9a3307c726475557745a6b18fe86787660c09",
+  "anchor_block_number": 254,
+  "anchor_contract_address": "0x2279B7A0a67DB372996a5FaB50D91eAA73d2eBe6",
+  "chain_id": 31337,
+  "rpc_url": "http://127.0.0.1:8545",
+  "procure_contract": "0x5FC8d32690cc91D4c39d9d3abcBD16989F875707"
+}

@@ -1,0 +1,981 @@
+[
+  {
+    "package": "S01",
+    "case": "T0 unmodified",
+    "result": "passed",
+    "failed_steps": [],
+    "step10": "contract maps v1 to this digest; latest version v1"
+  },
+  {
+    "package": "S01",
+    "case": "T1 one file altered (bids.json, 1 byte)",
+    "result": "failed",
+    "failed_steps": [
+      "5:file_hashes_match",
+      "9:anchor_event_matches",
+      "10:anchor_state_current"
+    ],
+    "step10": "contract maps this tender/version to a different digest"
+  },
+  {
+    "package": "S01",
+    "case": "T2 listed file removed (events.json)",
+    "result": "failed",
+    "failed_steps": [
+      "4:listed_files_present",
+      "9:anchor_event_matches",
+      "10:anchor_state_current"
+    ],
+    "step10": "contract maps this tender/version to a different digest"
+  },
+  {
+    "package": "S01",
+    "case": "T3 unlisted file added",
+    "result": "failed",
+    "failed_steps": [
+      "6:no_unlisted_files",
+      "9:anchor_event_matches",
+      "10:anchor_state_current"
+    ],
+    "step10": "contract maps this tender/version to a different digest"
+  },
+  {
+    "package": "S01",
+    "case": "T4 file altered and manifest rewritten to match",
+    "result": "failed",
+    "failed_steps": [
+      "9:anchor_event_matches",
+      "10:anchor_state_current"
+    ],
+    "step10": "contract maps this tender/version to a different digest"
+  },
+  {
+    "package": "S01",
+    "case": "T5 anchor tx of another package",
+    "result": "failed",
+    "failed_steps": [
+      "9:anchor_event_matches"
+    ],
+    "step10": "contract maps v1 to this digest; latest version v1"
+  },
+  {
+    "package": "S01",
+    "case": "T6 wrong anchor contract",
+    "result": "failed",
+    "failed_steps": [
+      "8:anchor_tx_valid",
+      "9:anchor_event_matches"
+    ],
+    "step10": "skipped"
+  },
+  {
+    "package": "S01",
+    "case": "T7 wrong chain expected (Coston2, 114)",
+    "result": "failed",
+    "failed_steps": [
+      "8:anchor_tx_valid",
+      "9:anchor_event_matches"
+    ],
+    "step10": "skipped"
+  },
+  {
+    "package": "S01",
+    "case": "T8 non-existent anchor tx",
+    "result": "failed",
+    "failed_steps": [
+      "8:anchor_tx_valid",
+      "9:anchor_event_matches"
+    ],
+    "step10": "skipped"
+  },
+  {
+    "package": "S02",
+    "case": "T0 unmodified",
+    "result": "passed",
+    "failed_steps": [],
+    "step10": "contract maps v1 to this digest; latest version v1"
+  },
+  {
+    "package": "S02",
+    "case": "T1 one file altered (bids.json, 1 byte)",
+    "result": "failed",
+    "failed_steps": [
+      "5:file_hashes_match",
+      "9:anchor_event_matches",
+      "10:anchor_state_current"
+    ],
+    "step10": "contract maps this tender/version to a different digest"
+  },
+  {
+    "package": "S02",
+    "case": "T2 listed file removed (events.json)",
+    "result": "failed",
+    "failed_steps": [
+      "4:listed_files_present",
+      "9:anchor_event_matches",
+      "10:anchor_state_current"
+    ],
+    "step10": "contract maps this tender/version to a different digest"
+  },
+  {
+    "package": "S02",
+    "case": "T3 unlisted file added",
+    "result": "failed",
+    "failed_steps": [
+      "6:no_unlisted_files",
+      "9:anchor_event_matches",
+      "10:anchor_state_current"
+    ],
+    "step10": "contract maps this tender/version to a different digest"
+  },
+  {
+    "package": "S02",
+    "case": "T4 file altered and manifest rewritten to match",
+    "result": "failed",
+    "failed_steps": [
+      "9:anchor_event_matches",
+      "10:anchor_state_current"
+    ],
+    "step10": "contract maps this tender/version to a different digest"
+  },
+  {
+    "package": "S02",
+    "case": "T5 anchor tx of another package",
+    "result": "failed",
+    "failed_steps": [
+      "9:anchor_event_matches"
+    ],
+    "step10": "contract maps v1 to this digest; latest version v1"
+  },
+  {
+    "package": "S02",
+    "case": "T6 wrong anchor contract",
+    "result": "failed",
+    "failed_steps": [
+      "8:anchor_tx_valid",
+      "9:anchor_event_matches"
+    ],
+    "step10": "skipped"
+  },
+  {
+    "package": "S02",
+    "case": "T7 wrong chain expected (Coston2, 114)",
+    "result": "failed",
+    "failed_steps": [
+      "8:anchor_tx_valid",
+      "9:anchor_event_matches"
+    ],
+    "step10": "skipped"
+  },
+  {
+    "package": "S02",
+    "case": "T8 non-existent anchor tx",
+    "result": "failed",
+    "failed_steps": [
+      "8:anchor_tx_valid",
+      "9:anchor_event_matches"
+    ],
+    "step10": "skipped"
+  },
+  {
+    "package": "S03",
+    "case": "T0 unmodified",
+    "result": "passed",
+    "failed_steps": [],
+    "step10": "contract maps v1 to this digest; latest version v1"
+  },
+  {
+    "package": "S03",
+    "case": "T1 one file altered (bids.json, 1 byte)",
+    "result": "failed",
+    "failed_steps": [
+      "5:file_hashes_match",
+      "9:anchor_event_matches",
+      "10:anchor_state_current"
+    ],
+    "step10": "contract maps this tender/version to a different digest"
+  },
+  {
+    "package": "S03",
+    "case": "T2 listed file removed (events.json)",
+    "result": "failed",
+    "failed_steps": [
+      "4:listed_files_present",
+      "9:anchor_event_matches",
+      "10:anchor_state_current"
+    ],
+    "step10": "contract maps this tender/version to a different digest"
+  },
+  {
+    "package": "S03",
+    "case": "T3 unlisted file added",
+    "result": "failed",
+    "failed_steps": [
+      "6:no_unlisted_files",
+      "9:anchor_event_matches",
+      "10:anchor_state_current"
+    ],
+    "step10": "contract maps this tender/version to a different digest"
+  },
+  {
+    "package": "S03",
+    "case": "T4 file altered and manifest rewritten to match",
+    "result": "failed",
+    "failed_steps": [
+      "9:anchor_event_matches",
+      "10:anchor_state_current"
+    ],
+    "step10": "contract maps this tender/version to a different digest"
+  },
+  {
+    "package": "S03",
+    "case": "T5 anchor tx of another package",
+    "result": "failed",
+    "failed_steps": [
+      "9:anchor_event_matches"
+    ],
+    "step10": "contract maps v1 to this digest; latest version v1"
+  },
+  {
+    "package": "S03",
+    "case": "T6 wrong anchor contract",
+    "result": "failed",
+    "failed_steps": [
+      "8:anchor_tx_valid",
+      "9:anchor_event_matches"
+    ],
+    "step10": "skipped"
+  },
+  {
+    "package": "S03",
+    "case": "T7 wrong chain expected (Coston2, 114)",
+    "result": "failed",
+    "failed_steps": [
+      "8:anchor_tx_valid",
+      "9:anchor_event_matches"
+    ],
+    "step10": "skipped"
+  },
+  {
+    "package": "S03",
+    "case": "T8 non-existent anchor tx",
+    "result": "failed",
+    "failed_steps": [
+      "8:anchor_tx_valid",
+      "9:anchor_event_matches"
+    ],
+    "step10": "skipped"
+  },
+  {
+    "package": "S04",
+    "case": "T0 unmodified",
+    "result": "passed",
+    "failed_steps": [],
+    "step10": "contract maps v1 to this digest; latest version v1"
+  },
+  {
+    "package": "S04",
+    "case": "T1 one file altered (bids.json, 1 byte)",
+    "result": "failed",
+    "failed_steps": [
+      "5:file_hashes_match",
+      "9:anchor_event_matches",
+      "10:anchor_state_current"
+    ],
+    "step10": "contract maps this tender/version to a different digest"
+  },
+  {
+    "package": "S04",
+    "case": "T2 listed file removed (events.json)",
+    "result": "failed",
+    "failed_steps": [
+      "4:listed_files_present",
+      "9:anchor_event_matches",
+      "10:anchor_state_current"
+    ],
+    "step10": "contract maps this tender/version to a different digest"
+  },
+  {
+    "package": "S04",
+    "case": "T3 unlisted file added",
+    "result": "failed",
+    "failed_steps": [
+      "6:no_unlisted_files",
+      "9:anchor_event_matches",
+      "10:anchor_state_current"
+    ],
+    "step10": "contract maps this tender/version to a different digest"
+  },
+  {
+    "package": "S04",
+    "case": "T4 file altered and manifest rewritten to match",
+    "result": "failed",
+    "failed_steps": [
+      "9:anchor_event_matches",
+      "10:anchor_state_current"
+    ],
+    "step10": "contract maps this tender/version to a different digest"
+  },
+  {
+    "package": "S04",
+    "case": "T5 anchor tx of another package",
+    "result": "failed",
+    "failed_steps": [
+      "9:anchor_event_matches"
+    ],
+    "step10": "contract maps v1 to this digest; latest version v1"
+  },
+  {
+    "package": "S04",
+    "case": "T6 wrong anchor contract",
+    "result": "failed",
+    "failed_steps": [
+      "8:anchor_tx_valid",
+      "9:anchor_event_matches"
+    ],
+    "step10": "skipped"
+  },
+  {
+    "package": "S04",
+    "case": "T7 wrong chain expected (Coston2, 114)",
+    "result": "failed",
+    "failed_steps": [
+      "8:anchor_tx_valid",
+      "9:anchor_event_matches"
+    ],
+    "step10": "skipped"
+  },
+  {
+    "package": "S04",
+    "case": "T8 non-existent anchor tx",
+    "result": "failed",
+    "failed_steps": [
+      "8:anchor_tx_valid",
+      "9:anchor_event_matches"
+    ],
+    "step10": "skipped"
+  },
+  {
+    "package": "S05",
+    "case": "T0 unmodified",
+    "result": "passed",
+    "failed_steps": [],
+    "step10": "contract maps v1 to this digest; latest version v1"
+  },
+  {
+    "package": "S05",
+    "case": "T1 one file altered (bids.json, 1 byte)",
+    "result": "failed",
+    "failed_steps": [
+      "5:file_hashes_match",
+      "9:anchor_event_matches",
+      "10:anchor_state_current"
+    ],
+    "step10": "contract maps this tender/version to a different digest"
+  },
+  {
+    "package": "S05",
+    "case": "T2 listed file removed (events.json)",
+    "result": "failed",
+    "failed_steps": [
+      "4:listed_files_present",
+      "9:anchor_event_matches",
+      "10:anchor_state_current"
+    ],
+    "step10": "contract maps this tender/version to a different digest"
+  },
+  {
+    "package": "S05",
+    "case": "T3 unlisted file added",
+    "result": "failed",
+    "failed_steps": [
+      "6:no_unlisted_files",
+      "9:anchor_event_matches",
+      "10:anchor_state_current"
+    ],
+    "step10": "contract maps this tender/version to a different digest"
+  },
+  {
+    "package": "S05",
+    "case": "T4 file altered and manifest rewritten to match",
+    "result": "failed",
+    "failed_steps": [
+      "9:anchor_event_matches",
+      "10:anchor_state_current"
+    ],
+    "step10": "contract maps this tender/version to a different digest"
+  },
+  {
+    "package": "S05",
+    "case": "T5 anchor tx of another package",
+    "result": "failed",
+    "failed_steps": [
+      "9:anchor_event_matches"
+    ],
+    "step10": "contract maps v1 to this digest; latest version v1"
+  },
+  {
+    "package": "S05",
+    "case": "T6 wrong anchor contract",
+    "result": "failed",
+    "failed_steps": [
+      "8:anchor_tx_valid",
+      "9:anchor_event_matches"
+    ],
+    "step10": "skipped"
+  },
+  {
+    "package": "S05",
+    "case": "T7 wrong chain expected (Coston2, 114)",
+    "result": "failed",
+    "failed_steps": [
+      "8:anchor_tx_valid",
+      "9:anchor_event_matches"
+    ],
+    "step10": "skipped"
+  },
+  {
+    "package": "S05",
+    "case": "T8 non-existent anchor tx",
+    "result": "failed",
+    "failed_steps": [
+      "8:anchor_tx_valid",
+      "9:anchor_event_matches"
+    ],
+    "step10": "skipped"
+  },
+  {
+    "package": "S06",
+    "case": "T0 unmodified",
+    "result": "passed",
+    "failed_steps": [],
+    "step10": "contract maps v1 to this digest; latest version v1"
+  },
+  {
+    "package": "S06",
+    "case": "T1 one file altered (bids.json, 1 byte)",
+    "result": "failed",
+    "failed_steps": [
+      "5:file_hashes_match",
+      "9:anchor_event_matches",
+      "10:anchor_state_current"
+    ],
+    "step10": "contract maps this tender/version to a different digest"
+  },
+  {
+    "package": "S06",
+    "case": "T2 listed file removed (events.json)",
+    "result": "failed",
+    "failed_steps": [
+      "4:listed_files_present",
+      "9:anchor_event_matches",
+      "10:anchor_state_current"
+    ],
+    "step10": "contract maps this tender/version to a different digest"
+  },
+  {
+    "package": "S06",
+    "case": "T3 unlisted file added",
+    "result": "failed",
+    "failed_steps": [
+      "6:no_unlisted_files",
+      "9:anchor_event_matches",
+      "10:anchor_state_current"
+    ],
+    "step10": "contract maps this tender/version to a different digest"
+  },
+  {
+    "package": "S06",
+    "case": "T4 file altered and manifest rewritten to match",
+    "result": "failed",
+    "failed_steps": [
+      "9:anchor_event_matches",
+      "10:anchor_state_current"
+    ],
+    "step10": "contract maps this tender/version to a different digest"
+  },
+  {
+    "package": "S06",
+    "case": "T5 anchor tx of another package",
+    "result": "failed",
+    "failed_steps": [
+      "9:anchor_event_matches"
+    ],
+    "step10": "contract maps v1 to this digest; latest version v1"
+  },
+  {
+    "package": "S06",
+    "case": "T6 wrong anchor contract",
+    "result": "failed",
+    "failed_steps": [
+      "8:anchor_tx_valid",
+      "9:anchor_event_matches"
+    ],
+    "step10": "skipped"
+  },
+  {
+    "package": "S06",
+    "case": "T7 wrong chain expected (Coston2, 114)",
+    "result": "failed",
+    "failed_steps": [
+      "8:anchor_tx_valid",
+      "9:anchor_event_matches"
+    ],
+    "step10": "skipped"
+  },
+  {
+    "package": "S06",
+    "case": "T8 non-existent anchor tx",
+    "result": "failed",
+    "failed_steps": [
+      "8:anchor_tx_valid",
+      "9:anchor_event_matches"
+    ],
+    "step10": "skipped"
+  },
+  {
+    "package": "S07",
+    "case": "T0 unmodified",
+    "result": "passed",
+    "failed_steps": [],
+    "step10": "contract maps v1 to this digest; latest version v1"
+  },
+  {
+    "package": "S07",
+    "case": "T1 one file altered (bids.json, 1 byte)",
+    "result": "failed",
+    "failed_steps": [
+      "5:file_hashes_match",
+      "9:anchor_event_matches",
+      "10:anchor_state_current"
+    ],
+    "step10": "contract maps this tender/version to a different digest"
+  },
+  {
+    "package": "S07",
+    "case": "T2 listed file removed (events.json)",
+    "result": "failed",
+    "failed_steps": [
+      "4:listed_files_present",
+      "9:anchor_event_matches",
+      "10:anchor_state_current"
+    ],
+    "step10": "contract maps this tender/version to a different digest"
+  },
+  {
+    "package": "S07",
+    "case": "T3 unlisted file added",
+    "result": "failed",
+    "failed_steps": [
+      "6:no_unlisted_files",
+      "9:anchor_event_matches",
+      "10:anchor_state_current"
+    ],
+    "step10": "contract maps this tender/version to a different digest"
+  },
+  {
+    "package": "S07",
+    "case": "T4 file altered and manifest rewritten to match",
+    "result": "failed",
+    "failed_steps": [
+      "9:anchor_event_matches",
+      "10:anchor_state_current"
+    ],
+    "step10": "contract maps this tender/version to a different digest"
+  },
+  {
+    "package": "S07",
+    "case": "T5 anchor tx of another package",
+    "result": "failed",
+    "failed_steps": [
+      "9:anchor_event_matches"
+    ],
+    "step10": "contract maps v1 to this digest; latest version v1"
+  },
+  {
+    "package": "S07",
+    "case": "T6 wrong anchor contract",
+    "result": "failed",
+    "failed_steps": [
+      "8:anchor_tx_valid",
+      "9:anchor_event_matches"
+    ],
+    "step10": "skipped"
+  },
+  {
+    "package": "S07",
+    "case": "T7 wrong chain expected (Coston2, 114)",
+    "result": "failed",
+    "failed_steps": [
+      "8:anchor_tx_valid",
+      "9:anchor_event_matches"
+    ],
+    "step10": "skipped"
+  },
+  {
+    "package": "S07",
+    "case": "T8 non-existent anchor tx",
+    "result": "failed",
+    "failed_steps": [
+      "8:anchor_tx_valid",
+      "9:anchor_event_matches"
+    ],
+    "step10": "skipped"
+  },
+  {
+    "package": "S08",
+    "case": "T0 unmodified",
+    "result": "passed",
+    "failed_steps": [],
+    "step10": "contract maps v1 to this digest; latest version v1"
+  },
+  {
+    "package": "S08",
+    "case": "T1 one file altered (bids.json, 1 byte)",
+    "result": "failed",
+    "failed_steps": [
+      "5:file_hashes_match",
+      "9:anchor_event_matches",
+      "10:anchor_state_current"
+    ],
+    "step10": "contract maps this tender/version to a different digest"
+  },
+  {
+    "package": "S08",
+    "case": "T2 listed file removed (events.json)",
+    "result": "failed",
+    "failed_steps": [
+      "4:listed_files_present",
+      "9:anchor_event_matches",
+      "10:anchor_state_current"
+    ],
+    "step10": "contract maps this tender/version to a different digest"
+  },
+  {
+    "package": "S08",
+    "case": "T3 unlisted file added",
+    "result": "failed",
+    "failed_steps": [
+      "6:no_unlisted_files",
+      "9:anchor_event_matches",
+      "10:anchor_state_current"
+    ],
+    "step10": "contract maps this tender/version to a different digest"
+  },
+  {
+    "package": "S08",
+    "case": "T4 file altered and manifest rewritten to match",
+    "result": "failed",
+    "failed_steps": [
+      "9:anchor_event_matches",
+      "10:anchor_state_current"
+    ],
+    "step10": "contract maps this tender/version to a different digest"
+  },
+  {
+    "package": "S08",
+    "case": "T5 anchor tx of another package",
+    "result": "failed",
+    "failed_steps": [
+      "9:anchor_event_matches"
+    ],
+    "step10": "contract maps v1 to this digest; latest version v1"
+  },
+  {
+    "package": "S08",
+    "case": "T6 wrong anchor contract",
+    "result": "failed",
+    "failed_steps": [
+      "8:anchor_tx_valid",
+      "9:anchor_event_matches"
+    ],
+    "step10": "skipped"
+  },
+  {
+    "package": "S08",
+    "case": "T7 wrong chain expected (Coston2, 114)",
+    "result": "failed",
+    "failed_steps": [
+      "8:anchor_tx_valid",
+      "9:anchor_event_matches"
+    ],
+    "step10": "skipped"
+  },
+  {
+    "package": "S08",
+    "case": "T8 non-existent anchor tx",
+    "result": "failed",
+    "failed_steps": [
+      "8:anchor_tx_valid",
+      "9:anchor_event_matches"
+    ],
+    "step10": "skipped"
+  },
+  {
+    "package": "S09",
+    "case": "T0 unmodified",
+    "result": "passed",
+    "failed_steps": [],
+    "step10": "contract maps v1 to this digest; latest version v1"
+  },
+  {
+    "package": "S09",
+    "case": "T1 one file altered (bids.json, 1 byte)",
+    "result": "failed",
+    "failed_steps": [
+      "5:file_hashes_match",
+      "9:anchor_event_matches",
+      "10:anchor_state_current"
+    ],
+    "step10": "contract maps this tender/version to a different digest"
+  },
+  {
+    "package": "S09",
+    "case": "T2 listed file removed (events.json)",
+    "result": "failed",
+    "failed_steps": [
+      "4:listed_files_present",
+      "9:anchor_event_matches",
+      "10:anchor_state_current"
+    ],
+    "step10": "contract maps this tender/version to a different digest"
+  },
+  {
+    "package": "S09",
+    "case": "T3 unlisted file added",
+    "result": "failed",
+    "failed_steps": [
+      "6:no_unlisted_files",
+      "9:anchor_event_matches",
+      "10:anchor_state_current"
+    ],
+    "step10": "contract maps this tender/version to a different digest"
+  },
+  {
+    "package": "S09",
+    "case": "T4 file altered and manifest rewritten to match",
+    "result": "failed",
+    "failed_steps": [
+      "9:anchor_event_matches",
+      "10:anchor_state_current"
+    ],
+    "step10": "contract maps this tender/version to a different digest"
+  },
+  {
+    "package": "S09",
+    "case": "T5 anchor tx of another package",
+    "result": "failed",
+    "failed_steps": [
+      "9:anchor_event_matches"
+    ],
+    "step10": "contract maps v1 to this digest; latest version v1"
+  },
+  {
+    "package": "S09",
+    "case": "T6 wrong anchor contract",
+    "result": "failed",
+    "failed_steps": [
+      "8:anchor_tx_valid",
+      "9:anchor_event_matches"
+    ],
+    "step10": "skipped"
+  },
+  {
+    "package": "S09",
+    "case": "T7 wrong chain expected (Coston2, 114)",
+    "result": "failed",
+    "failed_steps": [
+      "8:anchor_tx_valid",
+      "9:anchor_event_matches"
+    ],
+    "step10": "skipped"
+  },
+  {
+    "package": "S09",
+    "case": "T8 non-existent anchor tx",
+    "result": "failed",
+    "failed_steps": [
+      "8:anchor_tx_valid",
+      "9:anchor_event_matches"
+    ],
+    "step10": "skipped"
+  },
+  {
+    "package": "S10_v1",
+    "case": "T0 unmodified",
+    "result": "passed",
+    "failed_steps": [],
+    "step10": "contract maps v1 to this digest; latest version v2 (superseded)"
+  },
+  {
+    "package": "S10_v1",
+    "case": "T1 one file altered (bids.json, 1 byte)",
+    "result": "failed",
+    "failed_steps": [
+      "5:file_hashes_match",
+      "9:anchor_event_matches",
+      "10:anchor_state_current"
+    ],
+    "step10": "contract maps this tender/version to a different digest"
+  },
+  {
+    "package": "S10_v1",
+    "case": "T2 listed file removed (events.json)",
+    "result": "failed",
+    "failed_steps": [
+      "4:listed_files_present",
+      "9:anchor_event_matches",
+      "10:anchor_state_current"
+    ],
+    "step10": "contract maps this tender/version to a different digest"
+  },
+  {
+    "package": "S10_v1",
+    "case": "T3 unlisted file added",
+    "result": "failed",
+    "failed_steps": [
+      "6:no_unlisted_files",
+      "9:anchor_event_matches",
+      "10:anchor_state_current"
+    ],
+    "step10": "contract maps this tender/version to a different digest"
+  },
+  {
+    "package": "S10_v1",
+    "case": "T4 file altered and manifest rewritten to match",
+    "result": "failed",
+    "failed_steps": [
+      "9:anchor_event_matches",
+      "10:anchor_state_current"
+    ],
+    "step10": "contract maps this tender/version to a different digest"
+  },
+  {
+    "package": "S10_v1",
+    "case": "T5 anchor tx of another package",
+    "result": "failed",
+    "failed_steps": [
+      "9:anchor_event_matches"
+    ],
+    "step10": "contract maps v1 to this digest; latest version v2 (superseded)"
+  },
+  {
+    "package": "S10_v1",
+    "case": "T6 wrong anchor contract",
+    "result": "failed",
+    "failed_steps": [
+      "8:anchor_tx_valid",
+      "9:anchor_event_matches"
+    ],
+    "step10": "skipped"
+  },
+  {
+    "package": "S10_v1",
+    "case": "T7 wrong chain expected (Coston2, 114)",
+    "result": "failed",
+    "failed_steps": [
+      "8:anchor_tx_valid",
+      "9:anchor_event_matches"
+    ],
+    "step10": "skipped"
+  },
+  {
+    "package": "S10_v1",
+    "case": "T8 non-existent anchor tx",
+    "result": "failed",
+    "failed_steps": [
+      "8:anchor_tx_valid",
+      "9:anchor_event_matches"
+    ],
+    "step10": "skipped"
+  },
+  {
+    "package": "S10_v2",
+    "case": "T0 unmodified",
+    "result": "passed",
+    "failed_steps": [],
+    "step10": "contract maps v2 to this digest; latest version v2"
+  },
+  {
+    "package": "S10_v2",
+    "case": "T1 one file altered (bids.json, 1 byte)",
+    "result": "failed",
+    "failed_steps": [
+      "5:file_hashes_match",
+      "9:anchor_event_matches",
+      "10:anchor_state_current"
+    ],
+    "step10": "contract maps this tender/version to a different digest"
+  },
+  {
+    "package": "S10_v2",
+    "case": "T2 listed file removed (events.json)",
+    "result": "failed",
+    "failed_steps": [
+      "4:listed_files_present",
+      "9:anchor_event_matches",
+      "10:anchor_state_current"
+    ],
+    "step10": "contract maps this tender/version to a different digest"
+  },
+  {
+    "package": "S10_v2",
+    "case": "T3 unlisted file added",
+    "result": "failed",
+    "failed_steps": [
+      "6:no_unlisted_files",
+      "9:anchor_event_matches",
+      "10:anchor_state_current"
+    ],
+    "step10": "contract maps this tender/version to a different digest"
+  },
+  {
+    "package": "S10_v2",
+    "case": "T4 file altered and manifest rewritten to match",
+    "result": "failed",
+    "failed_steps": [
+      "9:anchor_event_matches",
+      "10:anchor_state_current"
+    ],
+    "step10": "contract maps this tender/version to a different digest"
+  },
+  {
+    "package": "S10_v2",
+    "case": "T5 anchor tx of another package",
+    "result": "failed",
+    "failed_steps": [
+      "9:anchor_event_matches"
+    ],
+    "step10": "contract maps v2 to this digest; latest version v2"
+  },
+  {
+    "package": "S10_v2",
+    "case": "T6 wrong anchor contract",
+    "result": "failed",
+    "failed_steps": [
+      "8:anchor_tx_valid",
+      "9:anchor_event_matches"
+    ],
+    "step10": "skipped"
+  },
+  {
+    "package": "S10_v2",
+    "case": "T7 wrong chain expected (Coston2, 114)",
+    "result": "failed",
+    "failed_steps": [
+      "8:anchor_tx_valid",
+      "9:anchor_event_matches"
+    ],
+    "step10": "skipped"
+  },
+  {
+    "package": "S10_v2",
+    "case": "T8 non-existent anchor tx",
+    "result": "failed",
+    "failed_steps": [
+      "8:anchor_tx_valid",
+      "9:anchor_event_matches"
+    ],
+    "step10": "skipped"
+  }
+]

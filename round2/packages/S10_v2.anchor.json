@@ -1,0 +1,14 @@
+{
+  "scenario": "S10",
+  "tender_uuid": "52edd9c0-e025-472f-bb34-f8a7f90074a2",
+  "package_id": "de51a224-7447-4563-b9e5-45676f019e4e",
+  "package_version": 2,
+  "package_hash": "0xbc825b658975d90c0a3f9eafeb736170041e105eb351c04112035a44e3464f7e",
+  "manifest_hash": "0x0b7cffe2c56053c7d0e4cb653b3c2d7a2ae5deb51269078263d8fe4b9149378d",
+  "anchor_tx_hash": "0x98ac731bb97ba62bc8a659699ef87813408aac6619ed0498db63f30c096e938d",
+  "anchor_block_number": 321,
+  "anchor_contract_address": "0x2279B7A0a67DB372996a5FaB50D91eAA73d2eBe6",
+  "chain_id": 31337,
+  "rpc_url": "http://127.0.0.1:8545",
+  "procure_contract": "0x5FC8d32690cc91D4c39d9d3abcBD16989F875707"
+}
