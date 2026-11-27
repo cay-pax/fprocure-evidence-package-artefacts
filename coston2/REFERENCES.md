@@ -22,16 +22,18 @@
 
 Every transaction was re-checked read-only on 22 November 2026 (status 1). The exported archive of this package is not included here.
 
-## Research deployment, second contract version (evaluation pending)
+## Research deployment, second contract version
 
 | Item | Reference |
 |---|---|
-| F-Procure contract | 0xa00C4117D8061752970070e06Ab83670A497f4Fa |
-| FTSO price source | 0x6950bbD9B0213D3747D31708c9151e6b614442E9 |
-| Escrow contract | 0x2790568A6c732EeBfF896182041C5A43Ff1008F7 |
-| Evidence anchor (tender-bound) | 0x06f11C9aE17f9891C771DEEEb795D897D8329a45 |
+| F-Procure contract | 0x1B131C70BBcAbE1f56c2906109a4Aa1b071F7A43 |
+| FTSO price source | 0xf8aF109fCa717Ac2b5CBe802Dc64cFb3Fa41c6c5 |
+| Escrow contract | 0x4c9909C573fAb35E0a85Af67ab09b4193D8f0c9f |
+| Evidence anchor (tender-bound) | 0x6DeB87c638bD372202021D00017Df9240f340543 |
 | Owner (dedicated test account) | 0x33d87b3ac5460bd9dad7ef888da21e01d0315c4e |
-| Deployment blocks | 38,181,401–38,181,407 |
+| Deployment blocks | 38,218,958–38,218,962 |
+
+The live evaluation on this deployment (27 November 2026) is in [../coston2-live/](../coston2-live/). It replaces an earlier research deployment of the same version that was never evaluated.
 
 ## Package-to-anchor experiment, tender-bound anchor (ProofRails, 23 November 2026)
 
