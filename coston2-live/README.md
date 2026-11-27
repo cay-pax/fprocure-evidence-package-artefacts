@@ -48,7 +48,7 @@ S13 and S14 have no valid bid, so the tender closes without an award. S15 (commi
 ## Results
 
 - `results/scenario_results.json`: per-scenario outcome, on-chain award checks, escrow state, evidence package hash, anchor transaction and the platform's own verification checks.
-- `results/receipts.json`: status, block and log count for all 200 transactions the platform sent; every one succeeded.
+- `results/receipts.json`: status, block and log count for all 261 transactions referenced by a package, an anchor record or the scenario results (including evaluations, awards, escrow and the S19 passkey revocation); every one succeeded.
 - `results/tamper_results.json` and `results/tamper_summary.txt`: the standalone verifier (`../verifier/`, F-Procure commit `a8aac0a`) on each unmodified package and on 15 tampered or mismatched variants of each, verified against Coston2.
 
 Standalone verifier on Coston2 (all 13 steps against the public chain):

@@ -10,7 +10,7 @@ All tenders, vendors and amounts are synthetic. Rounds 1 and 2 were anchored on 
 |---|---|
 | [SPECIFICATION.md](SPECIFICATION.md) | Tender Evidence Package specification (schema 1.1.0, with the 1.0.0 differences) and the contract interfaces the verifier reads |
 | [verifier/](verifier/) | Standalone 13-step verifier, hardened release (v1.2), with 37 offline unit tests |
-| [coston2-live/](coston2-live/) | Coston2 live run, contracts v2: 22 scenarios (S01 to S19), 23 packages and anchor records, all 200 transaction receipts, scripts, results |
+| [coston2-live/](coston2-live/) | Coston2 live run, contracts v2: 22 scenarios (S01 to S19), 23 packages and anchor records, all 261 transaction receipts, scripts, results |
 | [round2/](round2/) | Schema 1.1.0: 12 scenarios, 14 packages and anchor records, the verifier exactly as evaluated, scripts, results (210 negative cases) |
 | [round1/](round1/) | Schema 1.0.0: 10 scenarios, 11 anchored packages plus 2 boundary-test packages, the ten-step verifier, scripts, results (88 negative cases) |
 | [coston2/REFERENCES.md](coston2/REFERENCES.md) | Coston2 contract and transaction references |
