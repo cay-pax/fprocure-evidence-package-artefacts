@@ -60,6 +60,17 @@ class VerifierTest(unittest.TestCase):
         self.assertFalse([r for r in res if r["status"] == "failed"], res)
         self.assertEqual(status(package(), "passkey_assertions_valid"), "passed")
 
+    def test_lifecycle_without_tx_references_fails_without_scanning_from_genesis(self):
+        calls, orig = [], v.rpc
+        v.rpc = lambda url, method, params: calls.append(method) or "0x2472775"
+        try:
+            ok, detail = v.lifecycle_check("http://rpc", PROCURE.lower(), {"contract_tender_id": TID}, [], [], 30)
+        finally:
+            v.rpc = orig
+        self.assertFalse(ok)
+        self.assertIn("--from-block", detail)
+        self.assertNotIn("eth_getLogs", calls)
+
     def test_missing_required_file_fails(self):
         def drop(files, content, manifest, extra): del content["governance_notes.json"]
         self.assertEqual(status(package(drop), "required_files_listed"), "failed")
@@ -91,6 +102,36 @@ class VerifierTest(unittest.TestCase):
         def sim_id(files, content, manifest, extra):
             content["tender.json"] = stable({"id": TENDER, "contract_tender_id": "SIM-" + TENDER})
         self.assertEqual(status(package(sim_id, offchain=True), "passkey_assertions_valid"), "passed")
+
+    def test_local_ledger_tender_uses_offchain_domain(self):
+        def local_id(files, content, manifest, extra):
+            content["tender.json"] = stable({"id": TENDER, "contract_tender_id": "LOCAL-" + TENDER})
+        self.assertEqual(status(package(local_id, offchain=True), "passkey_assertions_valid"), "passed")
+
+    def test_non_string_tender_id_is_reported_not_raised(self):
+        def num_id(files, content, manifest, extra):
+            content["tender.json"] = stable({"id": 42, "contract_tender_id": None})
+        self.assertNotEqual(status(package(num_id, offchain=True), "passkey_assertions_valid"), "passed")
+
+    def test_cli_refuses_oversized_archive_before_reading(self):
+        import os, subprocess, sys, tempfile
+        with tempfile.NamedTemporaryFile(suffix=".zip", delete=False) as f:
+            f.truncate(v.MAX_ARCHIVE + 1)
+        try:
+            r = subprocess.run([sys.executable, v.__file__, f.name], capture_output=True, text=True)
+            rj = subprocess.run([sys.executable, v.__file__, f.name, "--json"], capture_output=True, text=True)
+        finally:
+            os.unlink(f.name)
+        self.assertEqual(r.returncode, 1)
+        self.assertIn("not read", r.stdout)
+        self.assertEqual(rj.returncode, 1)
+        self.assertEqual(json.loads(rj.stdout)["result"], "failed")
+
+    def test_numeric_tender_id_fails_identity_on_chain(self):
+        def num_id(files, content, manifest, extra):
+            content["tender.json"] = stable({"id": 42, "contract_tender_id": 7})
+            manifest["tender_id"] = 42
+        self.assertEqual(status(package(num_id), "identity_consistent"), "failed")
 
     def test_unknown_schema_fails(self):
         def bump(files, content, manifest, extra): manifest["schema_version"] = "9.9.9"

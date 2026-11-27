@@ -29,7 +29,7 @@ Steps:
 Steps 1 to 8 and 13 need no network. Steps 9 to 12 are skipped when the
 RPC, contract or anchor transaction they need is not supplied.
 """
-import argparse, base64, hashlib, io, json, sys, urllib.request, zipfile
+import argparse, base64, hashlib, io, json, os, sys, urllib.request, zipfile
 from Crypto.Hash import keccak
 from cryptography.exceptions import InvalidSignature
 from cryptography.hazmat.primitives import hashes
@@ -51,6 +51,8 @@ FILES_V1 = sorted([
 # Real packages are a few hundred KB; this bounds what a hostile archive can inflate to.
 MAX_UNCOMPRESSED = 256 * 1024 * 1024
 MAX_ENTRY = 64 * 1024 * 1024
+# A ZIP file larger than this is refused before it is read into memory.
+MAX_ARCHIVE = MAX_UNCOMPRESSED + 16 * 1024 * 1024
 JSON_TYPES = {"tender.json": dict, "chain_context.json": dict, "bids.json": list, "events.json": list, "passkeys.json": list}
 REQUIRED_FILES = {"1.0.0": [n for n in FILES_V1 if n != "passkeys.json"], "1.1.0": sorted(FILES_V1 + ["chain_context.json"])}
 
@@ -148,7 +150,9 @@ def lifecycle_check(url, procure, t, bids, events, span, from_block=None, end_bl
     for h in sorted(x for x in hashes if isinstance(x, str) and x.startswith("0x") and len(x) == 66):
         rc = rpc(url, "eth_getTransactionReceipt", [h])
         if rc: blocks.append(int(rc["blockNumber"], 16))
-    start = from_block if from_block is not None else (min(blocks) if blocks else 0)
+    if from_block is None and not blocks:
+        return False, "the package records no transaction of this tender, so the event search has no start block: pass --from-block"
+    start = from_block if from_block is not None else min(blocks)
     end = end_block if end_block is not None else int(rpc(url, "eth_blockNumber", []), 16)
     logs = get_logs(url, procure, [[T_CREATED, T_COMMITTED, T_REVEALED, T_AWARDED], tid_topic], start, end, span)
     if not any(lg["topics"][0].lower() == T_CREATED for lg in logs):
@@ -314,6 +318,7 @@ def verify(zip_bytes, rpc_url=None, chain_id=None, contract=None, tx=None, tende
     t, cc = load("tender.json", {}), load("chain_context.json", {})
     bids, events, passkeys = load("bids.json", []), load("events.json", []), load("passkeys.json", [])
     if t.get("id") != m.get("tender_id"): probs.append("tender.json id differs from manifest")
+    if t.get("id") is not None and not isinstance(t.get("id"), str): probs.append("tender.json id is not a string")
     if tender and m.get("tender_id") != tender: probs.append("manifest tender_id differs from claimed tender")
     if version is not None and m.get("package_version") != version: probs.append("manifest version differs from claim")
     if chain_id is not None and cc.get("chain_id") not in (None, chain_id): probs.append(f"chain_context.json chain {cc.get('chain_id')} != expected {chain_id}")
@@ -342,11 +347,12 @@ def verify(zip_bytes, rpc_url=None, chain_id=None, contract=None, tx=None, tende
         rec(12, "onchain_lifecycle_matches", None, unpinned("--procure-contract", "procure") if rpc_url else "no RPC supplied")
 
     domain_procure = procure or cc.get("procure_contract")
-    tender_uuid = (t.get("id") or "").replace("-", "").lower()
+    tender_uuid = t.get("id") if isinstance(t.get("id"), str) else ""
+    tender_uuid = tender_uuid.replace("-", "").lower()
     ctid = t.get("contract_tender_id")
-    offchain = ctid is None or str(ctid).startswith("SIM-")
+    offchain = ctid is None or str(ctid).startswith(("SIM-", "LOCAL-"))
     if offchain and len(tender_uuid) == 32 and all(c in "0123456789abcdef" for c in tender_uuid):
-        # Simulated or On-Prem tender: offChainDomain binds bids to the tender UUID.
+        # Simulated or local-ledger tender: offChainDomain binds bids to the tender UUID.
         ok, detail = passkey_check(bids, passkeys, 0, "0x" + "00" * 20, int(tender_uuid, 16))
         rec(13, "passkey_assertions_valid", ok, detail + " (off-chain domain)")
     elif offchain or not str(ctid).isdigit():
@@ -410,6 +416,11 @@ if __name__ == "__main__":
     ap.add_argument("--tender"); ap.add_argument("--version", type=int)
     ap.add_argument("--json", action="store_true")
     a = ap.parse_args()
+    if os.path.getsize(a.zip) > MAX_ARCHIVE:
+        why = f"archive is larger than {MAX_ARCHIVE} bytes; not read"
+        if a.json: print(json.dumps({"package_digest": None, "result": "failed", "steps": [{"step": 1, "check": "package_digest", "status": "failed", "detail": why}]}, indent=2))
+        else: print(f"RESULT: FAILED ({why})")
+        sys.exit(1)
     digest, res = verify(open(a.zip, "rb").read(), a.rpc, a.chain_id, a.contract, a.tx, a.tender, a.version, a.procure_contract, a.log_span, a.from_block)
     failed = [r for r in res if r["status"] == "failed"]
     if a.json: print(json.dumps({"package_digest": digest, "result": "failed" if failed else "passed", "steps": res}, indent=2))
