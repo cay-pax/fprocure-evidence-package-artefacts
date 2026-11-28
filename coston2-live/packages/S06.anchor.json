@@ -1,0 +1,14 @@
+{
+  "scenario": "S06",
+  "tender_uuid": "0870abb8-1f4e-40bb-9124-733e87b3df2f",
+  "package_id": "10624639-0628-466b-bfb1-9c4f6e23f31c",
+  "package_version": 1,
+  "package_hash": "0xc96b7eaa240b35c658426043b1b11739a24f3b1be39eed1913ab53d8491944bd",
+  "manifest_hash": "0x547f0f631625a9fe270064b6149d7066025b0cfebdac6d1730dc93dfc4cab41f",
+  "anchor_tx_hash": "0x7048cbd616d7195fb4ce561379b01b1e2732e14a3b3dccd6a3f657e6c564ee0b",
+  "anchor_block_number": 38339591,
+  "anchor_contract_address": "0x6DeB87c638bD372202021D00017Df9240f340543",
+  "chain_id": 114,
+  "rpc_url": "https://coston2-api.flare.network/ext/C/rpc",
+  "procure_contract": "0x1B131C70BBcAbE1f56c2906109a4Aa1b071F7A43"
+}

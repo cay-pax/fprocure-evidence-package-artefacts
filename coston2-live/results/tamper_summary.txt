@@ -1,0 +1,41 @@
+T0 unmodified                                           runs=23 rejected=1 steps=['12:onchain_lifecycle_matches']
+T1 one file altered (bids.json, 1 byte)                 runs=23 rejected=23 steps=['6:file_hashes_match', '10:anchor_event_matches', '11:anchor_state_current', '12:onchain_lifecycle_matches']
+T2 listed file removed (events.json)                    runs=23 rejected=23 steps=['5:listed_files_present', '10:anchor_event_matches', '11:anchor_state_current', '12:onchain_lifecycle_matches']
+T3 unlisted file added                                  runs=23 rejected=23 steps=['7:no_unlisted_files', '10:anchor_event_matches', '11:anchor_state_current', '12:onchain_lifecycle_matches']
+T4 file altered and manifest rewritten to match         runs=23 rejected=23 steps=['10:anchor_event_matches', '11:anchor_state_current', '12:onchain_lifecycle_matches']
+T5 anchor tx of another package                         runs=23 rejected=23 steps=['10:anchor_event_matches', '12:onchain_lifecycle_matches']
+T6 wrong anchor contract                                runs=23 rejected=23 steps=['9:anchor_tx_valid', '10:anchor_event_matches', '12:onchain_lifecycle_matches']
+T7 wrong chain expected                                 runs=23 rejected=23 steps=['8:identity_consistent', '9:anchor_tx_valid', '10:anchor_event_matches', '12:onchain_lifecycle_matches', '13:passkey_assertions_valid']
+T8 non-existent anchor tx                               runs=23 rejected=23 steps=['9:anchor_tx_valid', '10:anchor_event_matches', '12:onchain_lifecycle_matches']
+T9 required file removed from archive and manifest      runs=23 rejected=23 steps=['4:required_files_listed', '10:anchor_event_matches', '11:anchor_state_current', '12:onchain_lifecycle_matches']
+T10 unknown schema version in manifest                  runs=23 rejected=23 steps=['3:manifest_valid']
+T11 bid commitment altered, manifest rewritten          runs=23 rejected=23 steps=['10:anchor_event_matches', '11:anchor_state_current', '12:onchain_lifecycle_matches', '13:passkey_assertions_valid']
+T12 revealed amount altered, manifest rewritten         runs=23 rejected=23 steps=['10:anchor_event_matches', '11:anchor_state_current', '12:onchain_lifecycle_matches']
+T13 passkey signature forged, manifest rewritten        runs=23 rejected=23 steps=['10:anchor_event_matches', '11:anchor_state_current', '12:onchain_lifecycle_matches', '13:passkey_assertions_valid']
+T14 reveal removed from bids.json, manifest rewritten   runs=23 rejected=23 steps=['10:anchor_event_matches', '11:anchor_state_current', '12:onchain_lifecycle_matches']
+T15 tender creation tx removed, manifest rewritten      runs=23 rejected=23 steps=['10:anchor_event_matches', '11:anchor_state_current', '12:onchain_lifecycle_matches']
+negative cases: 345, rejected: 345; unmodified passed: 22/23
+unmodified S11 failed: ['12:onchain_lifecycle_matches']
+T0 S01: passed; skipped steps none
+T0 S02: passed; skipped steps none
+T0 S03: passed; skipped steps none
+T0 S04: passed; skipped steps none
+T0 S05: passed; skipped steps none
+T0 S06: passed; skipped steps none
+T0 S07: passed; skipped steps none
+T0 S08: passed; skipped steps none
+T0 S09: passed; skipped steps none
+T0 S10_v1: passed; skipped steps none
+T0 S10_v2: passed; skipped steps none
+T0 S11: failed; skipped steps none
+T0 S12: passed; skipped steps none
+T0 S13: passed; skipped steps ['13']
+T0 S14: passed; skipped steps none
+T0 S15: passed; skipped steps none
+T0 S16: passed; skipped steps none
+T0 S17a: passed; skipped steps none
+T0 S17b: passed; skipped steps none
+T0 S17c: passed; skipped steps none
+T0 S18a: passed; skipped steps none
+T0 S18b: passed; skipped steps none
+T0 S19: passed; skipped steps none

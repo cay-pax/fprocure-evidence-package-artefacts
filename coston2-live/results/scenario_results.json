@@ -1,0 +1,1666 @@
+[
+  {
+    "scenario": "S01",
+    "title": "Single bidder, recorded escrow released",
+    "currency": "USD",
+    "settlement": "recorded",
+    "bidders": 1,
+    "tender_uuid": "f91df509-0b9d-45df-b0f3-ba9f0f256191",
+    "tender_ref": "EVAL-S01-635f3f",
+    "contract_tender_id": "2",
+    "reveals": [
+      "ALDER: ok -> HTTP 200"
+    ],
+    "evaluate": {
+      "http": 200,
+      "error": null
+    },
+    "award": {
+      "db_status": "Awarded",
+      "db_winner": "ALDER",
+      "db_winning_bid_minor": 4850000,
+      "chain_status": 5,
+      "chain_winner_matches_db": true,
+      "chain_winning_bid": "4850000",
+      "expected_winner": "ALDER",
+      "expected_bid": "4850000",
+      "matches_expected": true
+    },
+    "escrow_status": "released",
+    "evidence": {
+      "scenario": "S01",
+      "tender_uuid": "f91df509-0b9d-45df-b0f3-ba9f0f256191",
+      "package_id": "47d9eb00-bf11-4266-96b7-5efc9e93bea0",
+      "package_version": 1,
+      "package_hash": "0x557b77035ecc6b848d0b033d0d6f16eb9b15eb25151108a2beb5b6dd414c0db2",
+      "manifest_hash": "0xec75dd2e1737aa391c0d668cd04efbe8f1585e712218b060269ad9dfa139dd15",
+      "anchor_tx_hash": "0x8012ac08248b5077e920b7acaaffe9926d7ea40b985f95ea8a1c4ea034ced794",
+      "anchor_block_number": 38331024,
+      "anchor_contract_address": "0x6DeB87c638bD372202021D00017Df9240f340543",
+      "chain_id": 114,
+      "rpc_url": "https://coston2-api.flare.network/ext/C/rpc",
+      "procure_contract": "0x1B131C70BBcAbE1f56c2906109a4Aa1b071F7A43",
+      "app_verification_status": "passed",
+      "app_checks": [
+        "package_hash_recorded:passed",
+        "zip_downloadable:passed",
+        "zip_hash_matches:passed",
+        "manifest_present:passed",
+        "manifest_hash_matches:passed",
+        "file_hashes_valid:passed",
+        "required_files_listed:passed",
+        "no_unlisted_files:passed",
+        "tender_id_matches:passed",
+        "no_secrets_in_package:passed",
+        "anchor_chain_matches:passed",
+        "anchor_contract_matches:passed",
+        "anchor_tx_confirmed:passed",
+        "anchor_event_hash_matches:passed"
+      ],
+      "timings_ms": {
+        "generate": 293,
+        "anchor": 7492,
+        "app_verify": 816
+      },
+      "anchor_response": "anchored"
+    },
+    "unchanged_regeneration": {
+      "same_package": true,
+      "same_digest": true,
+      "unchanged_flag": true
+    },
+    "result": "completed"
+  },
+  {
+    "scenario": "S02",
+    "title": "Two bidders, recorded escrow released",
+    "currency": "EUR",
+    "settlement": "recorded",
+    "bidders": 2,
+    "tender_uuid": "cba8b785-34dd-4b3a-8aa3-d29efb475bac",
+    "tender_ref": "EVAL-S02-abe0ad",
+    "contract_tender_id": "24",
+    "reveals": [
+      "ALDER: ok -> HTTP 200",
+      "BIRCH: ok -> HTTP 200"
+    ],
+    "evaluate": {
+      "http": 200,
+      "error": null
+    },
+    "award": {
+      "db_status": "Awarded",
+      "db_winner": "ALDER",
+      "db_winning_bid_minor": 165000000,
+      "chain_status": 5,
+      "chain_winner_matches_db": true,
+      "chain_winning_bid": "165000000",
+      "expected_winner": "ALDER",
+      "expected_bid": "165000000",
+      "matches_expected": true
+    },
+    "escrow_status": "released",
+    "evidence": {
+      "scenario": "S02",
+      "tender_uuid": "cba8b785-34dd-4b3a-8aa3-d29efb475bac",
+      "package_id": "cc62d83c-ecb0-4046-8952-643d12c6b4e6",
+      "package_version": 1,
+      "package_hash": "0x873efef2126b1860ae257ebf3951dca41298f30362cfb8b5c977e8d46167fcc4",
+      "manifest_hash": "0x0f4f125833999db7198612c2528266a5b2fe97993011fa33899248d2f51a67c9",
+      "anchor_tx_hash": "0x1cf98ca9ce6914b056ce4e142afafaca65e763a6ea93da0a3b121bd99883e9cb",
+      "anchor_block_number": 38348578,
+      "anchor_contract_address": "0x6DeB87c638bD372202021D00017Df9240f340543",
+      "chain_id": 114,
+      "rpc_url": "https://coston2-api.flare.network/ext/C/rpc",
+      "procure_contract": "0x1B131C70BBcAbE1f56c2906109a4Aa1b071F7A43",
+      "app_verification_status": "passed",
+      "app_checks": [
+        "package_hash_recorded:passed",
+        "zip_downloadable:passed",
+        "zip_hash_matches:passed",
+        "manifest_present:passed",
+        "manifest_hash_matches:passed",
+        "file_hashes_valid:passed",
+        "required_files_listed:passed",
+        "no_unlisted_files:passed",
+        "tender_id_matches:passed",
+        "no_secrets_in_package:passed",
+        "anchor_chain_matches:passed",
+        "anchor_contract_matches:passed",
+        "anchor_tx_confirmed:passed",
+        "anchor_event_hash_matches:passed"
+      ],
+      "timings_ms": {
+        "generate": 254,
+        "anchor": 8541,
+        "app_verify": 845
+      },
+      "anchor_response": "anchored"
+    },
+    "unchanged_regeneration": {
+      "same_package": true,
+      "same_digest": true,
+      "unchanged_flag": true
+    },
+    "result": "completed"
+  },
+  {
+    "scenario": "S03",
+    "title": "Three bidders, no escrow step",
+    "currency": "GBP",
+    "settlement": "recorded",
+    "bidders": 3,
+    "tender_uuid": "c8a265ff-dedb-422a-991b-143d1b6a06d1",
+    "tender_ref": "EVAL-S03-635f3f",
+    "contract_tender_id": "4",
+    "reveals": [
+      "ALDER: ok -> HTTP 200",
+      "BIRCH: ok -> HTTP 200",
+      "CEDAR: ok -> HTTP 200"
+    ],
+    "evaluate": {
+      "http": 200,
+      "error": null
+    },
+    "award": {
+      "db_status": "Awarded",
+      "db_winner": "BIRCH",
+      "db_winning_bid_minor": 9800000,
+      "chain_status": 5,
+      "chain_winner_matches_db": true,
+      "chain_winning_bid": "9800000",
+      "expected_winner": "BIRCH",
+      "expected_bid": "9800000",
+      "matches_expected": true
+    },
+    "evidence": {
+      "scenario": "S03",
+      "tender_uuid": "c8a265ff-dedb-422a-991b-143d1b6a06d1",
+      "package_id": "565ab029-d914-4efd-a1c9-4ec62f3f0065",
+      "package_version": 1,
+      "package_hash": "0x9b93579defdaf5a5e0b5f5454bcc6c39708baaf4b0c48ef3a0b225a28978b257",
+      "manifest_hash": "0x7d410a2e856009166668dc1ccd02b72a6a38c93b6c8ca287a5420cbbdb33cf65",
+      "anchor_tx_hash": "0x73e6f7f9843151d226d30c575c6d64ce9e7a556f6d962978320d8c6c9bb66257",
+      "anchor_block_number": 38338208,
+      "anchor_contract_address": "0x6DeB87c638bD372202021D00017Df9240f340543",
+      "chain_id": 114,
+      "rpc_url": "https://coston2-api.flare.network/ext/C/rpc",
+      "procure_contract": "0x1B131C70BBcAbE1f56c2906109a4Aa1b071F7A43",
+      "app_verification_status": "passed",
+      "app_checks": [
+        "package_hash_recorded:passed",
+        "zip_downloadable:passed",
+        "zip_hash_matches:passed",
+        "manifest_present:passed",
+        "manifest_hash_matches:passed",
+        "file_hashes_valid:passed",
+        "required_files_listed:passed",
+        "no_unlisted_files:passed",
+        "tender_id_matches:passed",
+        "no_secrets_in_package:passed",
+        "anchor_chain_matches:passed",
+        "anchor_contract_matches:passed",
+        "anchor_tx_confirmed:passed",
+        "anchor_event_hash_matches:passed"
+      ],
+      "timings_ms": {
+        "generate": 229,
+        "anchor": 6723,
+        "app_verify": 784
+      },
+      "anchor_response": "anchored"
+    },
+    "unchanged_regeneration": {
+      "same_package": true,
+      "same_digest": true,
+      "unchanged_flag": true
+    },
+    "result": "completed"
+  },
+  {
+    "scenario": "S04",
+    "title": "Five bidders, recorded escrow released",
+    "currency": "KYD",
+    "settlement": "recorded",
+    "bidders": 5,
+    "tender_uuid": "88c1ae40-6261-4f77-95b1-828dcd3655b8",
+    "tender_ref": "EVAL-S04-635f3f",
+    "contract_tender_id": "5",
+    "reveals": [
+      "ALDER: ok -> HTTP 200",
+      "BIRCH: ok -> HTTP 200",
+      "CEDAR: ok -> HTTP 200",
+      "DOGWOOD: ok -> HTTP 200",
+      "ELM: ok -> HTTP 200"
+    ],
+    "evaluate": {
+      "http": 200,
+      "error": null
+    },
+    "award": {
+      "db_status": "Awarded",
+      "db_winner": "DOGWOOD",
+      "db_winning_bid_minor": 28790000,
+      "chain_status": 5,
+      "chain_winner_matches_db": true,
+      "chain_winning_bid": "28790000",
+      "expected_winner": "DOGWOOD",
+      "expected_bid": "28790000",
+      "matches_expected": true
+    },
+    "escrow_status": "released",
+    "evidence": {
+      "scenario": "S04",
+      "tender_uuid": "88c1ae40-6261-4f77-95b1-828dcd3655b8",
+      "package_id": "a37983b7-b645-4a09-8f05-0171eb46e3e4",
+      "package_version": 1,
+      "package_hash": "0xbf8a6726bf912a6df7466bcb9d0453cd34d29b05ba0fb8936ee4a78d38363bcb",
+      "manifest_hash": "0x5dc155daaaec4e1a5500443aaff53033350781b3496da2a17b0bf1b648e09509",
+      "anchor_tx_hash": "0xb776036c333f905f435ae3a6add73daa601b7270476c467740109c6ca8f3846d",
+      "anchor_block_number": 38338713,
+      "anchor_contract_address": "0x6DeB87c638bD372202021D00017Df9240f340543",
+      "chain_id": 114,
+      "rpc_url": "https://coston2-api.flare.network/ext/C/rpc",
+      "procure_contract": "0x1B131C70BBcAbE1f56c2906109a4Aa1b071F7A43",
+      "app_verification_status": "passed",
+      "app_checks": [
+        "package_hash_recorded:passed",
+        "zip_downloadable:passed",
+        "zip_hash_matches:passed",
+        "manifest_present:passed",
+        "manifest_hash_matches:passed",
+        "file_hashes_valid:passed",
+        "required_files_listed:passed",
+        "no_unlisted_files:passed",
+        "tender_id_matches:passed",
+        "no_secrets_in_package:passed",
+        "anchor_chain_matches:passed",
+        "anchor_contract_matches:passed",
+        "anchor_tx_confirmed:passed",
+        "anchor_event_hash_matches:passed"
+      ],
+      "timings_ms": {
+        "generate": 190,
+        "anchor": 7209,
+        "app_verify": 782
+      },
+      "anchor_response": "anchored"
+    },
+    "unchanged_regeneration": {
+      "same_package": true,
+      "same_digest": true,
+      "unchanged_flag": true
+    },
+    "result": "completed"
+  },
+  {
+    "scenario": "S05",
+    "title": "Tie on lowest bid (lower vendor ID wins)",
+    "currency": "USD",
+    "settlement": "recorded",
+    "bidders": 3,
+    "tender_uuid": "0add1f37-6bd5-4540-b973-159851477405",
+    "tender_ref": "EVAL-S05-635f3f",
+    "contract_tender_id": "6",
+    "reveals": [
+      "ALDER: ok -> HTTP 200",
+      "BIRCH: ok -> HTTP 200",
+      "CEDAR: ok -> HTTP 200"
+    ],
+    "evaluate": {
+      "http": 200,
+      "error": null
+    },
+    "award": {
+      "db_status": "Awarded",
+      "db_winner": "BIRCH",
+      "db_winning_bid_minor": 7500000,
+      "chain_status": 5,
+      "chain_winner_matches_db": true,
+      "chain_winning_bid": "7500000",
+      "expected_winner": "BIRCH",
+      "expected_bid": "7500000",
+      "matches_expected": true
+    },
+    "evidence": {
+      "scenario": "S05",
+      "tender_uuid": "0add1f37-6bd5-4540-b973-159851477405",
+      "package_id": "326c6e75-69c0-4159-abef-d3792057a13a",
+      "package_version": 1,
+      "package_hash": "0x59faff33501574c5b914e14c58082b3c2882c021c4ffb331c97f8dd886a360cb",
+      "manifest_hash": "0x395a743cbd7840c90a87f85fbb272a29e2497cf411e0a4dbc2818f0167b41ee9",
+      "anchor_tx_hash": "0x17e5004b88653f22f01831c036937bac3350de2cc611975d82454247ec2a5010",
+      "anchor_block_number": 38339188,
+      "anchor_contract_address": "0x6DeB87c638bD372202021D00017Df9240f340543",
+      "chain_id": 114,
+      "rpc_url": "https://coston2-api.flare.network/ext/C/rpc",
+      "procure_contract": "0x1B131C70BBcAbE1f56c2906109a4Aa1b071F7A43",
+      "app_verification_status": "passed",
+      "app_checks": [
+        "package_hash_recorded:passed",
+        "zip_downloadable:passed",
+        "zip_hash_matches:passed",
+        "manifest_present:passed",
+        "manifest_hash_matches:passed",
+        "file_hashes_valid:passed",
+        "required_files_listed:passed",
+        "no_unlisted_files:passed",
+        "tender_id_matches:passed",
+        "no_secrets_in_package:passed",
+        "anchor_chain_matches:passed",
+        "anchor_contract_matches:passed",
+        "anchor_tx_confirmed:passed",
+        "anchor_event_hash_matches:passed"
+      ],
+      "timings_ms": {
+        "generate": 193,
+        "anchor": 7011,
+        "app_verify": 760
+      },
+      "anchor_response": "anchored"
+    },
+    "unchanged_regeneration": {
+      "same_package": true,
+      "same_digest": true,
+      "unchanged_flag": true
+    },
+    "result": "completed"
+  },
+  {
+    "scenario": "S06",
+    "title": "Lowest bidder never reveals (excluded)",
+    "currency": "USD",
+    "settlement": "recorded",
+    "bidders": 3,
+    "tender_uuid": "0870abb8-1f4e-40bb-9124-733e87b3df2f",
+    "tender_ref": "EVAL-S06-635f3f",
+    "contract_tender_id": "7",
+    "reveals": [
+      "ALDER: not revealed",
+      "BIRCH: ok -> HTTP 200",
+      "CEDAR: ok -> HTTP 200"
+    ],
+    "evaluate": {
+      "http": 200,
+      "error": null
+    },
+    "award": {
+      "db_status": "Awarded",
+      "db_winner": "BIRCH",
+      "db_winning_bid_minor": 6100000,
+      "chain_status": 5,
+      "chain_winner_matches_db": true,
+      "chain_winning_bid": "6100000",
+      "expected_winner": "BIRCH",
+      "expected_bid": "6100000",
+      "matches_expected": true
+    },
+    "evidence": {
+      "scenario": "S06",
+      "tender_uuid": "0870abb8-1f4e-40bb-9124-733e87b3df2f",
+      "package_id": "10624639-0628-466b-bfb1-9c4f6e23f31c",
+      "package_version": 1,
+      "package_hash": "0xc96b7eaa240b35c658426043b1b11739a24f3b1be39eed1913ab53d8491944bd",
+      "manifest_hash": "0x547f0f631625a9fe270064b6149d7066025b0cfebdac6d1730dc93dfc4cab41f",
+      "anchor_tx_hash": "0x7048cbd616d7195fb4ce561379b01b1e2732e14a3b3dccd6a3f657e6c564ee0b",
+      "anchor_block_number": 38339591,
+      "anchor_contract_address": "0x6DeB87c638bD372202021D00017Df9240f340543",
+      "chain_id": 114,
+      "rpc_url": "https://coston2-api.flare.network/ext/C/rpc",
+      "procure_contract": "0x1B131C70BBcAbE1f56c2906109a4Aa1b071F7A43",
+      "app_verification_status": "passed",
+      "app_checks": [
+        "package_hash_recorded:passed",
+        "zip_downloadable:passed",
+        "zip_hash_matches:passed",
+        "manifest_present:passed",
+        "manifest_hash_matches:passed",
+        "file_hashes_valid:passed",
+        "required_files_listed:passed",
+        "no_unlisted_files:passed",
+        "tender_id_matches:passed",
+        "no_secrets_in_package:passed",
+        "anchor_chain_matches:passed",
+        "anchor_contract_matches:passed",
+        "anchor_tx_confirmed:passed",
+        "anchor_event_hash_matches:passed"
+      ],
+      "timings_ms": {
+        "generate": 200,
+        "anchor": 7570,
+        "app_verify": 1273
+      },
+      "anchor_response": "anchored"
+    },
+    "unchanged_regeneration": {
+      "same_package": true,
+      "same_digest": true,
+      "unchanged_flag": true
+    },
+    "result": "completed"
+  },
+  {
+    "scenario": "S07",
+    "title": "Reveal with wrong amount rejected",
+    "currency": "EUR",
+    "settlement": "recorded",
+    "bidders": 2,
+    "tender_uuid": "b54810a8-abd8-4e9c-87df-e843d7239152",
+    "tender_ref": "EVAL-S07-635f3f",
+    "contract_tender_id": "8",
+    "reveals": [
+      "ALDER: wrong -> HTTP 502 Blockchain transaction failed",
+      "BIRCH: ok -> HTTP 200"
+    ],
+    "evaluate": {
+      "http": 200,
+      "error": null
+    },
+    "award": {
+      "db_status": "Awarded",
+      "db_winner": "BIRCH",
+      "db_winning_bid_minor": 4200000,
+      "chain_status": 5,
+      "chain_winner_matches_db": true,
+      "chain_winning_bid": "4200000",
+      "expected_winner": "BIRCH",
+      "expected_bid": "4200000",
+      "matches_expected": true
+    },
+    "evidence": {
+      "scenario": "S07",
+      "tender_uuid": "b54810a8-abd8-4e9c-87df-e843d7239152",
+      "package_id": "eb57813f-899c-42f7-b6da-c50348af2854",
+      "package_version": 1,
+      "package_hash": "0xa277eaf7358dd6dedcb7581680eeb3cea350255cf47504fcbb047248a58750e8",
+      "manifest_hash": "0xc0498fe43725e2b308ac4956a3985318fb7e1908fab5aa6830cb198b819bbf07",
+      "anchor_tx_hash": "0xaa528a7353523f5dfe8ee9354e1da1a6c7cc104c72d6906d20c082e17684ed94",
+      "anchor_block_number": 38340044,
+      "anchor_contract_address": "0x6DeB87c638bD372202021D00017Df9240f340543",
+      "chain_id": 114,
+      "rpc_url": "https://coston2-api.flare.network/ext/C/rpc",
+      "procure_contract": "0x1B131C70BBcAbE1f56c2906109a4Aa1b071F7A43",
+      "app_verification_status": "passed",
+      "app_checks": [
+        "package_hash_recorded:passed",
+        "zip_downloadable:passed",
+        "zip_hash_matches:passed",
+        "manifest_present:passed",
+        "manifest_hash_matches:passed",
+        "file_hashes_valid:passed",
+        "required_files_listed:passed",
+        "no_unlisted_files:passed",
+        "tender_id_matches:passed",
+        "no_secrets_in_package:passed",
+        "anchor_chain_matches:passed",
+        "anchor_contract_matches:passed",
+        "anchor_tx_confirmed:passed",
+        "anchor_event_hash_matches:passed"
+      ],
+      "timings_ms": {
+        "generate": 188,
+        "anchor": 7014,
+        "app_verify": 1164
+      },
+      "anchor_response": "anchored"
+    },
+    "unchanged_regeneration": {
+      "same_package": true,
+      "same_digest": true,
+      "unchanged_flag": true
+    },
+    "result": "completed"
+  },
+  {
+    "scenario": "S08",
+    "title": "FLR escrow funded by buyer and released",
+    "currency": "USD",
+    "settlement": "flr",
+    "bidders": 2,
+    "tender_uuid": "8b393036-28bd-41a6-afd9-be8ce1bb4ad3",
+    "tender_ref": "EVAL-S08-abe0ad",
+    "contract_tender_id": "25",
+    "reveals": [
+      "ALDER: ok -> HTTP 200",
+      "BIRCH: ok -> HTTP 200"
+    ],
+    "evaluate": {
+      "http": 200,
+      "error": null
+    },
+    "award": {
+      "db_status": "Awarded",
+      "db_winner": "ALDER",
+      "db_winning_bid_minor": 4,
+      "chain_status": 5,
+      "chain_winner_matches_db": true,
+      "chain_winning_bid": "4",
+      "expected_winner": "ALDER",
+      "expected_bid": "4",
+      "matches_expected": true
+    },
+    "ftso": {
+      "voting_round": 1526249,
+      "value": 5030,
+      "decimals": 6
+    },
+    "flr_amount_wei": "7952286282306163022",
+    "escrow_status": "released",
+    "evidence": {
+      "scenario": "S08",
+      "tender_uuid": "8b393036-28bd-41a6-afd9-be8ce1bb4ad3",
+      "package_id": "2b90ed4f-ea15-461e-9650-6be98ecda358",
+      "package_version": 1,
+      "package_hash": "0x0ddb09f7a3b55a013df3873109966db3e4f525590ea04ac7c96ea90fc7f6383e",
+      "manifest_hash": "0xd000d488498caea1cd80216b72d20de663a3d1e6b114cb6e8a038d2035d584af",
+      "anchor_tx_hash": "0xd40f4de1d2663cc3e18e0081e1a47da31ff9694a6a78160955959dfab1f4a3dd",
+      "anchor_block_number": 38349064,
+      "anchor_contract_address": "0x6DeB87c638bD372202021D00017Df9240f340543",
+      "chain_id": 114,
+      "rpc_url": "https://coston2-api.flare.network/ext/C/rpc",
+      "procure_contract": "0x1B131C70BBcAbE1f56c2906109a4Aa1b071F7A43",
+      "app_verification_status": "passed",
+      "app_checks": [
+        "package_hash_recorded:passed",
+        "zip_downloadable:passed",
+        "zip_hash_matches:passed",
+        "manifest_present:passed",
+        "manifest_hash_matches:passed",
+        "file_hashes_valid:passed",
+        "required_files_listed:passed",
+        "no_unlisted_files:passed",
+        "tender_id_matches:passed",
+        "no_secrets_in_package:passed",
+        "anchor_chain_matches:passed",
+        "anchor_contract_matches:passed",
+        "anchor_tx_confirmed:passed",
+        "anchor_event_hash_matches:passed"
+      ],
+      "timings_ms": {
+        "generate": 194,
+        "anchor": 7105,
+        "app_verify": 803
+      },
+      "anchor_response": "anchored"
+    },
+    "unchanged_regeneration": {
+      "same_package": true,
+      "same_digest": true,
+      "unchanged_flag": true
+    },
+    "result": "completed"
+  },
+  {
+    "scenario": "S09",
+    "title": "Recorded escrow refunded with winner's passkey approval",
+    "currency": "USD",
+    "settlement": "recorded",
+    "bidders": 2,
+    "tender_uuid": "7d5914d0-2c69-4eac-a617-1125e70d49fd",
+    "tender_ref": "EVAL-S09-635f3f",
+    "contract_tender_id": "10",
+    "reveals": [
+      "ALDER: ok -> HTTP 200",
+      "BIRCH: ok -> HTTP 200"
+    ],
+    "evaluate": {
+      "http": 200,
+      "error": null
+    },
+    "award": {
+      "db_status": "Awarded",
+      "db_winner": "BIRCH",
+      "db_winning_bid_minor": 1975000,
+      "chain_status": 5,
+      "chain_winner_matches_db": true,
+      "chain_winning_bid": "1975000",
+      "expected_winner": "BIRCH",
+      "expected_bid": "1975000",
+      "matches_expected": true
+    },
+    "escrow_status": "refunded",
+    "evidence": {
+      "scenario": "S09",
+      "tender_uuid": "7d5914d0-2c69-4eac-a617-1125e70d49fd",
+      "package_id": "3650acaf-6f9b-495e-b662-082e5d4f36d4",
+      "package_version": 1,
+      "package_hash": "0x30820d9cd9db160c49d49f51555bf3daa94ab2a6cd25ab0a83cf04e16a832b68",
+      "manifest_hash": "0x41412e36548e6c072774bbe1f22e6357e23f9eb3b2efe4d6c30b22246e496a0d",
+      "anchor_tx_hash": "0x8448872d0f0818e26228fb745efd688db82b4626d8bf44f08372e4e92a859282",
+      "anchor_block_number": 38340898,
+      "anchor_contract_address": "0x6DeB87c638bD372202021D00017Df9240f340543",
+      "chain_id": 114,
+      "rpc_url": "https://coston2-api.flare.network/ext/C/rpc",
+      "procure_contract": "0x1B131C70BBcAbE1f56c2906109a4Aa1b071F7A43",
+      "app_verification_status": "passed",
+      "app_checks": [
+        "package_hash_recorded:passed",
+        "zip_downloadable:passed",
+        "zip_hash_matches:passed",
+        "manifest_present:passed",
+        "manifest_hash_matches:passed",
+        "file_hashes_valid:passed",
+        "required_files_listed:passed",
+        "no_unlisted_files:passed",
+        "tender_id_matches:passed",
+        "no_secrets_in_package:passed",
+        "anchor_chain_matches:passed",
+        "anchor_contract_matches:passed",
+        "anchor_tx_confirmed:passed",
+        "anchor_event_hash_matches:passed"
+      ],
+      "timings_ms": {
+        "generate": 182,
+        "anchor": 12186,
+        "app_verify": 827
+      },
+      "anchor_response": "anchored"
+    },
+    "unchanged_regeneration": {
+      "same_package": true,
+      "same_digest": true,
+      "unchanged_flag": true
+    },
+    "result": "completed"
+  },
+  {
+    "scenario": "S10",
+    "title": "Evidence regenerated after escrow (v1 then v2 anchored)",
+    "currency": "GBP",
+    "settlement": "recorded",
+    "bidders": 2,
+    "tender_uuid": "84ec0205-8e84-4bf2-b470-c4401532dd88",
+    "tender_ref": "EVAL-S10-635f3f",
+    "contract_tender_id": "11",
+    "reveals": [
+      "CEDAR: ok -> HTTP 200",
+      "DOGWOOD: ok -> HTTP 200"
+    ],
+    "evaluate": {
+      "http": 200,
+      "error": null
+    },
+    "award": {
+      "db_status": "Awarded",
+      "db_winner": "DOGWOOD",
+      "db_winning_bid_minor": 945000,
+      "chain_status": 5,
+      "chain_winner_matches_db": true,
+      "chain_winning_bid": "945000",
+      "expected_winner": "DOGWOOD",
+      "expected_bid": "945000",
+      "matches_expected": true
+    },
+    "evidence_v1": {
+      "scenario": "S10",
+      "tender_uuid": "84ec0205-8e84-4bf2-b470-c4401532dd88",
+      "package_id": "e3ba26b5-8699-45a1-9249-d39a69aa907d",
+      "package_version": 1,
+      "package_hash": "0x0a0afb4cdc6dfff0bc82685f6a40c2b9468d267820a171d90c2d76eecd840892",
+      "manifest_hash": "0x77cf7a08c591e23469fd9c86b4ffa6a9c9ac92c02f909d0e03d127e2d7eb5ed3",
+      "anchor_tx_hash": "0xdd93fe4129f2dae2d77f49c02bda30bea4e333dd7c9af85a32d9d1c903b03064",
+      "anchor_block_number": 38341373,
+      "anchor_contract_address": "0x6DeB87c638bD372202021D00017Df9240f340543",
+      "chain_id": 114,
+      "rpc_url": "https://coston2-api.flare.network/ext/C/rpc",
+      "procure_contract": "0x1B131C70BBcAbE1f56c2906109a4Aa1b071F7A43",
+      "app_verification_status": "passed",
+      "app_checks": [
+        "package_hash_recorded:passed",
+        "zip_downloadable:passed",
+        "zip_hash_matches:passed",
+        "manifest_present:passed",
+        "manifest_hash_matches:passed",
+        "file_hashes_valid:passed",
+        "required_files_listed:passed",
+        "no_unlisted_files:passed",
+        "tender_id_matches:passed",
+        "no_secrets_in_package:passed",
+        "anchor_chain_matches:passed",
+        "anchor_contract_matches:passed",
+        "anchor_tx_confirmed:passed",
+        "anchor_event_hash_matches:passed"
+      ],
+      "timings_ms": {
+        "generate": 194,
+        "anchor": 7546,
+        "app_verify": 735
+      },
+      "anchor_response": "anchored"
+    },
+    "escrow_status": "released",
+    "evidence_v2": {
+      "scenario": "S10",
+      "tender_uuid": "84ec0205-8e84-4bf2-b470-c4401532dd88",
+      "package_id": "3131c3b0-ba76-43bf-974b-79b0b5151fe9",
+      "package_version": 2,
+      "package_hash": "0xb1903ea3268072557d7b4280868ec65c6597f8c58308ef23e0d24da852e9ca41",
+      "manifest_hash": "0x32d2b0c7e8b064f9f2ad2c02302c656381aaf4880a4cd2e9111720fb026735c3",
+      "anchor_tx_hash": "0x0f05f468e73b50f1c2bdf7ba8e8e4dbc4503626fc1cbc8fbc52c67f6a4a90ba4",
+      "anchor_block_number": 38341381,
+      "anchor_contract_address": "0x6DeB87c638bD372202021D00017Df9240f340543",
+      "chain_id": 114,
+      "rpc_url": "https://coston2-api.flare.network/ext/C/rpc",
+      "procure_contract": "0x1B131C70BBcAbE1f56c2906109a4Aa1b071F7A43",
+      "app_verification_status": "passed",
+      "app_checks": [
+        "package_hash_recorded:passed",
+        "zip_downloadable:passed",
+        "zip_hash_matches:passed",
+        "manifest_present:passed",
+        "manifest_hash_matches:passed",
+        "file_hashes_valid:passed",
+        "required_files_listed:passed",
+        "no_unlisted_files:passed",
+        "tender_id_matches:passed",
+        "no_secrets_in_package:passed",
+        "anchor_chain_matches:passed",
+        "anchor_contract_matches:passed",
+        "anchor_tx_confirmed:passed",
+        "anchor_event_hash_matches:passed"
+      ],
+      "timings_ms": {
+        "generate": 88,
+        "anchor": 7120,
+        "app_verify": 648
+      },
+      "anchor_response": "anchored"
+    },
+    "unchanged_regeneration": {
+      "same_package": true,
+      "same_digest": true,
+      "unchanged_flag": true
+    },
+    "anchor_rule_checks": {
+      "re-anchor v1 hash as v3": "reverted: execution reverted: \"EvidenceAnchor: hash already anchored\" (action=\"call\", data=\"0x08c379",
+      "anchor new hash as v1 (older)": "reverted: execution reverted: \"EvidenceAnchor: bad version\" (action=\"call\", data=\"0x08c379a000000000",
+      "anchor v2 hash again as v2": "reverted: execution reverted: \"EvidenceAnchor: bad version\" (action=\"call\", data=\"0x08c379a000000000"
+    },
+    "result": "completed"
+  },
+  {
+    "scenario": "S11",
+    "title": "Losing reveal deleted from the database before package generation",
+    "currency": "USD",
+    "settlement": "recorded",
+    "bidders": 3,
+    "tender_uuid": "634ce78c-9b80-4b1f-9419-d41d84d1f3d3",
+    "tender_ref": "EVAL-S11-635f3f",
+    "contract_tender_id": "12",
+    "reveals": [
+      "ALDER: ok -> HTTP 200",
+      "BIRCH: ok -> HTTP 200",
+      "CEDAR: ok -> HTTP 200"
+    ],
+    "evaluate": {
+      "http": 200,
+      "error": null
+    },
+    "award": {
+      "db_status": "Awarded",
+      "db_winner": "BIRCH",
+      "db_winning_bid_minor": 6600000,
+      "chain_status": 5,
+      "chain_winner_matches_db": true,
+      "chain_winning_bid": "6600000",
+      "expected_winner": "BIRCH",
+      "expected_bid": "6600000",
+      "matches_expected": true
+    },
+    "omitted": {
+      "bid_id": "80e1db25-b5a3-48d6-9072-77312b0de988",
+      "vendor": "ALDER",
+      "reveal_events_deleted": 1
+    },
+    "evidence": {
+      "scenario": "S11",
+      "tender_uuid": "634ce78c-9b80-4b1f-9419-d41d84d1f3d3",
+      "package_id": "10ae3fd5-5145-4830-b09e-e9ba95a1f73f",
+      "package_version": 1,
+      "package_hash": "0xaba9d44cdfd62394a24e74b0a1be6e8811e01468cf2c77e53bf118c29f889517",
+      "manifest_hash": "0x60ccce4e16b70e6a6dcee0d8ec04d5103f6d8e2b32be3f1d4559e8b492b80372",
+      "anchor_tx_hash": "0x771c18208c2e11deb364687639108db581084ef10afd8db3e64437a3f2f0e8f1",
+      "anchor_block_number": 38341819,
+      "anchor_contract_address": "0x6DeB87c638bD372202021D00017Df9240f340543",
+      "chain_id": 114,
+      "rpc_url": "https://coston2-api.flare.network/ext/C/rpc",
+      "procure_contract": "0x1B131C70BBcAbE1f56c2906109a4Aa1b071F7A43",
+      "app_verification_status": "passed",
+      "app_checks": [
+        "package_hash_recorded:passed",
+        "zip_downloadable:passed",
+        "zip_hash_matches:passed",
+        "manifest_present:passed",
+        "manifest_hash_matches:passed",
+        "file_hashes_valid:passed",
+        "required_files_listed:passed",
+        "no_unlisted_files:passed",
+        "tender_id_matches:passed",
+        "no_secrets_in_package:passed",
+        "anchor_chain_matches:passed",
+        "anchor_contract_matches:passed",
+        "anchor_tx_confirmed:passed",
+        "anchor_event_hash_matches:passed"
+      ],
+      "timings_ms": {
+        "generate": 242,
+        "anchor": 2346,
+        "app_verify": 1185
+      },
+      "anchor_response": "anchored"
+    },
+    "unchanged_regeneration": {
+      "same_package": true,
+      "same_digest": true,
+      "unchanged_flag": true
+    },
+    "result": "completed"
+  },
+  {
+    "scenario": "S12",
+    "title": "Governance note deleted before package generation (off-chain only)",
+    "currency": "EUR",
+    "settlement": "recorded",
+    "bidders": 2,
+    "tender_uuid": "c9a39691-9f6b-4aa0-9957-e8e286cb54b1",
+    "tender_ref": "EVAL-S12-635f3f",
+    "contract_tender_id": "13",
+    "reveals": [
+      "DOGWOOD: ok -> HTTP 200",
+      "ELM: ok -> HTTP 200"
+    ],
+    "evaluate": {
+      "http": 200,
+      "error": null
+    },
+    "award": {
+      "db_status": "Awarded",
+      "db_winner": "ELM",
+      "db_winning_bid_minor": 1420000,
+      "chain_status": 5,
+      "chain_winner_matches_db": true,
+      "chain_winning_bid": "1420000",
+      "expected_winner": "ELM",
+      "expected_bid": "1420000",
+      "matches_expected": true
+    },
+    "omitted": {
+      "governance_note_id": "10b7e6c4-bcfb-4580-94e4-e74837a576ab"
+    },
+    "evidence": {
+      "scenario": "S12",
+      "tender_uuid": "c9a39691-9f6b-4aa0-9957-e8e286cb54b1",
+      "package_id": "cb674378-65b9-47d6-b283-e1c179a15335",
+      "package_version": 1,
+      "package_hash": "0x3af073a43be94561a2418c58d286ee8a45e759ae0051e018fef9df3756165802",
+      "manifest_hash": "0xd878d7adf9a1bfbd197369514c407b07ee33e13bbe451c96d1918857ed49f0f2",
+      "anchor_tx_hash": "0xe6df24093d3428f41f54a7a8a6c5d9548081ed8bb40347fc26a0548ac881abe2",
+      "anchor_block_number": 38342278,
+      "anchor_contract_address": "0x6DeB87c638bD372202021D00017Df9240f340543",
+      "chain_id": 114,
+      "rpc_url": "https://coston2-api.flare.network/ext/C/rpc",
+      "procure_contract": "0x1B131C70BBcAbE1f56c2906109a4Aa1b071F7A43",
+      "app_verification_status": "passed",
+      "app_checks": [
+        "package_hash_recorded:passed",
+        "zip_downloadable:passed",
+        "zip_hash_matches:passed",
+        "manifest_present:passed",
+        "manifest_hash_matches:passed",
+        "file_hashes_valid:passed",
+        "required_files_listed:passed",
+        "no_unlisted_files:passed",
+        "tender_id_matches:passed",
+        "no_secrets_in_package:passed",
+        "anchor_chain_matches:passed",
+        "anchor_contract_matches:passed",
+        "anchor_tx_confirmed:passed",
+        "anchor_event_hash_matches:passed"
+      ],
+      "timings_ms": {
+        "generate": 204,
+        "anchor": 6761,
+        "app_verify": 1203
+      },
+      "anchor_response": "anchored"
+    },
+    "unchanged_regeneration": {
+      "same_package": true,
+      "same_digest": true,
+      "unchanged_flag": true
+    },
+    "result": "completed"
+  },
+  {
+    "scenario": "S13",
+    "title": "No bids submitted (no award)",
+    "currency": "USD",
+    "settlement": "recorded",
+    "bidders": 0,
+    "tender_uuid": "205f52c4-9e00-4231-911e-2e4d7a36eecb",
+    "tender_ref": "EVAL-S13-635f3f",
+    "contract_tender_id": "14",
+    "reveals": [],
+    "evaluate": {
+      "http": 400,
+      "error": "No valid revealed bids to evaluate"
+    },
+    "award": {
+      "db_status": "RevealClosed",
+      "chain_status": 3,
+      "chain_winner": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    "evidence": {
+      "scenario": "S13",
+      "tender_uuid": "205f52c4-9e00-4231-911e-2e4d7a36eecb",
+      "package_id": "44f33dac-9d74-49e3-aaa5-df4465d241b0",
+      "package_version": 1,
+      "package_hash": "0x9bc09270fe22824db62f52b92bb31f36b28d3d3c69edf303797bd10bd8e611fd",
+      "manifest_hash": "0xdda0fca9dc7eba2cd0e673a3df9b5caee1582b68a75d000ccebe92d4e196a457",
+      "anchor_tx_hash": "0x4542af785f3c87ffb024dd441b9c27a06708257a1492e55ebf8bffdda9acb64b",
+      "anchor_block_number": 38342761,
+      "anchor_contract_address": "0x6DeB87c638bD372202021D00017Df9240f340543",
+      "chain_id": 114,
+      "rpc_url": "https://coston2-api.flare.network/ext/C/rpc",
+      "procure_contract": "0x1B131C70BBcAbE1f56c2906109a4Aa1b071F7A43",
+      "app_verification_status": "passed",
+      "app_checks": [
+        "package_hash_recorded:passed",
+        "zip_downloadable:passed",
+        "zip_hash_matches:passed",
+        "manifest_present:passed",
+        "manifest_hash_matches:passed",
+        "file_hashes_valid:passed",
+        "required_files_listed:passed",
+        "no_unlisted_files:passed",
+        "tender_id_matches:passed",
+        "no_secrets_in_package:passed",
+        "anchor_chain_matches:passed",
+        "anchor_contract_matches:passed",
+        "anchor_tx_confirmed:passed",
+        "anchor_event_hash_matches:passed"
+      ],
+      "timings_ms": {
+        "generate": 197,
+        "anchor": 8606,
+        "app_verify": 811
+      },
+      "anchor_response": "anchored"
+    },
+    "unchanged_regeneration": {
+      "same_package": true,
+      "same_digest": true,
+      "unchanged_flag": true
+    },
+    "result": "completed"
+  },
+  {
+    "scenario": "S14",
+    "title": "Bids committed but none revealed (no valid bid)",
+    "currency": "EUR",
+    "settlement": "recorded",
+    "bidders": 2,
+    "tender_uuid": "57dd5f10-fbc9-45aa-bda9-b352614d05f4",
+    "tender_ref": "EVAL-S14-635f3f",
+    "contract_tender_id": "15",
+    "reveals": [
+      "ALDER: not revealed",
+      "BIRCH: not revealed"
+    ],
+    "evaluate": {
+      "http": 400,
+      "error": "No valid revealed bids to evaluate"
+    },
+    "award": {
+      "db_status": "RevealClosed",
+      "chain_status": 3,
+      "chain_winner": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    "evidence": {
+      "scenario": "S14",
+      "tender_uuid": "57dd5f10-fbc9-45aa-bda9-b352614d05f4",
+      "package_id": "eba395ae-66bd-4a11-8079-03abac5d714c",
+      "package_version": 1,
+      "package_hash": "0xa8ce066df3add73ba963d87d95e48abfde7e2ce1058f38d8c7172aac72e8ed01",
+      "manifest_hash": "0xc52d93dc9b27cff722c44ae405bd84a28432925f1a44e8ff6fbdbc67b76887c7",
+      "anchor_tx_hash": "0x5479fdbe97a76a0b2fb5ada70b21e7bd70b2a2fd9e2085679c709caf25ea09b1",
+      "anchor_block_number": 38343239,
+      "anchor_contract_address": "0x6DeB87c638bD372202021D00017Df9240f340543",
+      "chain_id": 114,
+      "rpc_url": "https://coston2-api.flare.network/ext/C/rpc",
+      "procure_contract": "0x1B131C70BBcAbE1f56c2906109a4Aa1b071F7A43",
+      "app_verification_status": "passed",
+      "app_checks": [
+        "package_hash_recorded:passed",
+        "zip_downloadable:passed",
+        "zip_hash_matches:passed",
+        "manifest_present:passed",
+        "manifest_hash_matches:passed",
+        "file_hashes_valid:passed",
+        "required_files_listed:passed",
+        "no_unlisted_files:passed",
+        "tender_id_matches:passed",
+        "no_secrets_in_package:passed",
+        "anchor_chain_matches:passed",
+        "anchor_contract_matches:passed",
+        "anchor_tx_confirmed:passed",
+        "anchor_event_hash_matches:passed"
+      ],
+      "timings_ms": {
+        "generate": 193,
+        "anchor": 7887,
+        "app_verify": 758
+      },
+      "anchor_response": "anchored"
+    },
+    "unchanged_regeneration": {
+      "same_package": true,
+      "same_digest": true,
+      "unchanged_flag": true
+    },
+    "result": "completed"
+  },
+  {
+    "scenario": "S15",
+    "title": "Commit signed with another vendor's passkey rejected",
+    "currency": "USD",
+    "settlement": "recorded",
+    "bidders": 2,
+    "tender_uuid": "a4617a72-0a9a-4df6-882c-86762794e985",
+    "tender_ref": "EVAL-S15-635f3f",
+    "contract_tender_id": "16",
+    "cross_signature": {
+      "vendor": "ALDER",
+      "signer": "BIRCH",
+      "http": 403,
+      "error": "Passkey not registered or not active",
+      "contract_static_call": "reverted: execution reverted: \"Invalid vendor signature\" (action=\"call\", data=\"0x08c379a000000000000"
+    },
+    "reveals": [
+      "ALDER: ok -> HTTP 200",
+      "CEDAR: ok -> HTTP 200"
+    ],
+    "evaluate": {
+      "http": 200,
+      "error": null
+    },
+    "award": {
+      "db_status": "Awarded",
+      "db_winner": "CEDAR",
+      "db_winning_bid_minor": 3125000,
+      "chain_status": 5,
+      "chain_winner_matches_db": true,
+      "chain_winning_bid": "3125000",
+      "expected_winner": "CEDAR",
+      "expected_bid": "3125000",
+      "matches_expected": true
+    },
+    "evidence": {
+      "scenario": "S15",
+      "tender_uuid": "a4617a72-0a9a-4df6-882c-86762794e985",
+      "package_id": "2edba69e-660c-4bf3-a2e4-6e8b53ce285d",
+      "package_version": 1,
+      "package_hash": "0xfbc0c869c2b5bfef9b030a79919d4a759333db27c766bdb926ea162271d12f7a",
+      "manifest_hash": "0xbc6c4803bb619e8e1e4f0aea61b5cbfe34cdc011f40c499ba3ce5c3d453f4d92",
+      "anchor_tx_hash": "0x26d0bb659ae677177fb2b5afd1aec0f7ffe02a34ac5e515dd258dc3b34432f74",
+      "anchor_block_number": 38343683,
+      "anchor_contract_address": "0x6DeB87c638bD372202021D00017Df9240f340543",
+      "chain_id": 114,
+      "rpc_url": "https://coston2-api.flare.network/ext/C/rpc",
+      "procure_contract": "0x1B131C70BBcAbE1f56c2906109a4Aa1b071F7A43",
+      "app_verification_status": "passed",
+      "app_checks": [
+        "package_hash_recorded:passed",
+        "zip_downloadable:passed",
+        "zip_hash_matches:passed",
+        "manifest_present:passed",
+        "manifest_hash_matches:passed",
+        "file_hashes_valid:passed",
+        "required_files_listed:passed",
+        "no_unlisted_files:passed",
+        "tender_id_matches:passed",
+        "no_secrets_in_package:passed",
+        "anchor_chain_matches:passed",
+        "anchor_contract_matches:passed",
+        "anchor_tx_confirmed:passed",
+        "anchor_event_hash_matches:passed"
+      ],
+      "timings_ms": {
+        "generate": 194,
+        "anchor": 3709,
+        "app_verify": 1167
+      },
+      "anchor_response": "anchored"
+    },
+    "unchanged_regeneration": {
+      "same_package": true,
+      "same_digest": true,
+      "unchanged_flag": true
+    },
+    "result": "completed"
+  },
+  {
+    "scenario": "S16",
+    "title": "Second commit by the same vendor rejected",
+    "currency": "GBP",
+    "settlement": "recorded",
+    "bidders": 2,
+    "tender_uuid": "4120243a-ab1c-4e9a-ab70-6e4b0b052620",
+    "tender_ref": "EVAL-S16-635f3f",
+    "contract_tender_id": "17",
+    "duplicate_commit": {
+      "vendor": "BIRCH",
+      "http": 400,
+      "error": "Vendor already submitted a bid for this tender",
+      "contract_static_call": "reverted: execution reverted: \"Already committed\" (action=\"call\", data=\"0x08c379a0000000000000000000"
+    },
+    "reveals": [
+      "BIRCH: ok -> HTTP 200",
+      "DOGWOOD: ok -> HTTP 200"
+    ],
+    "evaluate": {
+      "http": 200,
+      "error": null
+    },
+    "award": {
+      "db_status": "Awarded",
+      "db_winner": "DOGWOOD",
+      "db_winning_bid_minor": 2690000,
+      "chain_status": 5,
+      "chain_winner_matches_db": true,
+      "chain_winning_bid": "2690000",
+      "expected_winner": "DOGWOOD",
+      "expected_bid": "2690000",
+      "matches_expected": true
+    },
+    "evidence": {
+      "scenario": "S16",
+      "tender_uuid": "4120243a-ab1c-4e9a-ab70-6e4b0b052620",
+      "package_id": "bbc961af-8ff1-4f6f-ae1a-29f85fbd70ff",
+      "package_version": 1,
+      "package_hash": "0x4b82d6cdd9d59a6098a5d4b8b821cd38df5daac0caf7ca352843e51731e36cba",
+      "manifest_hash": "0x79a21cb399c57324cceaf0b94fa231bb680004f603b44eb9b7edd403caef4d51",
+      "anchor_tx_hash": "0x7dfcec899de1c1814d5312d1b6a53d970de57dc04c5c2e441b066dae2961f752",
+      "anchor_block_number": 38344140,
+      "anchor_contract_address": "0x6DeB87c638bD372202021D00017Df9240f340543",
+      "chain_id": 114,
+      "rpc_url": "https://coston2-api.flare.network/ext/C/rpc",
+      "procure_contract": "0x1B131C70BBcAbE1f56c2906109a4Aa1b071F7A43",
+      "app_verification_status": "passed",
+      "app_checks": [
+        "package_hash_recorded:passed",
+        "zip_downloadable:passed",
+        "zip_hash_matches:passed",
+        "manifest_present:passed",
+        "manifest_hash_matches:passed",
+        "file_hashes_valid:passed",
+        "required_files_listed:passed",
+        "no_unlisted_files:passed",
+        "tender_id_matches:passed",
+        "no_secrets_in_package:passed",
+        "anchor_chain_matches:passed",
+        "anchor_contract_matches:passed",
+        "anchor_tx_confirmed:passed",
+        "anchor_event_hash_matches:passed"
+      ],
+      "timings_ms": {
+        "generate": 209,
+        "anchor": 7205,
+        "app_verify": 795
+      },
+      "anchor_response": "anchored"
+    },
+    "unchanged_regeneration": {
+      "same_package": true,
+      "same_digest": true,
+      "unchanged_flag": true
+    },
+    "result": "completed"
+  },
+  {
+    "scenario": "S17a",
+    "title": "Concurrent tender A (overlapping windows)",
+    "currency": "USD",
+    "settlement": "recorded",
+    "bidders": 2,
+    "tender_uuid": "7de51e2c-542d-4ebc-a2cb-10c615e600fb",
+    "tender_ref": "EVAL-S17a-635f3f",
+    "contract_tender_id": "19",
+    "reveals": [
+      "ALDER: ok -> HTTP 200",
+      "BIRCH: ok -> HTTP 200"
+    ],
+    "evaluate": {
+      "http": 200,
+      "error": null
+    },
+    "award": {
+      "db_status": "Awarded",
+      "db_winner": "BIRCH",
+      "db_winning_bid_minor": 1725000,
+      "chain_status": 5,
+      "chain_winner_matches_db": true,
+      "chain_winning_bid": "1725000",
+      "expected_winner": "BIRCH",
+      "expected_bid": "1725000",
+      "matches_expected": true
+    },
+    "escrow_status": "released",
+    "evidence": {
+      "scenario": "S17a",
+      "tender_uuid": "7de51e2c-542d-4ebc-a2cb-10c615e600fb",
+      "package_id": "cce4f550-e58e-42d6-920b-f05ec015d07b",
+      "package_version": 1,
+      "package_hash": "0xac788de27c61b80ff039cd841c3e8929bc3178e2d28ad8a6b48aacfef915aeb7",
+      "manifest_hash": "0xf631aa5caaeac773c1d84a17616efd23b54662842a23cd539c74c11ecf6f8f9e",
+      "anchor_tx_hash": "0x51442d5c7ea9f1baefde29f9aa83742232160026c3652929b7b56e2b61b58336",
+      "anchor_block_number": 38344578,
+      "anchor_contract_address": "0x6DeB87c638bD372202021D00017Df9240f340543",
+      "chain_id": 114,
+      "rpc_url": "https://coston2-api.flare.network/ext/C/rpc",
+      "procure_contract": "0x1B131C70BBcAbE1f56c2906109a4Aa1b071F7A43",
+      "app_verification_status": "passed",
+      "app_checks": [
+        "package_hash_recorded:passed",
+        "zip_downloadable:passed",
+        "zip_hash_matches:passed",
+        "manifest_present:passed",
+        "manifest_hash_matches:passed",
+        "file_hashes_valid:passed",
+        "required_files_listed:passed",
+        "no_unlisted_files:passed",
+        "tender_id_matches:passed",
+        "no_secrets_in_package:passed",
+        "anchor_chain_matches:passed",
+        "anchor_contract_matches:passed",
+        "anchor_tx_confirmed:passed",
+        "anchor_event_hash_matches:passed"
+      ],
+      "timings_ms": {
+        "generate": 69,
+        "anchor": 8218,
+        "app_verify": 585
+      },
+      "anchor_response": "anchored"
+    },
+    "unchanged_regeneration": {
+      "same_package": true,
+      "same_digest": true,
+      "unchanged_flag": true
+    },
+    "result": "completed"
+  },
+  {
+    "scenario": "S17b",
+    "title": "Concurrent tender B (overlapping windows)",
+    "currency": "EUR",
+    "settlement": "recorded",
+    "bidders": 3,
+    "tender_uuid": "96acd49a-a346-4441-b665-aad1e22f97d8",
+    "tender_ref": "EVAL-S17b-635f3f",
+    "contract_tender_id": "20",
+    "reveals": [
+      "BIRCH: ok -> HTTP 200",
+      "CEDAR: ok -> HTTP 200",
+      "DOGWOOD: ok -> HTTP 200"
+    ],
+    "evaluate": {
+      "http": 200,
+      "error": null
+    },
+    "award": {
+      "db_status": "Awarded",
+      "db_winner": "CEDAR",
+      "db_winning_bid_minor": 4990000,
+      "chain_status": 5,
+      "chain_winner_matches_db": true,
+      "chain_winning_bid": "4990000",
+      "expected_winner": "CEDAR",
+      "expected_bid": "4990000",
+      "matches_expected": true
+    },
+    "evidence": {
+      "scenario": "S17b",
+      "tender_uuid": "96acd49a-a346-4441-b665-aad1e22f97d8",
+      "package_id": "5ebcf3b0-021d-46a2-94c2-da0d812d67e8",
+      "package_version": 1,
+      "package_hash": "0xd10580e060ffdf764600351ec38228513ecf844305404ee6b7b698c9ce99b899",
+      "manifest_hash": "0x71d03f491670124ac18e643229a1cbd36ad2d4890f7a9c22a6c273678529db15",
+      "anchor_tx_hash": "0x8e27394ae060bbce5954efb0eba0c64ffef032ba93ff3e5914936208b54226dd",
+      "anchor_block_number": 38344566,
+      "anchor_contract_address": "0x6DeB87c638bD372202021D00017Df9240f340543",
+      "chain_id": 114,
+      "rpc_url": "https://coston2-api.flare.network/ext/C/rpc",
+      "procure_contract": "0x1B131C70BBcAbE1f56c2906109a4Aa1b071F7A43",
+      "app_verification_status": "passed",
+      "app_checks": [
+        "package_hash_recorded:passed",
+        "zip_downloadable:passed",
+        "zip_hash_matches:passed",
+        "manifest_present:passed",
+        "manifest_hash_matches:passed",
+        "file_hashes_valid:passed",
+        "required_files_listed:passed",
+        "no_unlisted_files:passed",
+        "tender_id_matches:passed",
+        "no_secrets_in_package:passed",
+        "anchor_chain_matches:passed",
+        "anchor_contract_matches:passed",
+        "anchor_tx_confirmed:passed",
+        "anchor_event_hash_matches:passed"
+      ],
+      "timings_ms": {
+        "generate": 192,
+        "anchor": 7467,
+        "app_verify": 795
+      },
+      "anchor_response": "anchored"
+    },
+    "unchanged_regeneration": {
+      "same_package": true,
+      "same_digest": true,
+      "unchanged_flag": true
+    },
+    "result": "completed"
+  },
+  {
+    "scenario": "S17c",
+    "title": "Concurrent tender C (overlapping windows)",
+    "currency": "KYD",
+    "settlement": "recorded",
+    "bidders": 2,
+    "tender_uuid": "9536ebc7-0aa0-4a5a-bd13-5a77bde00984",
+    "tender_ref": "EVAL-S17c-635f3f",
+    "contract_tender_id": "18",
+    "reveals": [
+      "ALDER: ok -> HTTP 200",
+      "ELM: ok -> HTTP 200"
+    ],
+    "evaluate": {
+      "http": 200,
+      "error": null
+    },
+    "award": {
+      "db_status": "Awarded",
+      "db_winner": "ELM",
+      "db_winning_bid_minor": 765000,
+      "chain_status": 5,
+      "chain_winner_matches_db": true,
+      "chain_winning_bid": "765000",
+      "expected_winner": "ELM",
+      "expected_bid": "765000",
+      "matches_expected": true
+    },
+    "escrow_status": "released",
+    "evidence": {
+      "scenario": "S17c",
+      "tender_uuid": "9536ebc7-0aa0-4a5a-bd13-5a77bde00984",
+      "package_id": "687602bd-f92b-44db-9916-77ba1e2c61a1",
+      "package_version": 1,
+      "package_hash": "0xd614880660f2346805d06c93fe3e2a9b942dd69cf3c1da88c581dd87d90f829e",
+      "manifest_hash": "0x372a01579d1cc6ce4424c84b82e547a4942005a7974ddd3ebaaec2a068a43145",
+      "anchor_tx_hash": "0xd2518d67faa41e1e586409e09fa0587c3a31b1c39d5e4dd842d72924eded75d1",
+      "anchor_block_number": 38344577,
+      "anchor_contract_address": "0x6DeB87c638bD372202021D00017Df9240f340543",
+      "chain_id": 114,
+      "rpc_url": "https://coston2-api.flare.network/ext/C/rpc",
+      "procure_contract": "0x1B131C70BBcAbE1f56c2906109a4Aa1b071F7A43",
+      "app_verification_status": "passed",
+      "app_checks": [
+        "package_hash_recorded:passed",
+        "zip_downloadable:passed",
+        "zip_hash_matches:passed",
+        "manifest_present:passed",
+        "manifest_hash_matches:passed",
+        "file_hashes_valid:passed",
+        "required_files_listed:passed",
+        "no_unlisted_files:passed",
+        "tender_id_matches:passed",
+        "no_secrets_in_package:passed",
+        "anchor_chain_matches:passed",
+        "anchor_contract_matches:passed",
+        "anchor_tx_confirmed:passed",
+        "anchor_event_hash_matches:passed"
+      ],
+      "timings_ms": {
+        "generate": 97,
+        "anchor": 8120,
+        "app_verify": 1017
+      },
+      "anchor_response": "anchored"
+    },
+    "unchanged_regeneration": {
+      "same_package": true,
+      "same_digest": true,
+      "unchanged_flag": true
+    },
+    "result": "completed"
+  },
+  {
+    "scenario": "S18a",
+    "title": "Short windows (5 min commit, 5 min reveal)",
+    "currency": "USD",
+    "settlement": "recorded",
+    "bidders": 2,
+    "tender_uuid": "f6d5934f-9699-48dd-9d45-e50ff6c664a8",
+    "tender_ref": "EVAL-S18a-635f3f",
+    "contract_tender_id": "21",
+    "reveals": [
+      "CEDAR: ok -> HTTP 200",
+      "DOGWOOD: ok -> HTTP 200"
+    ],
+    "evaluate": {
+      "http": 200,
+      "error": null
+    },
+    "award": {
+      "db_status": "Awarded",
+      "db_winner": "DOGWOOD",
+      "db_winning_bid_minor": 6180000,
+      "chain_status": 5,
+      "chain_winner_matches_db": true,
+      "chain_winning_bid": "6180000",
+      "expected_winner": "DOGWOOD",
+      "expected_bid": "6180000",
+      "matches_expected": true
+    },
+    "escrow_status": "released",
+    "evidence": {
+      "scenario": "S18a",
+      "tender_uuid": "f6d5934f-9699-48dd-9d45-e50ff6c664a8",
+      "package_id": "61c65c91-00cb-47b1-a369-4ac6626ae958",
+      "package_version": 1,
+      "package_hash": "0x2aefe08b573377c9963f0f80d9b637957b5240a3d5c3a2ccc220e3bd0584870f",
+      "manifest_hash": "0x133cd7c2d911dfef7419cf3d9358ef9b1c4859c60e6dff4ee18f9ffd91323af0",
+      "anchor_tx_hash": "0x7e8e8ec2f6705e3887afaeb7661c25bd6079ec05035d558b05b6c79515cd0ce0",
+      "anchor_block_number": 38344803,
+      "anchor_contract_address": "0x6DeB87c638bD372202021D00017Df9240f340543",
+      "chain_id": 114,
+      "rpc_url": "https://coston2-api.flare.network/ext/C/rpc",
+      "procure_contract": "0x1B131C70BBcAbE1f56c2906109a4Aa1b071F7A43",
+      "app_verification_status": "passed",
+      "app_checks": [
+        "package_hash_recorded:passed",
+        "zip_downloadable:passed",
+        "zip_hash_matches:passed",
+        "manifest_present:passed",
+        "manifest_hash_matches:passed",
+        "file_hashes_valid:passed",
+        "required_files_listed:passed",
+        "no_unlisted_files:passed",
+        "tender_id_matches:passed",
+        "no_secrets_in_package:passed",
+        "anchor_chain_matches:passed",
+        "anchor_contract_matches:passed",
+        "anchor_tx_confirmed:passed",
+        "anchor_event_hash_matches:passed"
+      ],
+      "timings_ms": {
+        "generate": 208,
+        "anchor": 2480,
+        "app_verify": 801
+      },
+      "anchor_response": "anchored"
+    },
+    "unchanged_regeneration": {
+      "same_package": true,
+      "same_digest": true,
+      "unchanged_flag": true
+    },
+    "result": "completed"
+  },
+  {
+    "scenario": "S18b",
+    "title": "Long windows (60 min commit, 60 min reveal)",
+    "currency": "GBP",
+    "settlement": "recorded",
+    "bidders": 3,
+    "tender_uuid": "2942fb85-c069-4a9d-b49c-13553a9c5020",
+    "tender_ref": "EVAL-S18b-635f3f",
+    "contract_tender_id": "22",
+    "reveals": [
+      "ALDER: ok -> HTTP 200",
+      "CEDAR: ok -> HTTP 200",
+      "ELM: ok -> HTTP 200"
+    ],
+    "evaluate": {
+      "http": 200,
+      "error": null
+    },
+    "award": {
+      "db_status": "Awarded",
+      "db_winner": "CEDAR",
+      "db_winning_bid_minor": 13875000,
+      "chain_status": 5,
+      "chain_winner_matches_db": true,
+      "chain_winning_bid": "13875000",
+      "expected_winner": "CEDAR",
+      "expected_bid": "13875000",
+      "matches_expected": true
+    },
+    "escrow_status": "released",
+    "evidence": {
+      "scenario": "S18b",
+      "tender_uuid": "2942fb85-c069-4a9d-b49c-13553a9c5020",
+      "package_id": "1a0c9ae6-a641-48b2-ae93-226059d131a9",
+      "package_version": 1,
+      "package_hash": "0x6dca89c310144202ef39a33c1a9bdbf6ff5af33ad9929c684948dfee35d4e162",
+      "manifest_hash": "0x92616d683ceac8c5585545f1eb07d25fb6ca631d8a09c9976badc1dd5a9cb67e",
+      "anchor_tx_hash": "0x074f3f7287715e028baf1c316b13f58cd781f20c3c25b1b55878eac757972397",
+      "anchor_block_number": 38347725,
+      "anchor_contract_address": "0x6DeB87c638bD372202021D00017Df9240f340543",
+      "chain_id": 114,
+      "rpc_url": "https://coston2-api.flare.network/ext/C/rpc",
+      "procure_contract": "0x1B131C70BBcAbE1f56c2906109a4Aa1b071F7A43",
+      "app_verification_status": "passed",
+      "app_checks": [
+        "package_hash_recorded:passed",
+        "zip_downloadable:passed",
+        "zip_hash_matches:passed",
+        "manifest_present:passed",
+        "manifest_hash_matches:passed",
+        "file_hashes_valid:passed",
+        "required_files_listed:passed",
+        "no_unlisted_files:passed",
+        "tender_id_matches:passed",
+        "no_secrets_in_package:passed",
+        "anchor_chain_matches:passed",
+        "anchor_contract_matches:passed",
+        "anchor_tx_confirmed:passed",
+        "anchor_event_hash_matches:passed"
+      ],
+      "timings_ms": {
+        "generate": 218,
+        "anchor": 8519,
+        "app_verify": 1135
+      },
+      "anchor_response": "anchored"
+    },
+    "unchanged_regeneration": {
+      "same_package": true,
+      "same_digest": true,
+      "unchanged_flag": true
+    },
+    "result": "completed"
+  },
+  {
+    "scenario": "S19",
+    "title": "Passkey revoked, then the vendor's bid is rejected",
+    "currency": "USD",
+    "settlement": "recorded",
+    "bidders": 2,
+    "tender_uuid": "c050c2db-27b1-442e-a137-85b56c9c6a47",
+    "tender_ref": "EVAL-S19-635f3f",
+    "contract_tender_id": "23",
+    "revocation": {
+      "vendor": "ELM",
+      "revoke_http": 200,
+      "revoke_tx": "0x081701f84b13d38a1918df871e337e4303c533ba09efab9a892b3703b0090410",
+      "commit_after_revoke_http": 403,
+      "commit_error": "Passkey not registered or not active",
+      "contract_static_call": "reverted: execution reverted: \"Invalid vendor signature\" (action=\"call\", data=\"0x08c379a000000000000"
+    },
+    "reveals": [
+      "ALDER: ok -> HTTP 200",
+      "BIRCH: ok -> HTTP 200"
+    ],
+    "evaluate": {
+      "http": 200,
+      "error": null
+    },
+    "award": {
+      "db_status": "Awarded",
+      "db_winner": "BIRCH",
+      "db_winning_bid_minor": 2040000,
+      "chain_status": 5,
+      "chain_winner_matches_db": true,
+      "chain_winning_bid": "2040000",
+      "expected_winner": "BIRCH",
+      "expected_bid": "2040000",
+      "matches_expected": true
+    },
+    "evidence": {
+      "scenario": "S19",
+      "tender_uuid": "c050c2db-27b1-442e-a137-85b56c9c6a47",
+      "package_id": "cea742dc-67fd-458c-8222-cf337286aa37",
+      "package_version": 1,
+      "package_hash": "0x364b97a17128331b9ef7b5793229683d254249eae195f3fed9bbd8b496a46d76",
+      "manifest_hash": "0x0a60cb762dbe73c375f51f69a28f2714a9f4b4f0f8685d23f4c5bc5494c4a71a",
+      "anchor_tx_hash": "0x02482436df683b1826c85daa18c52e1fba44de668c9cedfc9be968082c464363",
+      "anchor_block_number": 38348125,
+      "anchor_contract_address": "0x6DeB87c638bD372202021D00017Df9240f340543",
+      "chain_id": 114,
+      "rpc_url": "https://coston2-api.flare.network/ext/C/rpc",
+      "procure_contract": "0x1B131C70BBcAbE1f56c2906109a4Aa1b071F7A43",
+      "app_verification_status": "passed",
+      "app_checks": [
+        "package_hash_recorded:passed",
+        "zip_downloadable:passed",
+        "zip_hash_matches:passed",
+        "manifest_present:passed",
+        "manifest_hash_matches:passed",
+        "file_hashes_valid:passed",
+        "required_files_listed:passed",
+        "no_unlisted_files:passed",
+        "tender_id_matches:passed",
+        "no_secrets_in_package:passed",
+        "anchor_chain_matches:passed",
+        "anchor_contract_matches:passed",
+        "anchor_tx_confirmed:passed",
+        "anchor_event_hash_matches:passed"
+      ],
+      "timings_ms": {
+        "generate": 214,
+        "anchor": 2191,
+        "app_verify": 769
+      },
+      "anchor_response": "anchored"
+    },
+    "unchanged_regeneration": {
+      "same_package": true,
+      "same_digest": true,
+      "unchanged_flag": true
+    },
+    "result": "completed"
+  }
+]
